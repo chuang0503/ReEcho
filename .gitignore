@@ -1,0 +1,15 @@
+data/dev-clean/
+data/rir_noises/
+data/synthetic/
+data/test-clean/
+experiment/
+figure/
+pretrained_models/
+ReEcho_Net/pretrained_models/
+*.tar.gz
+*.zip
+*.pth
+*.ckpt
+*.logs
+*.log
+*.ipynb

@@ -1,0 +1,355 @@
+nohup: ignoring input
+
+*****************************************
+Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+*****************************************
+Loading training data...Loading training data...
+
+Loading training data...
+Loading training data...
+Loaded 12000 training entries
+Loading validation data...
+Loaded 240 validation entries
+Creating datasets...
+Loaded 12000 training entries
+Loading validation data...
+Loaded 240 validation entries
+Creating datasets...
+Loaded 12000 training entries
+Loading validation data...
+Loaded 240 validation entries
+Creating datasets...
+Loaded 12000 training entries
+Loading validation data...
+Loaded 240 validation entries
+Creating datasets...
+Training dataset size: 12000
+Validation dataset size: 240
+Creating dataloaders...
+Training batches: 93
+Validation batches: 2
+Starting training...
+Training dataset size: 12000
+Validation dataset size: 240
+Creating dataloaders...
+Training batches: 93
+Validation batches: 2
+Starting training...
+Training dataset size: 12000
+Validation dataset size: 240
+Creating dataloaders...
+Training batches: 93
+Validation batches: 2
+Starting training...
+Training dataset size: 12000
+Validation dataset size: 240
+Creating dataloaders...
+Training batches: 93
+Validation batches: 2
+Starting training...
+2025-07-04 21:13:32,162 - INFO - Epoch 1/100 | train_total: 14.2509 | dereverb: 11.3993 | rir: 2.8516
+Epoch 1/100 | train_total: 14.2509 | val --
+2025-07-04 21:13:32,163 - INFO - Epoch 1/100 | train_total: 14.2509 | val --
+2025-07-04 21:15:15,774 - INFO - Epoch 2/100 | train_total: 13.7701 | dereverb: 11.0380 | rir: 2.7321
+Epoch 2/100 | train_total: 13.7701 | val --
+2025-07-04 21:15:15,774 - INFO - Epoch 2/100 | train_total: 13.7701 | val --
+2025-07-04 21:16:59,575 - INFO - Epoch 3/100 | train_total: 13.6845 | dereverb: 10.9617 | rir: 2.7229
+Epoch 3/100 | train_total: 13.6845 | val --
+2025-07-04 21:16:59,575 - INFO - Epoch 3/100 | train_total: 13.6845 | val --
+2025-07-04 21:18:43,408 - INFO - Epoch 4/100 | train_total: 13.8289 | dereverb: 11.1151 | rir: 2.7139
+Epoch 4/100 | train_total: 13.8289 | val --
+2025-07-04 21:18:43,408 - INFO - Epoch 4/100 | train_total: 13.8289 | val --
+2025-07-04 21:20:26,600 - INFO - Epoch 5/100 | train_total: 13.7507 | dereverb: 11.0072 | rir: 2.7435
+Epoch 5/100 | train_total: 13.7507 | val_total: 17.0322 | val_dereverb: 14.1121 | val_rir: 2.9202
+2025-07-04 21:20:28,520 - INFO - Epoch 5/100 | train_total: 13.7507 | val_total: 17.0322 | val_dereverb: 14.1121 | val_rir: 2.9202
+2025-07-04 21:22:12,174 - INFO - Epoch 6/100 | train_total: 13.5570 | dereverb: 10.8640 | rir: 2.6930
+Epoch 6/100 | train_total: 13.5570 | val --
+2025-07-04 21:22:12,175 - INFO - Epoch 6/100 | train_total: 13.5570 | val --
+2025-07-04 21:23:55,056 - INFO - Epoch 7/100 | train_total: 13.7584 | dereverb: 11.0044 | rir: 2.7540
+Epoch 7/100 | train_total: 13.7584 | val --
+2025-07-04 21:23:55,056 - INFO - Epoch 7/100 | train_total: 13.7584 | val --
+2025-07-04 21:25:38,573 - INFO - Epoch 8/100 | train_total: 13.6972 | dereverb: 10.9605 | rir: 2.7368
+Epoch 8/100 | train_total: 13.6972 | val --
+2025-07-04 21:25:38,573 - INFO - Epoch 8/100 | train_total: 13.6972 | val --
+2025-07-04 21:27:21,531 - INFO - Epoch 9/100 | train_total: 13.8717 | dereverb: 11.1494 | rir: 2.7222
+Epoch 9/100 | train_total: 13.8717 | val --
+2025-07-04 21:27:21,532 - INFO - Epoch 9/100 | train_total: 13.8717 | val --
+2025-07-04 21:29:04,931 - INFO - Epoch 10/100 | train_total: 13.7346 | dereverb: 10.9729 | rir: 2.7618
+Epoch 10/100 | train_total: 13.7346 | val_total: 16.9848 | val_dereverb: 13.9502 | val_rir: 3.0346
+2025-07-04 21:29:06,812 - INFO - Epoch 10/100 | train_total: 13.7346 | val_total: 16.9848 | val_dereverb: 13.9502 | val_rir: 3.0346
+2025-07-04 21:30:50,363 - INFO - Epoch 11/100 | train_total: 13.5812 | dereverb: 10.8696 | rir: 2.7116
+Epoch 11/100 | train_total: 13.5812 | val --
+2025-07-04 21:30:50,363 - INFO - Epoch 11/100 | train_total: 13.5812 | val --
+2025-07-04 21:32:34,053 - INFO - Epoch 12/100 | train_total: 13.6862 | dereverb: 10.9785 | rir: 2.7077
+Epoch 12/100 | train_total: 13.6862 | val --
+2025-07-04 21:32:34,053 - INFO - Epoch 12/100 | train_total: 13.6862 | val --
+2025-07-04 21:34:17,387 - INFO - Epoch 13/100 | train_total: 13.4725 | dereverb: 10.7869 | rir: 2.6856
+Epoch 13/100 | train_total: 13.4725 | val --
+2025-07-04 21:34:17,388 - INFO - Epoch 13/100 | train_total: 13.4725 | val --
+2025-07-04 21:36:01,053 - INFO - Epoch 14/100 | train_total: 13.6504 | dereverb: 10.9481 | rir: 2.7023
+Epoch 14/100 | train_total: 13.6504 | val --
+2025-07-04 21:36:01,053 - INFO - Epoch 14/100 | train_total: 13.6504 | val --
+2025-07-04 21:37:44,328 - INFO - Epoch 15/100 | train_total: 13.4600 | dereverb: 10.7582 | rir: 2.7019
+Epoch 15/100 | train_total: 13.4600 | val_total: 16.8235 | val_dereverb: 13.9829 | val_rir: 2.8405
+2025-07-04 21:37:46,196 - INFO - Epoch 15/100 | train_total: 13.4600 | val_total: 16.8235 | val_dereverb: 13.9829 | val_rir: 2.8405
+2025-07-04 21:39:29,794 - INFO - Epoch 16/100 | train_total: 13.6229 | dereverb: 10.9157 | rir: 2.7073
+Epoch 16/100 | train_total: 13.6229 | val --
+2025-07-04 21:39:29,794 - INFO - Epoch 16/100 | train_total: 13.6229 | val --
+2025-07-04 21:41:13,551 - INFO - Epoch 17/100 | train_total: 13.5971 | dereverb: 10.9002 | rir: 2.6969
+Epoch 17/100 | train_total: 13.5971 | val --
+2025-07-04 21:41:13,551 - INFO - Epoch 17/100 | train_total: 13.5971 | val --
+2025-07-04 21:42:56,980 - INFO - Epoch 18/100 | train_total: 13.6499 | dereverb: 10.8332 | rir: 2.8167
+Epoch 18/100 | train_total: 13.6499 | val --
+2025-07-04 21:42:56,980 - INFO - Epoch 18/100 | train_total: 13.6499 | val --
+2025-07-04 21:44:40,331 - INFO - Epoch 19/100 | train_total: 13.5591 | dereverb: 10.8754 | rir: 2.6838
+Epoch 19/100 | train_total: 13.5591 | val --
+2025-07-04 21:44:40,331 - INFO - Epoch 19/100 | train_total: 13.5591 | val --
+2025-07-04 21:46:23,811 - INFO - Epoch 20/100 | train_total: 13.4057 | dereverb: 10.7339 | rir: 2.6718
+Epoch 20/100 | train_total: 13.4057 | val_total: 16.7050 | val_dereverb: 13.8454 | val_rir: 2.8596
+2025-07-04 21:46:25,697 - INFO - Epoch 20/100 | train_total: 13.4057 | val_total: 16.7050 | val_dereverb: 13.8454 | val_rir: 2.8596
+2025-07-04 21:46:26,654 - INFO - Model saved at epoch 20
+2025-07-04 21:48:10,103 - INFO - Epoch 21/100 | train_total: 13.5943 | dereverb: 10.9135 | rir: 2.6808
+Epoch 21/100 | train_total: 13.5943 | val --
+2025-07-04 21:48:10,103 - INFO - Epoch 21/100 | train_total: 13.5943 | val --
+2025-07-04 21:49:53,850 - INFO - Epoch 22/100 | train_total: 13.3488 | dereverb: 10.6986 | rir: 2.6502
+Epoch 22/100 | train_total: 13.3488 | val --
+2025-07-04 21:49:53,851 - INFO - Epoch 22/100 | train_total: 13.3488 | val --
+2025-07-04 21:51:37,381 - INFO - Epoch 23/100 | train_total: 13.4840 | dereverb: 10.7917 | rir: 2.6923
+Epoch 23/100 | train_total: 13.4840 | val --
+2025-07-04 21:51:37,382 - INFO - Epoch 23/100 | train_total: 13.4840 | val --
+2025-07-04 21:53:21,119 - INFO - Epoch 24/100 | train_total: 13.5424 | dereverb: 10.7960 | rir: 2.7464
+Epoch 24/100 | train_total: 13.5424 | val --
+2025-07-04 21:53:21,119 - INFO - Epoch 24/100 | train_total: 13.5424 | val --
+2025-07-04 21:55:04,302 - INFO - Epoch 25/100 | train_total: 13.4216 | dereverb: 10.7610 | rir: 2.6606
+Epoch 25/100 | train_total: 13.4216 | val_total: 16.7805 | val_dereverb: 13.9155 | val_rir: 2.8650
+2025-07-04 21:55:06,276 - INFO - Epoch 25/100 | train_total: 13.4216 | val_total: 16.7805 | val_dereverb: 13.9155 | val_rir: 2.8650
+2025-07-04 21:56:50,473 - INFO - Epoch 26/100 | train_total: 13.2891 | dereverb: 10.6171 | rir: 2.6720
+Epoch 26/100 | train_total: 13.2891 | val --
+2025-07-04 21:56:50,473 - INFO - Epoch 26/100 | train_total: 13.2891 | val --
+2025-07-04 21:58:34,091 - INFO - Epoch 27/100 | train_total: 13.4253 | dereverb: 10.7674 | rir: 2.6579
+Epoch 27/100 | train_total: 13.4253 | val --
+2025-07-04 21:58:34,091 - INFO - Epoch 27/100 | train_total: 13.4253 | val --
+2025-07-04 22:00:17,437 - INFO - Epoch 28/100 | train_total: 13.5558 | dereverb: 10.8744 | rir: 2.6814
+Epoch 28/100 | train_total: 13.5558 | val --
+2025-07-04 22:00:17,437 - INFO - Epoch 28/100 | train_total: 13.5558 | val --
+2025-07-04 22:02:00,878 - INFO - Epoch 29/100 | train_total: 13.6399 | dereverb: 10.9226 | rir: 2.7173
+Epoch 29/100 | train_total: 13.6399 | val --
+2025-07-04 22:02:00,878 - INFO - Epoch 29/100 | train_total: 13.6399 | val --
+2025-07-04 22:03:44,374 - INFO - Epoch 30/100 | train_total: 14.1806 | dereverb: 11.2706 | rir: 2.9101
+Epoch 30/100 | train_total: 14.1806 | val_total: 16.8983 | val_dereverb: 13.9572 | val_rir: 2.9410
+2025-07-04 22:03:46,280 - INFO - Epoch 30/100 | train_total: 14.1806 | val_total: 16.8983 | val_dereverb: 13.9572 | val_rir: 2.9410
+2025-07-04 22:05:30,491 - INFO - Epoch 31/100 | train_total: 13.7399 | dereverb: 11.0234 | rir: 2.7165
+Epoch 31/100 | train_total: 13.7399 | val --
+2025-07-04 22:05:30,491 - INFO - Epoch 31/100 | train_total: 13.7399 | val --
+2025-07-04 22:07:13,889 - INFO - Epoch 32/100 | train_total: 13.2851 | dereverb: 10.6202 | rir: 2.6649
+Epoch 32/100 | train_total: 13.2851 | val --
+2025-07-04 22:07:13,890 - INFO - Epoch 32/100 | train_total: 13.2851 | val --
+2025-07-04 22:08:57,245 - INFO - Epoch 33/100 | train_total: 13.3378 | dereverb: 10.6941 | rir: 2.6437
+Epoch 33/100 | train_total: 13.3378 | val --
+2025-07-04 22:08:57,245 - INFO - Epoch 33/100 | train_total: 13.3378 | val --
+2025-07-04 22:10:40,724 - INFO - Epoch 34/100 | train_total: 13.5316 | dereverb: 10.7903 | rir: 2.7413
+Epoch 34/100 | train_total: 13.5316 | val --
+2025-07-04 22:10:40,724 - INFO - Epoch 34/100 | train_total: 13.5316 | val --
+2025-07-04 22:12:24,001 - INFO - Epoch 35/100 | train_total: 13.1426 | dereverb: 10.5301 | rir: 2.6125
+Epoch 35/100 | train_total: 13.1426 | val_total: 16.7332 | val_dereverb: 13.9092 | val_rir: 2.8241
+2025-07-04 22:12:25,909 - INFO - Epoch 35/100 | train_total: 13.1426 | val_total: 16.7332 | val_dereverb: 13.9092 | val_rir: 2.8241
+2025-07-04 22:14:09,209 - INFO - Epoch 36/100 | train_total: 13.3048 | dereverb: 10.7015 | rir: 2.6034
+Epoch 36/100 | train_total: 13.3048 | val --
+2025-07-04 22:14:09,209 - INFO - Epoch 36/100 | train_total: 13.3048 | val --
+2025-07-04 22:15:52,746 - INFO - Epoch 37/100 | train_total: 13.3390 | dereverb: 10.7117 | rir: 2.6273
+Epoch 37/100 | train_total: 13.3390 | val --
+2025-07-04 22:15:52,746 - INFO - Epoch 37/100 | train_total: 13.3390 | val --
+2025-07-04 22:17:36,333 - INFO - Epoch 38/100 | train_total: 13.1895 | dereverb: 10.5818 | rir: 2.6077
+Epoch 38/100 | train_total: 13.1895 | val --
+2025-07-04 22:17:36,334 - INFO - Epoch 38/100 | train_total: 13.1895 | val --
+2025-07-04 22:19:19,970 - INFO - Epoch 39/100 | train_total: 13.2957 | dereverb: 10.6767 | rir: 2.6190
+Epoch 39/100 | train_total: 13.2957 | val --
+2025-07-04 22:19:19,970 - INFO - Epoch 39/100 | train_total: 13.2957 | val --
+2025-07-04 22:21:03,351 - INFO - Epoch 40/100 | train_total: 13.3820 | dereverb: 10.7135 | rir: 2.6686
+Epoch 40/100 | train_total: 13.3820 | val_total: 16.6430 | val_dereverb: 13.8377 | val_rir: 2.8053
+2025-07-04 22:21:05,252 - INFO - Epoch 40/100 | train_total: 13.3820 | val_total: 16.6430 | val_dereverb: 13.8377 | val_rir: 2.8053
+2025-07-04 22:21:06,344 - INFO - Model saved at epoch 40
+2025-07-04 22:22:49,677 - INFO - Epoch 41/100 | train_total: 13.0653 | dereverb: 10.4881 | rir: 2.5772
+Epoch 41/100 | train_total: 13.0653 | val --
+2025-07-04 22:22:49,677 - INFO - Epoch 41/100 | train_total: 13.0653 | val --
+2025-07-04 22:24:33,205 - INFO - Epoch 42/100 | train_total: 13.2452 | dereverb: 10.6448 | rir: 2.6004
+Epoch 42/100 | train_total: 13.2452 | val --
+2025-07-04 22:24:33,206 - INFO - Epoch 42/100 | train_total: 13.2452 | val --
+2025-07-04 22:26:17,078 - INFO - Epoch 43/100 | train_total: 13.3372 | dereverb: 10.6990 | rir: 2.6382
+Epoch 43/100 | train_total: 13.3372 | val --
+2025-07-04 22:26:17,079 - INFO - Epoch 43/100 | train_total: 13.3372 | val --
+2025-07-04 22:28:00,414 - INFO - Epoch 44/100 | train_total: 13.1739 | dereverb: 10.5724 | rir: 2.6015
+Epoch 44/100 | train_total: 13.1739 | val --
+2025-07-04 22:28:00,414 - INFO - Epoch 44/100 | train_total: 13.1739 | val --
+2025-07-04 22:29:43,678 - INFO - Epoch 45/100 | train_total: 13.0250 | dereverb: 10.4336 | rir: 2.5913
+Epoch 45/100 | train_total: 13.0250 | val_total: 16.7140 | val_dereverb: 13.9060 | val_rir: 2.8080
+2025-07-04 22:29:45,584 - INFO - Epoch 45/100 | train_total: 13.0250 | val_total: 16.7140 | val_dereverb: 13.9060 | val_rir: 2.8080
+2025-07-04 22:31:29,441 - INFO - Epoch 46/100 | train_total: 13.1659 | dereverb: 10.5511 | rir: 2.6148
+Epoch 46/100 | train_total: 13.1659 | val --
+2025-07-04 22:31:29,441 - INFO - Epoch 46/100 | train_total: 13.1659 | val --
+2025-07-04 22:33:12,826 - INFO - Epoch 47/100 | train_total: 13.0032 | dereverb: 10.3858 | rir: 2.6174
+Epoch 47/100 | train_total: 13.0032 | val --
+2025-07-04 22:33:12,827 - INFO - Epoch 47/100 | train_total: 13.0032 | val --
+2025-07-04 22:34:55,962 - INFO - Epoch 48/100 | train_total: 13.1699 | dereverb: 10.5279 | rir: 2.6420
+Epoch 48/100 | train_total: 13.1699 | val --
+2025-07-04 22:34:55,962 - INFO - Epoch 48/100 | train_total: 13.1699 | val --
+2025-07-04 22:36:39,378 - INFO - Epoch 49/100 | train_total: 13.3481 | dereverb: 10.7127 | rir: 2.6355
+Epoch 49/100 | train_total: 13.3481 | val --
+2025-07-04 22:36:39,378 - INFO - Epoch 49/100 | train_total: 13.3481 | val --
+2025-07-04 22:38:23,070 - INFO - Epoch 50/100 | train_total: 13.5323 | dereverb: 10.8319 | rir: 2.7004
+Epoch 50/100 | train_total: 13.5323 | val_total: 16.6490 | val_dereverb: 13.8458 | val_rir: 2.8032
+2025-07-04 22:38:24,957 - INFO - Epoch 50/100 | train_total: 13.5323 | val_total: 16.6490 | val_dereverb: 13.8458 | val_rir: 2.8032
+2025-07-04 22:40:08,987 - INFO - Epoch 51/100 | train_total: 13.0335 | dereverb: 10.4583 | rir: 2.5752
+Epoch 51/100 | train_total: 13.0335 | val --
+2025-07-04 22:40:08,987 - INFO - Epoch 51/100 | train_total: 13.0335 | val --
+2025-07-04 22:41:52,706 - INFO - Epoch 52/100 | train_total: 13.1347 | dereverb: 10.5166 | rir: 2.6181
+Epoch 52/100 | train_total: 13.1347 | val --
+2025-07-04 22:41:52,706 - INFO - Epoch 52/100 | train_total: 13.1347 | val --
+2025-07-04 22:43:36,022 - INFO - Epoch 53/100 | train_total: 13.1759 | dereverb: 10.5794 | rir: 2.5965
+Epoch 53/100 | train_total: 13.1759 | val --
+2025-07-04 22:43:36,022 - INFO - Epoch 53/100 | train_total: 13.1759 | val --
+2025-07-04 22:45:19,122 - INFO - Epoch 54/100 | train_total: 13.1043 | dereverb: 10.5204 | rir: 2.5839
+Epoch 54/100 | train_total: 13.1043 | val --
+2025-07-04 22:45:19,122 - INFO - Epoch 54/100 | train_total: 13.1043 | val --
+2025-07-04 22:47:03,069 - INFO - Epoch 55/100 | train_total: 13.2210 | dereverb: 10.6052 | rir: 2.6158
+Epoch 55/100 | train_total: 13.2210 | val_total: 16.5528 | val_dereverb: 13.7311 | val_rir: 2.8218
+2025-07-04 22:47:04,945 - INFO - Epoch 55/100 | train_total: 13.2210 | val_total: 16.5528 | val_dereverb: 13.7311 | val_rir: 2.8218
+2025-07-04 22:48:48,509 - INFO - Epoch 56/100 | train_total: 12.9514 | dereverb: 10.3248 | rir: 2.6266
+Epoch 56/100 | train_total: 12.9514 | val --
+2025-07-04 22:48:48,510 - INFO - Epoch 56/100 | train_total: 12.9514 | val --
+2025-07-04 22:50:32,441 - INFO - Epoch 57/100 | train_total: 13.1846 | dereverb: 10.5822 | rir: 2.6024
+Epoch 57/100 | train_total: 13.1846 | val --
+2025-07-04 22:50:32,442 - INFO - Epoch 57/100 | train_total: 13.1846 | val --
+2025-07-04 22:52:16,150 - INFO - Epoch 58/100 | train_total: 13.1658 | dereverb: 10.5497 | rir: 2.6161
+Epoch 58/100 | train_total: 13.1658 | val --
+2025-07-04 22:52:16,151 - INFO - Epoch 58/100 | train_total: 13.1658 | val --
+2025-07-04 22:53:59,633 - INFO - Epoch 59/100 | train_total: 12.8474 | dereverb: 10.2143 | rir: 2.6332
+Epoch 59/100 | train_total: 12.8474 | val --
+2025-07-04 22:53:59,633 - INFO - Epoch 59/100 | train_total: 12.8474 | val --
+2025-07-04 22:55:43,478 - INFO - Epoch 60/100 | train_total: 13.1117 | dereverb: 10.5132 | rir: 2.5985
+Epoch 60/100 | train_total: 13.1117 | val_total: 16.5608 | val_dereverb: 13.7755 | val_rir: 2.7853
+2025-07-04 22:55:45,359 - INFO - Epoch 60/100 | train_total: 13.1117 | val_total: 16.5608 | val_dereverb: 13.7755 | val_rir: 2.7853
+2025-07-04 22:55:46,436 - INFO - Model saved at epoch 60
+2025-07-04 22:57:29,512 - INFO - Epoch 61/100 | train_total: 13.3458 | dereverb: 10.7387 | rir: 2.6070
+Epoch 61/100 | train_total: 13.3458 | val --
+2025-07-04 22:57:29,512 - INFO - Epoch 61/100 | train_total: 13.3458 | val --
+2025-07-04 22:59:13,030 - INFO - Epoch 62/100 | train_total: 13.2284 | dereverb: 10.6296 | rir: 2.5988
+Epoch 62/100 | train_total: 13.2284 | val --
+2025-07-04 22:59:13,030 - INFO - Epoch 62/100 | train_total: 13.2284 | val --
+2025-07-04 23:00:56,840 - INFO - Epoch 63/100 | train_total: 13.0314 | dereverb: 10.3460 | rir: 2.6855
+Epoch 63/100 | train_total: 13.0314 | val --
+2025-07-04 23:00:56,840 - INFO - Epoch 63/100 | train_total: 13.0314 | val --
+2025-07-04 23:02:39,910 - INFO - Epoch 64/100 | train_total: 13.0916 | dereverb: 10.4519 | rir: 2.6398
+Epoch 64/100 | train_total: 13.0916 | val --
+2025-07-04 23:02:39,910 - INFO - Epoch 64/100 | train_total: 13.0916 | val --
+2025-07-04 23:04:23,141 - INFO - Epoch 65/100 | train_total: 13.1686 | dereverb: 10.5906 | rir: 2.5780
+Epoch 65/100 | train_total: 13.1686 | val_total: 16.5382 | val_dereverb: 13.7363 | val_rir: 2.8019
+2025-07-04 23:04:25,007 - INFO - Epoch 65/100 | train_total: 13.1686 | val_total: 16.5382 | val_dereverb: 13.7363 | val_rir: 2.8019
+2025-07-04 23:06:08,310 - INFO - Epoch 66/100 | train_total: 13.2892 | dereverb: 10.6889 | rir: 2.6003
+Epoch 66/100 | train_total: 13.2892 | val --
+2025-07-04 23:06:08,310 - INFO - Epoch 66/100 | train_total: 13.2892 | val --
+2025-07-04 23:07:52,013 - INFO - Epoch 67/100 | train_total: 13.0392 | dereverb: 10.4640 | rir: 2.5751
+Epoch 67/100 | train_total: 13.0392 | val --
+2025-07-04 23:07:52,013 - INFO - Epoch 67/100 | train_total: 13.0392 | val --
+2025-07-04 23:09:35,575 - INFO - Epoch 68/100 | train_total: 12.9050 | dereverb: 10.3171 | rir: 2.5879
+Epoch 68/100 | train_total: 12.9050 | val --
+2025-07-04 23:09:35,575 - INFO - Epoch 68/100 | train_total: 12.9050 | val --
+2025-07-04 23:11:18,833 - INFO - Epoch 69/100 | train_total: 13.1047 | dereverb: 10.5031 | rir: 2.6016
+Epoch 69/100 | train_total: 13.1047 | val --
+2025-07-04 23:11:18,833 - INFO - Epoch 69/100 | train_total: 13.1047 | val --
+2025-07-04 23:13:02,518 - INFO - Epoch 70/100 | train_total: 13.1208 | dereverb: 10.5283 | rir: 2.5925
+Epoch 70/100 | train_total: 13.1208 | val_total: 16.5120 | val_dereverb: 13.8151 | val_rir: 2.6969
+2025-07-04 23:13:04,388 - INFO - Epoch 70/100 | train_total: 13.1208 | val_total: 16.5120 | val_dereverb: 13.8151 | val_rir: 2.6969
+2025-07-04 23:14:48,118 - INFO - Epoch 71/100 | train_total: 13.1218 | dereverb: 10.5445 | rir: 2.5773
+Epoch 71/100 | train_total: 13.1218 | val --
+2025-07-04 23:14:48,118 - INFO - Epoch 71/100 | train_total: 13.1218 | val --
+2025-07-04 23:16:31,639 - INFO - Epoch 72/100 | train_total: 12.9811 | dereverb: 10.4140 | rir: 2.5671
+Epoch 72/100 | train_total: 12.9811 | val --
+2025-07-04 23:16:31,640 - INFO - Epoch 72/100 | train_total: 12.9811 | val --
+2025-07-04 23:18:15,154 - INFO - Epoch 73/100 | train_total: 12.9529 | dereverb: 10.3807 | rir: 2.5722
+Epoch 73/100 | train_total: 12.9529 | val --
+2025-07-04 23:18:15,154 - INFO - Epoch 73/100 | train_total: 12.9529 | val --
+2025-07-04 23:19:58,021 - INFO - Epoch 74/100 | train_total: 13.2841 | dereverb: 10.3993 | rir: 2.8848
+Epoch 74/100 | train_total: 13.2841 | val --
+2025-07-04 23:19:58,021 - INFO - Epoch 74/100 | train_total: 13.2841 | val --
+2025-07-04 23:21:41,336 - INFO - Epoch 75/100 | train_total: 13.0813 | dereverb: 10.5226 | rir: 2.5587
+Epoch 75/100 | train_total: 13.0813 | val_total: 16.5309 | val_dereverb: 13.7214 | val_rir: 2.8095
+2025-07-04 23:21:43,212 - INFO - Epoch 75/100 | train_total: 13.0813 | val_total: 16.5309 | val_dereverb: 13.7214 | val_rir: 2.8095
+2025-07-04 23:23:26,984 - INFO - Epoch 76/100 | train_total: 12.7606 | dereverb: 10.1834 | rir: 2.5772
+Epoch 76/100 | train_total: 12.7606 | val --
+2025-07-04 23:23:26,984 - INFO - Epoch 76/100 | train_total: 12.7606 | val --
+2025-07-04 23:25:10,761 - INFO - Epoch 77/100 | train_total: 12.9691 | dereverb: 10.3848 | rir: 2.5843
+Epoch 77/100 | train_total: 12.9691 | val --
+2025-07-04 23:25:10,761 - INFO - Epoch 77/100 | train_total: 12.9691 | val --
+2025-07-04 23:26:54,364 - INFO - Epoch 78/100 | train_total: 12.8022 | dereverb: 10.2238 | rir: 2.5783
+Epoch 78/100 | train_total: 12.8022 | val --
+2025-07-04 23:26:54,364 - INFO - Epoch 78/100 | train_total: 12.8022 | val --
+2025-07-04 23:28:38,206 - INFO - Epoch 79/100 | train_total: 12.9501 | dereverb: 10.3653 | rir: 2.5849
+Epoch 79/100 | train_total: 12.9501 | val --
+2025-07-04 23:28:38,207 - INFO - Epoch 79/100 | train_total: 12.9501 | val --
+2025-07-04 23:30:21,823 - INFO - Epoch 80/100 | train_total: 13.0258 | dereverb: 10.3744 | rir: 2.6514
+Epoch 80/100 | train_total: 13.0258 | val_total: 16.4579 | val_dereverb: 13.6846 | val_rir: 2.7733
+2025-07-04 23:30:23,737 - INFO - Epoch 80/100 | train_total: 13.0258 | val_total: 16.4579 | val_dereverb: 13.6846 | val_rir: 2.7733
+2025-07-04 23:30:24,913 - INFO - Model saved at epoch 80
+2025-07-04 23:32:08,120 - INFO - Epoch 81/100 | train_total: 12.8677 | dereverb: 10.2653 | rir: 2.6024
+Epoch 81/100 | train_total: 12.8677 | val --
+2025-07-04 23:32:08,120 - INFO - Epoch 81/100 | train_total: 12.8677 | val --
+2025-07-04 23:33:51,362 - INFO - Epoch 82/100 | train_total: 12.8837 | dereverb: 10.3313 | rir: 2.5524
+Epoch 82/100 | train_total: 12.8837 | val --
+2025-07-04 23:33:51,362 - INFO - Epoch 82/100 | train_total: 12.8837 | val --
+2025-07-04 23:35:34,764 - INFO - Epoch 83/100 | train_total: 12.8536 | dereverb: 10.2730 | rir: 2.5806
+Epoch 83/100 | train_total: 12.8536 | val --
+2025-07-04 23:35:34,764 - INFO - Epoch 83/100 | train_total: 12.8536 | val --
+2025-07-04 23:37:18,252 - INFO - Epoch 84/100 | train_total: 12.7263 | dereverb: 10.1492 | rir: 2.5771
+Epoch 84/100 | train_total: 12.7263 | val --
+2025-07-04 23:37:18,252 - INFO - Epoch 84/100 | train_total: 12.7263 | val --
+2025-07-04 23:39:02,372 - INFO - Epoch 85/100 | train_total: 12.8003 | dereverb: 10.2260 | rir: 2.5743
+Epoch 85/100 | train_total: 12.8003 | val_total: 16.3818 | val_dereverb: 13.6581 | val_rir: 2.7237
+2025-07-04 23:39:04,247 - INFO - Epoch 85/100 | train_total: 12.8003 | val_total: 16.3818 | val_dereverb: 13.6581 | val_rir: 2.7237
+2025-07-04 23:40:47,937 - INFO - Epoch 86/100 | train_total: 12.7871 | dereverb: 10.2068 | rir: 2.5803
+Epoch 86/100 | train_total: 12.7871 | val --
+2025-07-04 23:40:47,938 - INFO - Epoch 86/100 | train_total: 12.7871 | val --
+2025-07-04 23:42:31,869 - INFO - Epoch 87/100 | train_total: 12.7711 | dereverb: 10.2248 | rir: 2.5462
+Epoch 87/100 | train_total: 12.7711 | val --
+2025-07-04 23:42:31,870 - INFO - Epoch 87/100 | train_total: 12.7711 | val --
+2025-07-04 23:44:15,605 - INFO - Epoch 88/100 | train_total: 12.9734 | dereverb: 10.4115 | rir: 2.5619
+Epoch 88/100 | train_total: 12.9734 | val --
+2025-07-04 23:44:15,605 - INFO - Epoch 88/100 | train_total: 12.9734 | val --
+2025-07-04 23:45:59,345 - INFO - Epoch 89/100 | train_total: 12.9946 | dereverb: 10.3944 | rir: 2.6002
+Epoch 89/100 | train_total: 12.9946 | val --
+2025-07-04 23:45:59,346 - INFO - Epoch 89/100 | train_total: 12.9946 | val --
+2025-07-04 23:47:43,096 - INFO - Epoch 90/100 | train_total: 12.8224 | dereverb: 10.2606 | rir: 2.5618
+Epoch 90/100 | train_total: 12.8224 | val_total: 16.4587 | val_dereverb: 13.7546 | val_rir: 2.7041
+2025-07-04 23:47:44,997 - INFO - Epoch 90/100 | train_total: 12.8224 | val_total: 16.4587 | val_dereverb: 13.7546 | val_rir: 2.7041
+2025-07-04 23:49:28,203 - INFO - Epoch 91/100 | train_total: 12.8746 | dereverb: 10.3155 | rir: 2.5591
+Epoch 91/100 | train_total: 12.8746 | val --
+2025-07-04 23:49:28,203 - INFO - Epoch 91/100 | train_total: 12.8746 | val --
+2025-07-04 23:51:11,602 - INFO - Epoch 92/100 | train_total: 13.1850 | dereverb: 10.5499 | rir: 2.6351
+Epoch 92/100 | train_total: 13.1850 | val --
+2025-07-04 23:51:11,603 - INFO - Epoch 92/100 | train_total: 13.1850 | val --
+2025-07-04 23:52:55,110 - INFO - Epoch 93/100 | train_total: 13.4290 | dereverb: 10.6876 | rir: 2.7414
+Epoch 93/100 | train_total: 13.4290 | val --
+2025-07-04 23:52:55,110 - INFO - Epoch 93/100 | train_total: 13.4290 | val --
+2025-07-04 23:54:38,482 - INFO - Epoch 94/100 | train_total: 13.1786 | dereverb: 10.5031 | rir: 2.6756
+Epoch 94/100 | train_total: 13.1786 | val --
+2025-07-04 23:54:38,482 - INFO - Epoch 94/100 | train_total: 13.1786 | val --
+2025-07-04 23:56:21,942 - INFO - Epoch 95/100 | train_total: 12.8205 | dereverb: 10.2770 | rir: 2.5435
+Epoch 95/100 | train_total: 12.8205 | val_total: 16.3391 | val_dereverb: 13.6302 | val_rir: 2.7089
+2025-07-04 23:56:23,800 - INFO - Epoch 95/100 | train_total: 12.8205 | val_total: 16.3391 | val_dereverb: 13.6302 | val_rir: 2.7089
+2025-07-04 23:58:07,352 - INFO - Epoch 96/100 | train_total: 12.7093 | dereverb: 10.1295 | rir: 2.5798
+Epoch 96/100 | train_total: 12.7093 | val --
+2025-07-04 23:58:07,352 - INFO - Epoch 96/100 | train_total: 12.7093 | val --
+2025-07-04 23:59:50,862 - INFO - Epoch 97/100 | train_total: 12.6779 | dereverb: 10.1294 | rir: 2.5485
+Epoch 97/100 | train_total: 12.6779 | val --
+2025-07-04 23:59:50,862 - INFO - Epoch 97/100 | train_total: 12.6779 | val --
+2025-07-05 00:01:35,026 - INFO - Epoch 98/100 | train_total: 12.7621 | dereverb: 10.2069 | rir: 2.5551
+Epoch 98/100 | train_total: 12.7621 | val --
+2025-07-05 00:01:35,026 - INFO - Epoch 98/100 | train_total: 12.7621 | val --
+2025-07-05 00:03:18,350 - INFO - Epoch 99/100 | train_total: 12.8694 | dereverb: 10.3193 | rir: 2.5502
+Epoch 99/100 | train_total: 12.8694 | val --
+2025-07-05 00:03:18,351 - INFO - Epoch 99/100 | train_total: 12.8694 | val --
+2025-07-05 00:05:01,875 - INFO - Epoch 100/100 | train_total: 12.8354 | dereverb: 10.2937 | rir: 2.5417
+Epoch 100/100 | train_total: 12.8354 | val_total: 16.2561 | val_dereverb: 13.5458 | val_rir: 2.7103
+2025-07-05 00:05:03,760 - INFO - Epoch 100/100 | train_total: 12.8354 | val_total: 16.2561 | val_dereverb: 13.5458 | val_rir: 2.7103
+2025-07-05 00:05:04,557 - INFO - Model saved at epoch 100
+[rank0]:[W705 00:05:05.439410500 ProcessGroupNCCL.cpp:1529] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())

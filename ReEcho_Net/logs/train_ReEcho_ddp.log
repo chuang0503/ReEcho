@@ -1,0 +1,854 @@
+nohup: ignoring input
+
+*****************************************
+Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+*****************************************
+Loading training data...
+Loading training data...
+Loading training data...
+Loading training data...
+Loaded 12000 training entries
+Loading validation data...
+Loaded 240 validation entries
+Creating datasets...
+Loaded 12000 training entries
+Loading validation data...
+Loaded 12000 training entries
+Loading validation data...
+Loaded 240 validation entries
+Creating datasets...
+Loaded 240 validation entries
+Creating datasets...
+Loaded 12000 training entries
+Loading validation data...
+Loaded 240 validation entries
+Creating datasets...
+Training dataset size: 12000
+Validation dataset size: 240
+Creating dataloaders...
+Training batches: 93
+Validation batches: 2
+Starting training...
+Training dataset size: 12000
+Validation dataset size: 240
+Creating dataloaders...
+Training batches: 93
+Validation batches: 2
+Starting training...
+Training dataset size: 12000
+Validation dataset size: 240
+Creating dataloaders...
+Training batches: 93
+Validation batches: 2
+Starting training...
+Training dataset size: 12000
+Validation dataset size: 240
+Creating dataloaders...
+Training batches: 93
+Validation batches: 2
+Starting training...
+2025-07-11 09:08:52,318 - INFO - Epoch 1/500 | train_total: 13.5971 | dereverb: 2.7452 | rir: 10.1835 | decode: 0.6683
+Epoch 1/500 | train_total: 13.5971 | val --
+2025-07-11 09:08:52,318 - INFO - Epoch 1/500 | train_total: 13.5971 | val --
+2025-07-11 09:10:57,788 - INFO - Epoch 2/500 | train_total: 11.1294 | dereverb: 1.9356 | rir: 8.6465 | decode: 0.5473
+Epoch 2/500 | train_total: 11.1294 | val --
+2025-07-11 09:10:57,789 - INFO - Epoch 2/500 | train_total: 11.1294 | val --
+2025-07-11 09:13:03,769 - INFO - Epoch 3/500 | train_total: 10.5526 | dereverb: 1.8050 | rir: 8.2874 | decode: 0.4601
+Epoch 3/500 | train_total: 10.5526 | val --
+2025-07-11 09:13:03,769 - INFO - Epoch 3/500 | train_total: 10.5526 | val --
+2025-07-11 09:15:10,003 - INFO - Epoch 4/500 | train_total: 10.1983 | dereverb: 1.7018 | rir: 8.0713 | decode: 0.4252
+Epoch 4/500 | train_total: 10.1983 | val --
+2025-07-11 09:15:10,003 - INFO - Epoch 4/500 | train_total: 10.1983 | val --
+2025-07-11 09:17:15,877 - INFO - Epoch 5/500 | train_total: 9.8421 | dereverb: 1.6546 | rir: 7.7980 | decode: 0.3894
+Epoch 5/500 | train_total: 9.8421 | val_dereverb: 1.5802 | val_rir: 7.4520 | val_ber: 0.2335
+2025-07-11 09:17:17,893 - INFO - Epoch 5/500 | train_total: 9.8421 | val_dereverb: 1.5802 | val_rir: 7.4520 | val_ber: 0.2335
+2025-07-11 09:19:24,000 - INFO - Epoch 6/500 | train_total: 9.3107 | dereverb: 1.5913 | rir: 7.3387 | decode: 0.3808
+Epoch 6/500 | train_total: 9.3107 | val --
+2025-07-11 09:19:24,001 - INFO - Epoch 6/500 | train_total: 9.3107 | val --
+2025-07-11 09:21:30,508 - INFO - Epoch 7/500 | train_total: 8.8428 | dereverb: 1.5678 | rir: 6.9114 | decode: 0.3636
+Epoch 7/500 | train_total: 8.8428 | val --
+2025-07-11 09:21:30,508 - INFO - Epoch 7/500 | train_total: 8.8428 | val --
+2025-07-11 09:23:36,671 - INFO - Epoch 8/500 | train_total: 8.4641 | dereverb: 1.5544 | rir: 6.5570 | decode: 0.3527
+Epoch 8/500 | train_total: 8.4641 | val --
+2025-07-11 09:23:36,671 - INFO - Epoch 8/500 | train_total: 8.4641 | val --
+2025-07-11 09:25:43,218 - INFO - Epoch 9/500 | train_total: 7.9868 | dereverb: 1.5208 | rir: 6.1195 | decode: 0.3466
+Epoch 9/500 | train_total: 7.9868 | val --
+2025-07-11 09:25:43,218 - INFO - Epoch 9/500 | train_total: 7.9868 | val --
+2025-07-11 09:27:49,306 - INFO - Epoch 10/500 | train_total: 7.6691 | dereverb: 1.5004 | rir: 5.8328 | decode: 0.3360
+Epoch 10/500 | train_total: 7.6691 | val_dereverb: 1.5089 | val_rir: 5.8048 | val_ber: 0.1911
+2025-07-11 09:27:51,333 - INFO - Epoch 10/500 | train_total: 7.6691 | val_dereverb: 1.5089 | val_rir: 5.8048 | val_ber: 0.1911
+2025-07-11 09:29:58,029 - INFO - Epoch 11/500 | train_total: 7.4358 | dereverb: 1.4683 | rir: 5.6478 | decode: 0.3196
+Epoch 11/500 | train_total: 7.4358 | val --
+2025-07-11 09:29:58,029 - INFO - Epoch 11/500 | train_total: 7.4358 | val --
+2025-07-11 09:32:04,799 - INFO - Epoch 12/500 | train_total: 7.2186 | dereverb: 1.4587 | rir: 5.4523 | decode: 0.3076
+Epoch 12/500 | train_total: 7.2186 | val --
+2025-07-11 09:32:04,800 - INFO - Epoch 12/500 | train_total: 7.2186 | val --
+2025-07-11 09:34:11,856 - INFO - Epoch 13/500 | train_total: 7.0213 | dereverb: 1.4297 | rir: 5.2813 | decode: 0.3103
+Epoch 13/500 | train_total: 7.0213 | val --
+2025-07-11 09:34:11,856 - INFO - Epoch 13/500 | train_total: 7.0213 | val --
+2025-07-11 09:36:18,723 - INFO - Epoch 14/500 | train_total: 6.6924 | dereverb: 1.4273 | rir: 4.9842 | decode: 0.2809
+Epoch 14/500 | train_total: 6.6924 | val --
+2025-07-11 09:36:18,723 - INFO - Epoch 14/500 | train_total: 6.6924 | val --
+2025-07-11 09:38:25,748 - INFO - Epoch 15/500 | train_total: 6.4706 | dereverb: 1.4056 | rir: 4.8006 | decode: 0.2644
+Epoch 15/500 | train_total: 6.4706 | val_dereverb: 1.4455 | val_rir: 4.7848 | val_ber: 0.1089
+2025-07-11 09:38:27,767 - INFO - Epoch 15/500 | train_total: 6.4706 | val_dereverb: 1.4455 | val_rir: 4.7848 | val_ber: 0.1089
+2025-07-11 09:40:35,040 - INFO - Epoch 16/500 | train_total: 6.3427 | dereverb: 1.3892 | rir: 4.7264 | decode: 0.2271
+Epoch 16/500 | train_total: 6.3427 | val --
+2025-07-11 09:40:35,040 - INFO - Epoch 16/500 | train_total: 6.3427 | val --
+2025-07-11 09:42:41,805 - INFO - Epoch 17/500 | train_total: 6.1942 | dereverb: 1.3851 | rir: 4.6072 | decode: 0.2019
+Epoch 17/500 | train_total: 6.1942 | val --
+2025-07-11 09:42:41,805 - INFO - Epoch 17/500 | train_total: 6.1942 | val --
+2025-07-11 09:44:48,776 - INFO - Epoch 18/500 | train_total: 6.1024 | dereverb: 1.3695 | rir: 4.5657 | decode: 0.1672
+Epoch 18/500 | train_total: 6.1024 | val --
+2025-07-11 09:44:48,776 - INFO - Epoch 18/500 | train_total: 6.1024 | val --
+2025-07-11 09:46:55,950 - INFO - Epoch 19/500 | train_total: 6.0324 | dereverb: 1.3716 | rir: 4.5133 | decode: 0.1474
+Epoch 19/500 | train_total: 6.0324 | val --
+2025-07-11 09:46:55,950 - INFO - Epoch 19/500 | train_total: 6.0324 | val --
+2025-07-11 09:49:02,804 - INFO - Epoch 20/500 | train_total: 5.9466 | dereverb: 1.3560 | rir: 4.4749 | decode: 0.1157
+Epoch 20/500 | train_total: 5.9466 | val_dereverb: 1.4269 | val_rir: 4.5691 | val_ber: 0.0701
+2025-07-11 09:49:04,845 - INFO - Epoch 20/500 | train_total: 5.9466 | val_dereverb: 1.4269 | val_rir: 4.5691 | val_ber: 0.0701
+2025-07-11 09:49:06,489 - INFO - Model saved at epoch 20
+2025-07-11 09:51:11,792 - INFO - Epoch 21/500 | train_total: 5.8644 | dereverb: 1.3480 | rir: 4.4069 | decode: 0.1095
+Epoch 21/500 | train_total: 5.8644 | val --
+2025-07-11 09:51:11,792 - INFO - Epoch 21/500 | train_total: 5.8644 | val --
+2025-07-11 09:53:18,729 - INFO - Epoch 22/500 | train_total: 5.8256 | dereverb: 1.3451 | rir: 4.3768 | decode: 0.1038
+Epoch 22/500 | train_total: 5.8256 | val --
+2025-07-11 09:53:18,729 - INFO - Epoch 22/500 | train_total: 5.8256 | val --
+2025-07-11 09:55:26,093 - INFO - Epoch 23/500 | train_total: 5.6832 | dereverb: 1.3257 | rir: 4.2698 | decode: 0.0877
+Epoch 23/500 | train_total: 5.6832 | val --
+2025-07-11 09:55:26,093 - INFO - Epoch 23/500 | train_total: 5.6832 | val --
+2025-07-11 09:57:33,402 - INFO - Epoch 24/500 | train_total: 5.6211 | dereverb: 1.3136 | rir: 4.2026 | decode: 0.1048
+Epoch 24/500 | train_total: 5.6211 | val --
+2025-07-11 09:57:33,402 - INFO - Epoch 24/500 | train_total: 5.6211 | val --
+2025-07-11 09:59:40,584 - INFO - Epoch 25/500 | train_total: 5.5449 | dereverb: 1.2970 | rir: 4.1564 | decode: 0.0914
+Epoch 25/500 | train_total: 5.5449 | val_dereverb: 1.4013 | val_rir: 4.1221 | val_ber: 0.0576
+2025-07-11 09:59:42,604 - INFO - Epoch 25/500 | train_total: 5.5449 | val_dereverb: 1.4013 | val_rir: 4.1221 | val_ber: 0.0576
+2025-07-11 10:01:49,957 - INFO - Epoch 26/500 | train_total: 5.4935 | dereverb: 1.2964 | rir: 4.1245 | decode: 0.0726
+Epoch 26/500 | train_total: 5.4935 | val --
+2025-07-11 10:01:49,958 - INFO - Epoch 26/500 | train_total: 5.4935 | val --
+2025-07-11 10:03:57,245 - INFO - Epoch 27/500 | train_total: 5.4380 | dereverb: 1.2965 | rir: 4.0742 | decode: 0.0673
+Epoch 27/500 | train_total: 5.4380 | val --
+2025-07-11 10:03:57,245 - INFO - Epoch 27/500 | train_total: 5.4380 | val --
+2025-07-11 10:06:04,602 - INFO - Epoch 28/500 | train_total: 5.4474 | dereverb: 1.2953 | rir: 4.0861 | decode: 0.0660
+Epoch 28/500 | train_total: 5.4474 | val --
+2025-07-11 10:06:04,603 - INFO - Epoch 28/500 | train_total: 5.4474 | val --
+2025-07-11 10:08:12,109 - INFO - Epoch 29/500 | train_total: 5.5177 | dereverb: 1.3204 | rir: 4.1215 | decode: 0.0758
+Epoch 29/500 | train_total: 5.5177 | val --
+2025-07-11 10:08:12,109 - INFO - Epoch 29/500 | train_total: 5.5177 | val --
+2025-07-11 10:10:19,666 - INFO - Epoch 30/500 | train_total: 5.4224 | dereverb: 1.3030 | rir: 4.0510 | decode: 0.0684
+Epoch 30/500 | train_total: 5.4224 | val_dereverb: 1.3858 | val_rir: 4.0738 | val_ber: 0.0580
+2025-07-11 10:10:21,724 - INFO - Epoch 30/500 | train_total: 5.4224 | val_dereverb: 1.3858 | val_rir: 4.0738 | val_ber: 0.0580
+2025-07-11 10:12:29,466 - INFO - Epoch 31/500 | train_total: 5.3896 | dereverb: 1.2891 | rir: 4.0405 | decode: 0.0600
+Epoch 31/500 | train_total: 5.3896 | val --
+2025-07-11 10:12:29,467 - INFO - Epoch 31/500 | train_total: 5.3896 | val --
+2025-07-11 10:14:36,685 - INFO - Epoch 32/500 | train_total: 5.3067 | dereverb: 1.2720 | rir: 3.9782 | decode: 0.0565
+Epoch 32/500 | train_total: 5.3067 | val --
+2025-07-11 10:14:36,685 - INFO - Epoch 32/500 | train_total: 5.3067 | val --
+2025-07-11 10:16:44,223 - INFO - Epoch 33/500 | train_total: 5.2814 | dereverb: 1.2743 | rir: 3.9524 | decode: 0.0546
+Epoch 33/500 | train_total: 5.2814 | val --
+2025-07-11 10:16:44,223 - INFO - Epoch 33/500 | train_total: 5.2814 | val --
+2025-07-11 10:18:51,521 - INFO - Epoch 34/500 | train_total: 5.2873 | dereverb: 1.2718 | rir: 3.9468 | decode: 0.0687
+Epoch 34/500 | train_total: 5.2873 | val --
+2025-07-11 10:18:51,521 - INFO - Epoch 34/500 | train_total: 5.2873 | val --
+2025-07-11 10:20:58,878 - INFO - Epoch 35/500 | train_total: 5.2378 | dereverb: 1.2695 | rir: 3.9215 | decode: 0.0468
+Epoch 35/500 | train_total: 5.2378 | val_dereverb: 1.3942 | val_rir: 3.9802 | val_ber: 0.0259
+2025-07-11 10:21:00,963 - INFO - Epoch 35/500 | train_total: 5.2378 | val_dereverb: 1.3942 | val_rir: 3.9802 | val_ber: 0.0259
+2025-07-11 10:23:08,410 - INFO - Epoch 36/500 | train_total: 5.2336 | dereverb: 1.2711 | rir: 3.9094 | decode: 0.0531
+Epoch 36/500 | train_total: 5.2336 | val --
+2025-07-11 10:23:08,411 - INFO - Epoch 36/500 | train_total: 5.2336 | val --
+2025-07-11 10:25:16,079 - INFO - Epoch 37/500 | train_total: 5.4417 | dereverb: 1.3094 | rir: 4.0765 | decode: 0.0559
+Epoch 37/500 | train_total: 5.4417 | val --
+2025-07-11 10:25:16,079 - INFO - Epoch 37/500 | train_total: 5.4417 | val --
+2025-07-11 10:27:23,059 - INFO - Epoch 38/500 | train_total: 5.1838 | dereverb: 1.2650 | rir: 3.8716 | decode: 0.0472
+Epoch 38/500 | train_total: 5.1838 | val --
+2025-07-11 10:27:23,059 - INFO - Epoch 38/500 | train_total: 5.1838 | val --
+2025-07-11 10:29:30,117 - INFO - Epoch 39/500 | train_total: 5.1044 | dereverb: 1.2440 | rir: 3.8087 | decode: 0.0517
+Epoch 39/500 | train_total: 5.1044 | val --
+2025-07-11 10:29:30,117 - INFO - Epoch 39/500 | train_total: 5.1044 | val --
+2025-07-11 10:31:36,255 - INFO - Epoch 40/500 | train_total: 5.0817 | dereverb: 1.2433 | rir: 3.7911 | decode: 0.0472
+Epoch 40/500 | train_total: 5.0817 | val_dereverb: 1.3822 | val_rir: 3.8646 | val_ber: 0.0129
+2025-07-11 10:31:38,238 - INFO - Epoch 40/500 | train_total: 5.0817 | val_dereverb: 1.3822 | val_rir: 3.8646 | val_ber: 0.0129
+2025-07-11 10:31:39,995 - INFO - Model saved at epoch 40
+2025-07-11 10:33:44,932 - INFO - Epoch 41/500 | train_total: 5.0442 | dereverb: 1.2268 | rir: 3.7800 | decode: 0.0375
+Epoch 41/500 | train_total: 5.0442 | val --
+2025-07-11 10:33:44,933 - INFO - Epoch 41/500 | train_total: 5.0442 | val --
+2025-07-11 10:35:50,833 - INFO - Epoch 42/500 | train_total: 5.0328 | dereverb: 1.2297 | rir: 3.7612 | decode: 0.0418
+Epoch 42/500 | train_total: 5.0328 | val --
+2025-07-11 10:35:50,833 - INFO - Epoch 42/500 | train_total: 5.0328 | val --
+2025-07-11 10:37:56,635 - INFO - Epoch 43/500 | train_total: 5.0275 | dereverb: 1.2232 | rir: 3.7527 | decode: 0.0516
+Epoch 43/500 | train_total: 5.0275 | val --
+2025-07-11 10:37:56,636 - INFO - Epoch 43/500 | train_total: 5.0275 | val --
+2025-07-11 10:40:02,600 - INFO - Epoch 44/500 | train_total: 4.9940 | dereverb: 1.2151 | rir: 3.7372 | decode: 0.0417
+Epoch 44/500 | train_total: 4.9940 | val --
+2025-07-11 10:40:02,601 - INFO - Epoch 44/500 | train_total: 4.9940 | val --
+2025-07-11 10:42:07,827 - INFO - Epoch 45/500 | train_total: 4.9630 | dereverb: 1.2027 | rir: 3.7201 | decode: 0.0402
+Epoch 45/500 | train_total: 4.9630 | val_dereverb: 1.3688 | val_rir: 3.7350 | val_ber: 0.0254
+2025-07-11 10:42:09,843 - INFO - Epoch 45/500 | train_total: 4.9630 | val_dereverb: 1.3688 | val_rir: 3.7350 | val_ber: 0.0254
+2025-07-11 10:44:15,724 - INFO - Epoch 46/500 | train_total: 4.9662 | dereverb: 1.2080 | rir: 3.7144 | decode: 0.0439
+Epoch 46/500 | train_total: 4.9662 | val --
+2025-07-11 10:44:15,724 - INFO - Epoch 46/500 | train_total: 4.9662 | val --
+2025-07-11 10:46:21,645 - INFO - Epoch 47/500 | train_total: 4.9298 | dereverb: 1.1967 | rir: 3.6936 | decode: 0.0395
+Epoch 47/500 | train_total: 4.9298 | val --
+2025-07-11 10:46:21,645 - INFO - Epoch 47/500 | train_total: 4.9298 | val --
+2025-07-11 10:48:26,883 - INFO - Epoch 48/500 | train_total: 4.9366 | dereverb: 1.1966 | rir: 3.6954 | decode: 0.0446
+Epoch 48/500 | train_total: 4.9366 | val --
+2025-07-11 10:48:26,884 - INFO - Epoch 48/500 | train_total: 4.9366 | val --
+2025-07-11 10:50:33,231 - INFO - Epoch 49/500 | train_total: 4.9214 | dereverb: 1.1957 | rir: 3.6893 | decode: 0.0364
+Epoch 49/500 | train_total: 4.9214 | val --
+2025-07-11 10:50:33,232 - INFO - Epoch 49/500 | train_total: 4.9214 | val --
+2025-07-11 10:52:38,958 - INFO - Epoch 50/500 | train_total: 4.9225 | dereverb: 1.1990 | rir: 3.6855 | decode: 0.0380
+Epoch 50/500 | train_total: 4.9225 | val_dereverb: 1.3740 | val_rir: 3.7027 | val_ber: 0.0263
+2025-07-11 10:52:40,991 - INFO - Epoch 50/500 | train_total: 4.9225 | val_dereverb: 1.3740 | val_rir: 3.7027 | val_ber: 0.0263
+2025-07-11 10:54:47,147 - INFO - Epoch 51/500 | train_total: 4.8926 | dereverb: 1.1899 | rir: 3.6667 | decode: 0.0360
+Epoch 51/500 | train_total: 4.8926 | val --
+2025-07-11 10:54:47,147 - INFO - Epoch 51/500 | train_total: 4.8926 | val --
+2025-07-11 10:56:53,869 - INFO - Epoch 52/500 | train_total: 4.8969 | dereverb: 1.1892 | rir: 3.6681 | decode: 0.0396
+Epoch 52/500 | train_total: 4.8969 | val --
+2025-07-11 10:56:53,870 - INFO - Epoch 52/500 | train_total: 4.8969 | val --
+2025-07-11 10:58:59,888 - INFO - Epoch 53/500 | train_total: 4.8803 | dereverb: 1.1859 | rir: 3.6600 | decode: 0.0343
+Epoch 53/500 | train_total: 4.8803 | val --
+2025-07-11 10:58:59,888 - INFO - Epoch 53/500 | train_total: 4.8803 | val --
+2025-07-11 11:01:06,010 - INFO - Epoch 54/500 | train_total: 4.8680 | dereverb: 1.1863 | rir: 3.6473 | decode: 0.0344
+Epoch 54/500 | train_total: 4.8680 | val --
+2025-07-11 11:01:06,010 - INFO - Epoch 54/500 | train_total: 4.8680 | val --
+2025-07-11 11:03:11,415 - INFO - Epoch 55/500 | train_total: 4.8686 | dereverb: 1.1847 | rir: 3.6448 | decode: 0.0391
+Epoch 55/500 | train_total: 4.8686 | val_dereverb: 1.3594 | val_rir: 3.6918 | val_ber: 0.0071
+2025-07-11 11:03:13,459 - INFO - Epoch 55/500 | train_total: 4.8686 | val_dereverb: 1.3594 | val_rir: 3.6918 | val_ber: 0.0071
+2025-07-11 11:05:19,429 - INFO - Epoch 56/500 | train_total: 4.8508 | dereverb: 1.1841 | rir: 3.6322 | decode: 0.0345
+Epoch 56/500 | train_total: 4.8508 | val --
+2025-07-11 11:05:19,429 - INFO - Epoch 56/500 | train_total: 4.8508 | val --
+2025-07-11 11:07:25,663 - INFO - Epoch 57/500 | train_total: 4.8535 | dereverb: 1.1751 | rir: 3.6355 | decode: 0.0429
+Epoch 57/500 | train_total: 4.8535 | val --
+2025-07-11 11:07:25,664 - INFO - Epoch 57/500 | train_total: 4.8535 | val --
+2025-07-11 11:09:31,823 - INFO - Epoch 58/500 | train_total: 4.8581 | dereverb: 1.1838 | rir: 3.6345 | decode: 0.0397
+Epoch 58/500 | train_total: 4.8581 | val --
+2025-07-11 11:09:31,824 - INFO - Epoch 58/500 | train_total: 4.8581 | val --
+2025-07-11 11:11:37,950 - INFO - Epoch 59/500 | train_total: 4.8437 | dereverb: 1.1814 | rir: 3.6257 | decode: 0.0366
+Epoch 59/500 | train_total: 4.8437 | val --
+2025-07-11 11:11:37,950 - INFO - Epoch 59/500 | train_total: 4.8437 | val --
+2025-07-11 11:13:43,281 - INFO - Epoch 60/500 | train_total: 4.8053 | dereverb: 1.1756 | rir: 3.5947 | decode: 0.0350
+Epoch 60/500 | train_total: 4.8053 | val_dereverb: 1.3597 | val_rir: 3.6254 | val_ber: 0.0098
+2025-07-11 11:13:45,327 - INFO - Epoch 60/500 | train_total: 4.8053 | val_dereverb: 1.3597 | val_rir: 3.6254 | val_ber: 0.0098
+2025-07-11 11:13:47,020 - INFO - Model saved at epoch 60
+2025-07-11 11:15:52,141 - INFO - Epoch 61/500 | train_total: 4.8032 | dereverb: 1.1780 | rir: 3.5861 | decode: 0.0390
+Epoch 61/500 | train_total: 4.8032 | val --
+2025-07-11 11:15:52,141 - INFO - Epoch 61/500 | train_total: 4.8032 | val --
+2025-07-11 11:17:57,445 - INFO - Epoch 62/500 | train_total: 4.7620 | dereverb: 1.1712 | rir: 3.5652 | decode: 0.0256
+Epoch 62/500 | train_total: 4.7620 | val --
+2025-07-11 11:17:57,445 - INFO - Epoch 62/500 | train_total: 4.7620 | val --
+2025-07-11 11:20:03,317 - INFO - Epoch 63/500 | train_total: 4.7431 | dereverb: 1.1575 | rir: 3.5553 | decode: 0.0303
+Epoch 63/500 | train_total: 4.7431 | val --
+2025-07-11 11:20:03,318 - INFO - Epoch 63/500 | train_total: 4.7431 | val --
+2025-07-11 11:22:09,247 - INFO - Epoch 64/500 | train_total: 4.7455 | dereverb: 1.1616 | rir: 3.5551 | decode: 0.0288
+Epoch 64/500 | train_total: 4.7455 | val --
+2025-07-11 11:22:09,247 - INFO - Epoch 64/500 | train_total: 4.7455 | val --
+2025-07-11 11:24:14,458 - INFO - Epoch 65/500 | train_total: 4.7424 | dereverb: 1.1577 | rir: 3.5438 | decode: 0.0410
+Epoch 65/500 | train_total: 4.7424 | val_dereverb: 1.3490 | val_rir: 3.5985 | val_ber: 0.0036
+2025-07-11 11:24:16,522 - INFO - Epoch 65/500 | train_total: 4.7424 | val_dereverb: 1.3490 | val_rir: 3.5985 | val_ber: 0.0036
+2025-07-11 11:26:22,386 - INFO - Epoch 66/500 | train_total: 4.7233 | dereverb: 1.1638 | rir: 3.5288 | decode: 0.0307
+Epoch 66/500 | train_total: 4.7233 | val --
+2025-07-11 11:26:22,386 - INFO - Epoch 66/500 | train_total: 4.7233 | val --
+2025-07-11 11:28:28,143 - INFO - Epoch 67/500 | train_total: 4.6991 | dereverb: 1.1458 | rir: 3.5165 | decode: 0.0367
+Epoch 67/500 | train_total: 4.6991 | val --
+2025-07-11 11:28:28,144 - INFO - Epoch 67/500 | train_total: 4.6991 | val --
+2025-07-11 11:30:34,610 - INFO - Epoch 68/500 | train_total: 4.6783 | dereverb: 1.1444 | rir: 3.5006 | decode: 0.0333
+Epoch 68/500 | train_total: 4.6783 | val --
+2025-07-11 11:30:34,610 - INFO - Epoch 68/500 | train_total: 4.6783 | val --
+2025-07-11 11:32:39,269 - INFO - Epoch 69/500 | train_total: 4.7103 | dereverb: 1.1527 | rir: 3.5204 | decode: 0.0372
+Epoch 69/500 | train_total: 4.7103 | val --
+2025-07-11 11:32:39,269 - INFO - Epoch 69/500 | train_total: 4.7103 | val --
+2025-07-11 11:34:45,010 - INFO - Epoch 70/500 | train_total: 4.7052 | dereverb: 1.1519 | rir: 3.5144 | decode: 0.0389
+Epoch 70/500 | train_total: 4.7052 | val_dereverb: 1.3370 | val_rir: 3.5432 | val_ber: 0.0031
+2025-07-11 11:34:47,080 - INFO - Epoch 70/500 | train_total: 4.7052 | val_dereverb: 1.3370 | val_rir: 3.5432 | val_ber: 0.0031
+2025-07-11 11:36:52,971 - INFO - Epoch 71/500 | train_total: 4.6483 | dereverb: 1.1394 | rir: 3.4721 | decode: 0.0368
+Epoch 71/500 | train_total: 4.6483 | val --
+2025-07-11 11:36:52,971 - INFO - Epoch 71/500 | train_total: 4.6483 | val --
+2025-07-11 11:38:58,142 - INFO - Epoch 72/500 | train_total: 4.6204 | dereverb: 1.1307 | rir: 3.4523 | decode: 0.0373
+Epoch 72/500 | train_total: 4.6204 | val --
+2025-07-11 11:38:58,142 - INFO - Epoch 72/500 | train_total: 4.6204 | val --
+2025-07-11 11:41:04,046 - INFO - Epoch 73/500 | train_total: 4.9503 | dereverb: 1.2017 | rir: 3.7215 | decode: 0.0272
+Epoch 73/500 | train_total: 4.9503 | val --
+2025-07-11 11:41:04,047 - INFO - Epoch 73/500 | train_total: 4.9503 | val --
+2025-07-11 11:43:09,572 - INFO - Epoch 74/500 | train_total: 5.0872 | dereverb: 1.2564 | rir: 3.8055 | decode: 0.0253
+Epoch 74/500 | train_total: 5.0872 | val --
+2025-07-11 11:43:09,572 - INFO - Epoch 74/500 | train_total: 5.0872 | val --
+2025-07-11 11:45:14,738 - INFO - Epoch 75/500 | train_total: 4.9305 | dereverb: 1.2191 | rir: 3.6863 | decode: 0.0251
+Epoch 75/500 | train_total: 4.9305 | val_dereverb: 1.3619 | val_rir: 3.6239 | val_ber: 0.0067
+2025-07-11 11:45:16,792 - INFO - Epoch 75/500 | train_total: 4.9305 | val_dereverb: 1.3619 | val_rir: 3.6239 | val_ber: 0.0067
+2025-07-11 11:47:22,341 - INFO - Epoch 76/500 | train_total: 4.7080 | dereverb: 1.1724 | rir: 3.5032 | decode: 0.0324
+Epoch 76/500 | train_total: 4.7080 | val --
+2025-07-11 11:47:22,341 - INFO - Epoch 76/500 | train_total: 4.7080 | val --
+2025-07-11 11:49:27,696 - INFO - Epoch 77/500 | train_total: 4.6593 | dereverb: 1.1611 | rir: 3.4710 | decode: 0.0272
+Epoch 77/500 | train_total: 4.6593 | val --
+2025-07-11 11:49:27,696 - INFO - Epoch 77/500 | train_total: 4.6593 | val --
+2025-07-11 11:51:32,877 - INFO - Epoch 78/500 | train_total: 4.6828 | dereverb: 1.1430 | rir: 3.5021 | decode: 0.0376
+Epoch 78/500 | train_total: 4.6828 | val --
+2025-07-11 11:51:32,877 - INFO - Epoch 78/500 | train_total: 4.6828 | val --
+2025-07-11 11:53:38,450 - INFO - Epoch 79/500 | train_total: 4.7733 | dereverb: 1.1748 | rir: 3.5681 | decode: 0.0305
+Epoch 79/500 | train_total: 4.7733 | val --
+2025-07-11 11:53:38,450 - INFO - Epoch 79/500 | train_total: 4.7733 | val --
+2025-07-11 11:55:43,818 - INFO - Epoch 80/500 | train_total: 4.6703 | dereverb: 1.1573 | rir: 3.4833 | decode: 0.0297
+Epoch 80/500 | train_total: 4.6703 | val_dereverb: 1.3705 | val_rir: 3.6051 | val_ber: 0.0071
+2025-07-11 11:55:45,844 - INFO - Epoch 80/500 | train_total: 4.6703 | val_dereverb: 1.3705 | val_rir: 3.6051 | val_ber: 0.0071
+2025-07-11 11:55:47,312 - INFO - Model saved at epoch 80
+2025-07-11 11:57:52,827 - INFO - Epoch 81/500 | train_total: 4.7484 | dereverb: 1.1789 | rir: 3.5414 | decode: 0.0281
+Epoch 81/500 | train_total: 4.7484 | val --
+2025-07-11 11:57:52,828 - INFO - Epoch 81/500 | train_total: 4.7484 | val --
+2025-07-11 11:59:58,128 - INFO - Epoch 82/500 | train_total: 4.6273 | dereverb: 1.1542 | rir: 3.4444 | decode: 0.0286
+Epoch 82/500 | train_total: 4.6273 | val --
+2025-07-11 11:59:58,128 - INFO - Epoch 82/500 | train_total: 4.6273 | val --
+2025-07-11 12:02:03,599 - INFO - Epoch 83/500 | train_total: 4.6119 | dereverb: 1.1463 | rir: 3.4412 | decode: 0.0243
+Epoch 83/500 | train_total: 4.6119 | val --
+2025-07-11 12:02:03,600 - INFO - Epoch 83/500 | train_total: 4.6119 | val --
+2025-07-11 12:04:09,463 - INFO - Epoch 84/500 | train_total: 4.5858 | dereverb: 1.1397 | rir: 3.4173 | decode: 0.0289
+Epoch 84/500 | train_total: 4.5858 | val --
+2025-07-11 12:04:09,464 - INFO - Epoch 84/500 | train_total: 4.5858 | val --
+2025-07-11 12:06:15,025 - INFO - Epoch 85/500 | train_total: 4.5735 | dereverb: 1.1280 | rir: 3.4174 | decode: 0.0281
+Epoch 85/500 | train_total: 4.5735 | val_dereverb: 1.3419 | val_rir: 3.4967 | val_ber: 0.0103
+2025-07-11 12:06:17,073 - INFO - Epoch 85/500 | train_total: 4.5735 | val_dereverb: 1.3419 | val_rir: 3.4967 | val_ber: 0.0103
+2025-07-11 12:08:22,868 - INFO - Epoch 86/500 | train_total: 4.6965 | dereverb: 1.1588 | rir: 3.5084 | decode: 0.0294
+Epoch 86/500 | train_total: 4.6965 | val --
+2025-07-11 12:08:22,868 - INFO - Epoch 86/500 | train_total: 4.6965 | val --
+2025-07-11 12:10:28,654 - INFO - Epoch 87/500 | train_total: 4.5958 | dereverb: 1.1395 | rir: 3.4290 | decode: 0.0274
+Epoch 87/500 | train_total: 4.5958 | val --
+2025-07-11 12:10:28,654 - INFO - Epoch 87/500 | train_total: 4.5958 | val --
+2025-07-11 12:12:33,966 - INFO - Epoch 88/500 | train_total: 4.5674 | dereverb: 1.1339 | rir: 3.4032 | decode: 0.0303
+Epoch 88/500 | train_total: 4.5674 | val --
+2025-07-11 12:12:33,967 - INFO - Epoch 88/500 | train_total: 4.5674 | val --
+2025-07-11 12:14:39,749 - INFO - Epoch 89/500 | train_total: 4.5621 | dereverb: 1.1329 | rir: 3.3972 | decode: 0.0320
+Epoch 89/500 | train_total: 4.5621 | val --
+2025-07-11 12:14:39,750 - INFO - Epoch 89/500 | train_total: 4.5621 | val --
+2025-07-11 12:16:45,652 - INFO - Epoch 90/500 | train_total: 4.5413 | dereverb: 1.1271 | rir: 3.3840 | decode: 0.0302
+Epoch 90/500 | train_total: 4.5413 | val_dereverb: 1.3328 | val_rir: 3.4635 | val_ber: 0.0063
+2025-07-11 12:16:47,683 - INFO - Epoch 90/500 | train_total: 4.5413 | val_dereverb: 1.3328 | val_rir: 3.4635 | val_ber: 0.0063
+2025-07-11 12:18:52,629 - INFO - Epoch 91/500 | train_total: 4.5136 | dereverb: 1.1187 | rir: 3.3663 | decode: 0.0287
+Epoch 91/500 | train_total: 4.5136 | val --
+2025-07-11 12:18:52,629 - INFO - Epoch 91/500 | train_total: 4.5136 | val --
+2025-07-11 12:20:58,536 - INFO - Epoch 92/500 | train_total: 4.5076 | dereverb: 1.1165 | rir: 3.3643 | decode: 0.0268
+Epoch 92/500 | train_total: 4.5076 | val --
+2025-07-11 12:20:58,536 - INFO - Epoch 92/500 | train_total: 4.5076 | val --
+2025-07-11 12:23:03,832 - INFO - Epoch 93/500 | train_total: 4.5113 | dereverb: 1.1185 | rir: 3.3597 | decode: 0.0331
+Epoch 93/500 | train_total: 4.5113 | val --
+2025-07-11 12:23:03,832 - INFO - Epoch 93/500 | train_total: 4.5113 | val --
+2025-07-11 12:25:09,313 - INFO - Epoch 94/500 | train_total: 4.4909 | dereverb: 1.1147 | rir: 3.3491 | decode: 0.0271
+Epoch 94/500 | train_total: 4.4909 | val --
+2025-07-11 12:25:09,314 - INFO - Epoch 94/500 | train_total: 4.4909 | val --
+2025-07-11 12:27:14,163 - INFO - Epoch 95/500 | train_total: 4.4880 | dereverb: 1.1121 | rir: 3.3398 | decode: 0.0362
+Epoch 95/500 | train_total: 4.4880 | val_dereverb: 1.3285 | val_rir: 3.4478 | val_ber: 0.0063
+2025-07-11 12:27:16,223 - INFO - Epoch 95/500 | train_total: 4.4880 | val_dereverb: 1.3285 | val_rir: 3.4478 | val_ber: 0.0063
+2025-07-11 12:29:21,286 - INFO - Epoch 96/500 | train_total: 4.4774 | dereverb: 1.1113 | rir: 3.3344 | decode: 0.0317
+Epoch 96/500 | train_total: 4.4774 | val --
+2025-07-11 12:29:21,286 - INFO - Epoch 96/500 | train_total: 4.4774 | val --
+2025-07-11 12:31:25,826 - INFO - Epoch 97/500 | train_total: 4.4693 | dereverb: 1.1119 | rir: 3.3301 | decode: 0.0273
+Epoch 97/500 | train_total: 4.4693 | val --
+2025-07-11 12:31:25,826 - INFO - Epoch 97/500 | train_total: 4.4693 | val --
+2025-07-11 12:33:31,390 - INFO - Epoch 98/500 | train_total: 4.4728 | dereverb: 1.1114 | rir: 3.3322 | decode: 0.0293
+Epoch 98/500 | train_total: 4.4728 | val --
+2025-07-11 12:33:31,390 - INFO - Epoch 98/500 | train_total: 4.4728 | val --
+2025-07-11 12:35:36,689 - INFO - Epoch 99/500 | train_total: 4.4577 | dereverb: 1.1096 | rir: 3.3259 | decode: 0.0222
+Epoch 99/500 | train_total: 4.4577 | val --
+2025-07-11 12:35:36,690 - INFO - Epoch 99/500 | train_total: 4.4577 | val --
+2025-07-11 12:37:41,826 - INFO - Epoch 100/500 | train_total: 4.4463 | dereverb: 1.1098 | rir: 3.3150 | decode: 0.0215
+Epoch 100/500 | train_total: 4.4463 | val_dereverb: 1.3176 | val_rir: 3.3955 | val_ber: 0.0031
+2025-07-11 12:37:43,856 - INFO - Epoch 100/500 | train_total: 4.4463 | val_dereverb: 1.3176 | val_rir: 3.3955 | val_ber: 0.0031
+2025-07-11 12:37:45,800 - INFO - Model saved at epoch 100
+2025-07-11 12:39:50,490 - INFO - Epoch 101/500 | train_total: 4.4770 | dereverb: 1.1189 | rir: 3.3316 | decode: 0.0265
+Epoch 101/500 | train_total: 4.4770 | val --
+2025-07-11 12:39:50,490 - INFO - Epoch 101/500 | train_total: 4.4770 | val --
+2025-07-11 12:41:56,245 - INFO - Epoch 102/500 | train_total: 4.4515 | dereverb: 1.1112 | rir: 3.3152 | decode: 0.0251
+Epoch 102/500 | train_total: 4.4515 | val --
+2025-07-11 12:41:56,245 - INFO - Epoch 102/500 | train_total: 4.4515 | val --
+2025-07-11 12:44:01,605 - INFO - Epoch 103/500 | train_total: 4.4312 | dereverb: 1.1004 | rir: 3.3044 | decode: 0.0265
+Epoch 103/500 | train_total: 4.4312 | val --
+2025-07-11 12:44:01,605 - INFO - Epoch 103/500 | train_total: 4.4312 | val --
+2025-07-11 12:46:06,610 - INFO - Epoch 104/500 | train_total: 4.4596 | dereverb: 1.1131 | rir: 3.3229 | decode: 0.0237
+Epoch 104/500 | train_total: 4.4596 | val --
+2025-07-11 12:46:06,610 - INFO - Epoch 104/500 | train_total: 4.4596 | val --
+2025-07-11 12:48:12,206 - INFO - Epoch 105/500 | train_total: 4.4126 | dereverb: 1.1030 | rir: 3.2865 | decode: 0.0231
+Epoch 105/500 | train_total: 4.4126 | val_dereverb: 1.3155 | val_rir: 3.3733 | val_ber: 0.0031
+2025-07-11 12:48:14,240 - INFO - Epoch 105/500 | train_total: 4.4126 | val_dereverb: 1.3155 | val_rir: 3.3733 | val_ber: 0.0031
+2025-07-11 12:50:19,344 - INFO - Epoch 106/500 | train_total: 4.4317 | dereverb: 1.1089 | rir: 3.2977 | decode: 0.0251
+Epoch 106/500 | train_total: 4.4317 | val --
+2025-07-11 12:50:19,344 - INFO - Epoch 106/500 | train_total: 4.4317 | val --
+2025-07-11 12:52:24,309 - INFO - Epoch 107/500 | train_total: 4.3955 | dereverb: 1.0975 | rir: 3.2678 | decode: 0.0302
+Epoch 107/500 | train_total: 4.3955 | val --
+2025-07-11 12:52:24,310 - INFO - Epoch 107/500 | train_total: 4.3955 | val --
+2025-07-11 12:54:29,380 - INFO - Epoch 108/500 | train_total: 4.3972 | dereverb: 1.0987 | rir: 3.2744 | decode: 0.0241
+Epoch 108/500 | train_total: 4.3972 | val --
+2025-07-11 12:54:29,380 - INFO - Epoch 108/500 | train_total: 4.3972 | val --
+2025-07-11 12:56:34,272 - INFO - Epoch 109/500 | train_total: 4.4188 | dereverb: 1.1002 | rir: 3.2875 | decode: 0.0310
+Epoch 109/500 | train_total: 4.4188 | val --
+2025-07-11 12:56:34,272 - INFO - Epoch 109/500 | train_total: 4.4188 | val --
+2025-07-11 12:58:39,200 - INFO - Epoch 110/500 | train_total: 4.3980 | dereverb: 1.0978 | rir: 3.2722 | decode: 0.0280
+Epoch 110/500 | train_total: 4.3980 | val_dereverb: 1.2949 | val_rir: 3.3426 | val_ber: 0.0201
+2025-07-11 12:58:41,195 - INFO - Epoch 110/500 | train_total: 4.3980 | val_dereverb: 1.2949 | val_rir: 3.3426 | val_ber: 0.0201
+2025-07-11 13:00:46,461 - INFO - Epoch 111/500 | train_total: 4.4138 | dereverb: 1.0931 | rir: 3.2917 | decode: 0.0290
+Epoch 111/500 | train_total: 4.4138 | val --
+2025-07-11 13:00:46,462 - INFO - Epoch 111/500 | train_total: 4.4138 | val --
+2025-07-11 13:02:51,686 - INFO - Epoch 112/500 | train_total: 4.3584 | dereverb: 1.0906 | rir: 3.2397 | decode: 0.0281
+Epoch 112/500 | train_total: 4.3584 | val --
+2025-07-11 13:02:51,686 - INFO - Epoch 112/500 | train_total: 4.3584 | val --
+2025-07-11 13:04:56,624 - INFO - Epoch 113/500 | train_total: 4.3822 | dereverb: 1.0923 | rir: 3.2595 | decode: 0.0305
+Epoch 113/500 | train_total: 4.3822 | val --
+2025-07-11 13:04:56,624 - INFO - Epoch 113/500 | train_total: 4.3822 | val --
+2025-07-11 13:07:02,055 - INFO - Epoch 114/500 | train_total: 4.3796 | dereverb: 1.0984 | rir: 3.2561 | decode: 0.0252
+Epoch 114/500 | train_total: 4.3796 | val --
+2025-07-11 13:07:02,055 - INFO - Epoch 114/500 | train_total: 4.3796 | val --
+2025-07-11 13:09:07,023 - INFO - Epoch 115/500 | train_total: 4.3351 | dereverb: 1.0871 | rir: 3.2251 | decode: 0.0230
+Epoch 115/500 | train_total: 4.3351 | val_dereverb: 1.3008 | val_rir: 3.3287 | val_ber: 0.0067
+2025-07-11 13:09:09,060 - INFO - Epoch 115/500 | train_total: 4.3351 | val_dereverb: 1.3008 | val_rir: 3.3287 | val_ber: 0.0067
+2025-07-11 13:11:14,576 - INFO - Epoch 116/500 | train_total: 4.3607 | dereverb: 1.1024 | rir: 3.2329 | decode: 0.0254
+Epoch 116/500 | train_total: 4.3607 | val --
+2025-07-11 13:11:14,576 - INFO - Epoch 116/500 | train_total: 4.3607 | val --
+2025-07-11 13:13:19,114 - INFO - Epoch 117/500 | train_total: 4.3368 | dereverb: 1.0795 | rir: 3.2233 | decode: 0.0340
+Epoch 117/500 | train_total: 4.3368 | val --
+2025-07-11 13:13:19,115 - INFO - Epoch 117/500 | train_total: 4.3368 | val --
+2025-07-11 13:15:24,311 - INFO - Epoch 118/500 | train_total: 4.3666 | dereverb: 1.0956 | rir: 3.2479 | decode: 0.0232
+Epoch 118/500 | train_total: 4.3666 | val --
+2025-07-11 13:15:24,311 - INFO - Epoch 118/500 | train_total: 4.3666 | val --
+2025-07-11 13:17:29,850 - INFO - Epoch 119/500 | train_total: 4.3755 | dereverb: 1.1086 | rir: 3.2480 | decode: 0.0188
+Epoch 119/500 | train_total: 4.3755 | val --
+2025-07-11 13:17:29,850 - INFO - Epoch 119/500 | train_total: 4.3755 | val --
+2025-07-11 13:19:34,191 - INFO - Epoch 120/500 | train_total: 4.3553 | dereverb: 1.0973 | rir: 3.2311 | decode: 0.0270
+Epoch 120/500 | train_total: 4.3553 | val_dereverb: 1.2946 | val_rir: 3.3421 | val_ber: 0.0098
+2025-07-11 13:19:36,236 - INFO - Epoch 120/500 | train_total: 4.3553 | val_dereverb: 1.2946 | val_rir: 3.3421 | val_ber: 0.0098
+2025-07-11 13:19:37,962 - INFO - Model saved at epoch 120
+2025-07-11 13:21:42,158 - INFO - Epoch 121/500 | train_total: 4.3318 | dereverb: 1.0906 | rir: 3.2163 | decode: 0.0249
+Epoch 121/500 | train_total: 4.3318 | val --
+2025-07-11 13:21:42,158 - INFO - Epoch 121/500 | train_total: 4.3318 | val --
+2025-07-11 13:23:47,974 - INFO - Epoch 122/500 | train_total: 4.3056 | dereverb: 1.0923 | rir: 3.1931 | decode: 0.0202
+Epoch 122/500 | train_total: 4.3056 | val --
+2025-07-11 13:23:47,975 - INFO - Epoch 122/500 | train_total: 4.3056 | val --
+2025-07-11 13:25:52,918 - INFO - Epoch 123/500 | train_total: 4.2984 | dereverb: 1.0841 | rir: 3.1895 | decode: 0.0248
+Epoch 123/500 | train_total: 4.2984 | val --
+2025-07-11 13:25:52,918 - INFO - Epoch 123/500 | train_total: 4.2984 | val --
+2025-07-11 13:27:57,910 - INFO - Epoch 124/500 | train_total: 4.2926 | dereverb: 1.0800 | rir: 3.1811 | decode: 0.0315
+Epoch 124/500 | train_total: 4.2926 | val --
+2025-07-11 13:27:57,911 - INFO - Epoch 124/500 | train_total: 4.2926 | val --
+2025-07-11 13:30:02,791 - INFO - Epoch 125/500 | train_total: 4.2642 | dereverb: 1.0759 | rir: 3.1645 | decode: 0.0237
+Epoch 125/500 | train_total: 4.2642 | val_dereverb: 1.2855 | val_rir: 3.3178 | val_ber: 0.0192
+2025-07-11 13:30:04,856 - INFO - Epoch 125/500 | train_total: 4.2642 | val_dereverb: 1.2855 | val_rir: 3.3178 | val_ber: 0.0192
+2025-07-11 13:32:09,991 - INFO - Epoch 126/500 | train_total: 4.2989 | dereverb: 1.0894 | rir: 3.1788 | decode: 0.0308
+Epoch 126/500 | train_total: 4.2989 | val --
+2025-07-11 13:32:09,991 - INFO - Epoch 126/500 | train_total: 4.2989 | val --
+2025-07-11 13:34:14,905 - INFO - Epoch 127/500 | train_total: 4.2614 | dereverb: 1.0777 | rir: 3.1593 | decode: 0.0244
+Epoch 127/500 | train_total: 4.2614 | val --
+2025-07-11 13:34:14,906 - INFO - Epoch 127/500 | train_total: 4.2614 | val --
+2025-07-11 13:36:19,513 - INFO - Epoch 128/500 | train_total: 4.2589 | dereverb: 1.0823 | rir: 3.1517 | decode: 0.0249
+Epoch 128/500 | train_total: 4.2589 | val --
+2025-07-11 13:36:19,513 - INFO - Epoch 128/500 | train_total: 4.2589 | val --
+2025-07-11 13:38:23,730 - INFO - Epoch 129/500 | train_total: 4.2406 | dereverb: 1.0732 | rir: 3.1456 | decode: 0.0218
+Epoch 129/500 | train_total: 4.2406 | val --
+2025-07-11 13:38:23,731 - INFO - Epoch 129/500 | train_total: 4.2406 | val --
+2025-07-11 13:40:28,207 - INFO - Epoch 130/500 | train_total: 4.2406 | dereverb: 1.0770 | rir: 3.1355 | decode: 0.0281
+Epoch 130/500 | train_total: 4.2406 | val_dereverb: 1.3047 | val_rir: 3.2503 | val_ber: 0.0196
+2025-07-11 13:40:30,238 - INFO - Epoch 130/500 | train_total: 4.2406 | val_dereverb: 1.3047 | val_rir: 3.2503 | val_ber: 0.0196
+2025-07-11 13:42:35,137 - INFO - Epoch 131/500 | train_total: 4.2349 | dereverb: 1.0677 | rir: 3.1456 | decode: 0.0215
+Epoch 131/500 | train_total: 4.2349 | val --
+2025-07-11 13:42:35,138 - INFO - Epoch 131/500 | train_total: 4.2349 | val --
+2025-07-11 13:44:40,138 - INFO - Epoch 132/500 | train_total: 4.2494 | dereverb: 1.0823 | rir: 3.1419 | decode: 0.0251
+Epoch 132/500 | train_total: 4.2494 | val --
+2025-07-11 13:44:40,138 - INFO - Epoch 132/500 | train_total: 4.2494 | val --
+2025-07-11 13:46:44,741 - INFO - Epoch 133/500 | train_total: 4.2665 | dereverb: 1.0825 | rir: 3.1538 | decode: 0.0302
+Epoch 133/500 | train_total: 4.2665 | val --
+2025-07-11 13:46:44,742 - INFO - Epoch 133/500 | train_total: 4.2665 | val --
+2025-07-11 13:48:49,940 - INFO - Epoch 134/500 | train_total: 4.3055 | dereverb: 1.0801 | rir: 3.2024 | decode: 0.0231
+Epoch 134/500 | train_total: 4.3055 | val --
+2025-07-11 13:48:49,940 - INFO - Epoch 134/500 | train_total: 4.3055 | val --
+2025-07-11 13:50:55,075 - INFO - Epoch 135/500 | train_total: 4.5810 | dereverb: 1.1436 | rir: 3.4150 | decode: 0.0224
+Epoch 135/500 | train_total: 4.5810 | val_dereverb: 1.3198 | val_rir: 3.7160 | val_ber: 0.0031
+2025-07-11 13:50:57,121 - INFO - Epoch 135/500 | train_total: 4.5810 | val_dereverb: 1.3198 | val_rir: 3.7160 | val_ber: 0.0031
+2025-07-11 13:53:01,551 - INFO - Epoch 136/500 | train_total: 4.4059 | dereverb: 1.1294 | rir: 3.2579 | decode: 0.0186
+Epoch 136/500 | train_total: 4.4059 | val --
+2025-07-11 13:53:01,551 - INFO - Epoch 136/500 | train_total: 4.4059 | val --
+2025-07-11 13:55:06,301 - INFO - Epoch 137/500 | train_total: 4.2638 | dereverb: 1.0870 | rir: 3.1473 | decode: 0.0294
+Epoch 137/500 | train_total: 4.2638 | val --
+2025-07-11 13:55:06,301 - INFO - Epoch 137/500 | train_total: 4.2638 | val --
+2025-07-11 13:57:10,870 - INFO - Epoch 138/500 | train_total: 4.2316 | dereverb: 1.0798 | rir: 3.1280 | decode: 0.0239
+Epoch 138/500 | train_total: 4.2316 | val --
+2025-07-11 13:57:10,871 - INFO - Epoch 138/500 | train_total: 4.2316 | val --
+2025-07-11 13:59:16,012 - INFO - Epoch 139/500 | train_total: 4.2080 | dereverb: 1.0687 | rir: 3.1132 | decode: 0.0261
+Epoch 139/500 | train_total: 4.2080 | val --
+2025-07-11 13:59:16,012 - INFO - Epoch 139/500 | train_total: 4.2080 | val --
+2025-07-11 14:01:19,911 - INFO - Epoch 140/500 | train_total: 4.1903 | dereverb: 1.0702 | rir: 3.0969 | decode: 0.0232
+Epoch 140/500 | train_total: 4.1903 | val_dereverb: 1.2783 | val_rir: 3.2080 | val_ber: 0.0129
+2025-07-11 14:01:21,899 - INFO - Epoch 140/500 | train_total: 4.1903 | val_dereverb: 1.2783 | val_rir: 3.2080 | val_ber: 0.0129
+2025-07-11 14:01:23,454 - INFO - Model saved at epoch 140
+2025-07-11 14:03:27,320 - INFO - Epoch 141/500 | train_total: 4.1861 | dereverb: 1.0651 | rir: 3.0925 | decode: 0.0285
+Epoch 141/500 | train_total: 4.1861 | val --
+2025-07-11 14:03:27,321 - INFO - Epoch 141/500 | train_total: 4.1861 | val --
+2025-07-11 14:05:31,949 - INFO - Epoch 142/500 | train_total: 4.1728 | dereverb: 1.0669 | rir: 3.0812 | decode: 0.0247
+Epoch 142/500 | train_total: 4.1728 | val --
+2025-07-11 14:05:31,949 - INFO - Epoch 142/500 | train_total: 4.1728 | val --
+2025-07-11 14:07:36,856 - INFO - Epoch 143/500 | train_total: 4.1737 | dereverb: 1.0622 | rir: 3.0883 | decode: 0.0231
+Epoch 143/500 | train_total: 4.1737 | val --
+2025-07-11 14:07:36,856 - INFO - Epoch 143/500 | train_total: 4.1737 | val --
+2025-07-11 14:09:41,745 - INFO - Epoch 144/500 | train_total: 4.1919 | dereverb: 1.0657 | rir: 3.0998 | decode: 0.0264
+Epoch 144/500 | train_total: 4.1919 | val --
+2025-07-11 14:09:41,745 - INFO - Epoch 144/500 | train_total: 4.1919 | val --
+2025-07-11 14:11:46,521 - INFO - Epoch 145/500 | train_total: 4.1838 | dereverb: 1.0621 | rir: 3.0978 | decode: 0.0239
+Epoch 145/500 | train_total: 4.1838 | val_dereverb: 1.2929 | val_rir: 3.1881 | val_ber: 0.0098
+2025-07-11 14:11:48,565 - INFO - Epoch 145/500 | train_total: 4.1838 | val_dereverb: 1.2929 | val_rir: 3.1881 | val_ber: 0.0098
+2025-07-11 14:13:53,863 - INFO - Epoch 146/500 | train_total: 4.1841 | dereverb: 1.0677 | rir: 3.0900 | decode: 0.0264
+Epoch 146/500 | train_total: 4.1841 | val --
+2025-07-11 14:13:53,863 - INFO - Epoch 146/500 | train_total: 4.1841 | val --
+2025-07-11 14:15:58,539 - INFO - Epoch 147/500 | train_total: 4.1824 | dereverb: 1.0668 | rir: 3.0902 | decode: 0.0254
+Epoch 147/500 | train_total: 4.1824 | val --
+2025-07-11 14:15:58,539 - INFO - Epoch 147/500 | train_total: 4.1824 | val --
+2025-07-11 14:18:02,825 - INFO - Epoch 148/500 | train_total: 4.1720 | dereverb: 1.0636 | rir: 3.0797 | decode: 0.0287
+Epoch 148/500 | train_total: 4.1720 | val --
+2025-07-11 14:18:02,826 - INFO - Epoch 148/500 | train_total: 4.1720 | val --
+2025-07-11 14:20:07,677 - INFO - Epoch 149/500 | train_total: 4.1759 | dereverb: 1.0632 | rir: 3.0861 | decode: 0.0266
+Epoch 149/500 | train_total: 4.1759 | val --
+2025-07-11 14:20:07,677 - INFO - Epoch 149/500 | train_total: 4.1759 | val --
+2025-07-11 14:22:12,095 - INFO - Epoch 150/500 | train_total: 4.1554 | dereverb: 1.0541 | rir: 3.0757 | decode: 0.0256
+Epoch 150/500 | train_total: 4.1554 | val_dereverb: 1.2798 | val_rir: 3.2013 | val_ber: 0.0161
+2025-07-11 14:22:14,161 - INFO - Epoch 150/500 | train_total: 4.1554 | val_dereverb: 1.2798 | val_rir: 3.2013 | val_ber: 0.0161
+2025-07-11 14:24:18,770 - INFO - Epoch 151/500 | train_total: 4.1601 | dereverb: 1.0617 | rir: 3.0782 | decode: 0.0202
+Epoch 151/500 | train_total: 4.1601 | val --
+2025-07-11 14:24:18,770 - INFO - Epoch 151/500 | train_total: 4.1601 | val --
+2025-07-11 14:26:24,004 - INFO - Epoch 152/500 | train_total: 4.1592 | dereverb: 1.0581 | rir: 3.0741 | decode: 0.0270
+Epoch 152/500 | train_total: 4.1592 | val --
+2025-07-11 14:26:24,004 - INFO - Epoch 152/500 | train_total: 4.1592 | val --
+2025-07-11 14:28:28,793 - INFO - Epoch 153/500 | train_total: 4.1512 | dereverb: 1.0585 | rir: 3.0687 | decode: 0.0240
+Epoch 153/500 | train_total: 4.1512 | val --
+2025-07-11 14:28:28,793 - INFO - Epoch 153/500 | train_total: 4.1512 | val --
+2025-07-11 14:30:33,886 - INFO - Epoch 154/500 | train_total: 4.1450 | dereverb: 1.0566 | rir: 3.0717 | decode: 0.0167
+Epoch 154/500 | train_total: 4.1450 | val --
+2025-07-11 14:30:33,887 - INFO - Epoch 154/500 | train_total: 4.1450 | val --
+2025-07-11 14:32:38,392 - INFO - Epoch 155/500 | train_total: 4.1275 | dereverb: 1.0470 | rir: 3.0575 | decode: 0.0230
+Epoch 155/500 | train_total: 4.1275 | val_dereverb: 1.2674 | val_rir: 3.1906 | val_ber: 0.0129
+2025-07-11 14:32:40,430 - INFO - Epoch 155/500 | train_total: 4.1275 | val_dereverb: 1.2674 | val_rir: 3.1906 | val_ber: 0.0129
+2025-07-11 14:34:45,249 - INFO - Epoch 156/500 | train_total: 4.1508 | dereverb: 1.0568 | rir: 3.0695 | decode: 0.0244
+Epoch 156/500 | train_total: 4.1508 | val --
+2025-07-11 14:34:45,249 - INFO - Epoch 156/500 | train_total: 4.1508 | val --
+2025-07-11 14:36:49,953 - INFO - Epoch 157/500 | train_total: 4.1446 | dereverb: 1.0557 | rir: 3.0630 | decode: 0.0259
+Epoch 157/500 | train_total: 4.1446 | val --
+2025-07-11 14:36:49,953 - INFO - Epoch 157/500 | train_total: 4.1446 | val --
+2025-07-11 14:38:54,429 - INFO - Epoch 158/500 | train_total: 4.1084 | dereverb: 1.0436 | rir: 3.0411 | decode: 0.0236
+Epoch 158/500 | train_total: 4.1084 | val --
+2025-07-11 14:38:54,429 - INFO - Epoch 158/500 | train_total: 4.1084 | val --
+2025-07-11 14:40:59,206 - INFO - Epoch 159/500 | train_total: 4.1521 | dereverb: 1.0569 | rir: 3.0669 | decode: 0.0283
+Epoch 159/500 | train_total: 4.1521 | val --
+2025-07-11 14:40:59,206 - INFO - Epoch 159/500 | train_total: 4.1521 | val --
+2025-07-11 14:43:04,310 - INFO - Epoch 160/500 | train_total: 4.1241 | dereverb: 1.0558 | rir: 3.0444 | decode: 0.0240
+Epoch 160/500 | train_total: 4.1241 | val_dereverb: 1.2734 | val_rir: 3.1735 | val_ber: 0.0098
+2025-07-11 14:43:06,352 - INFO - Epoch 160/500 | train_total: 4.1241 | val_dereverb: 1.2734 | val_rir: 3.1735 | val_ber: 0.0098
+2025-07-11 14:43:08,009 - INFO - Model saved at epoch 160
+2025-07-11 14:45:12,006 - INFO - Epoch 161/500 | train_total: 4.1231 | dereverb: 1.0469 | rir: 3.0578 | decode: 0.0183
+Epoch 161/500 | train_total: 4.1231 | val --
+2025-07-11 14:45:12,006 - INFO - Epoch 161/500 | train_total: 4.1231 | val --
+2025-07-11 14:47:16,245 - INFO - Epoch 162/500 | train_total: 4.1086 | dereverb: 1.0573 | rir: 3.0292 | decode: 0.0220
+Epoch 162/500 | train_total: 4.1086 | val --
+2025-07-11 14:47:16,245 - INFO - Epoch 162/500 | train_total: 4.1086 | val --
+2025-07-11 14:49:20,324 - INFO - Epoch 163/500 | train_total: 4.1223 | dereverb: 1.0527 | rir: 3.0444 | decode: 0.0252
+Epoch 163/500 | train_total: 4.1223 | val --
+2025-07-11 14:49:20,325 - INFO - Epoch 163/500 | train_total: 4.1223 | val --
+2025-07-11 14:51:25,565 - INFO - Epoch 164/500 | train_total: 4.1083 | dereverb: 1.0462 | rir: 3.0353 | decode: 0.0268
+Epoch 164/500 | train_total: 4.1083 | val --
+2025-07-11 14:51:25,566 - INFO - Epoch 164/500 | train_total: 4.1083 | val --
+2025-07-11 14:53:30,284 - INFO - Epoch 165/500 | train_total: 4.1178 | dereverb: 1.0457 | rir: 3.0480 | decode: 0.0241
+Epoch 165/500 | train_total: 4.1178 | val_dereverb: 1.2813 | val_rir: 3.1976 | val_ber: 0.0067
+2025-07-11 14:53:32,324 - INFO - Epoch 165/500 | train_total: 4.1178 | val_dereverb: 1.2813 | val_rir: 3.1976 | val_ber: 0.0067
+2025-07-11 14:55:37,562 - INFO - Epoch 166/500 | train_total: 4.1858 | dereverb: 1.0620 | rir: 3.1057 | decode: 0.0181
+Epoch 166/500 | train_total: 4.1858 | val --
+2025-07-11 14:55:37,563 - INFO - Epoch 166/500 | train_total: 4.1858 | val --
+2025-07-11 14:57:42,602 - INFO - Epoch 167/500 | train_total: 4.6640 | dereverb: 1.1652 | rir: 3.4822 | decode: 0.0166
+Epoch 167/500 | train_total: 4.6640 | val --
+2025-07-11 14:57:42,602 - INFO - Epoch 167/500 | train_total: 4.6640 | val --
+2025-07-11 14:59:47,952 - INFO - Epoch 168/500 | train_total: 4.5848 | dereverb: 1.1510 | rir: 3.4137 | decode: 0.0201
+Epoch 168/500 | train_total: 4.5848 | val --
+2025-07-11 14:59:47,952 - INFO - Epoch 168/500 | train_total: 4.5848 | val --
+2025-07-11 15:01:52,789 - INFO - Epoch 169/500 | train_total: 4.2346 | dereverb: 1.0925 | rir: 3.1227 | decode: 0.0193
+Epoch 169/500 | train_total: 4.2346 | val --
+2025-07-11 15:01:52,789 - INFO - Epoch 169/500 | train_total: 4.2346 | val --
+2025-07-11 15:03:57,406 - INFO - Epoch 170/500 | train_total: 4.1482 | dereverb: 1.0714 | rir: 3.0526 | decode: 0.0243
+Epoch 170/500 | train_total: 4.1482 | val_dereverb: 1.2806 | val_rir: 3.1343 | val_ber: 0.0036
+2025-07-11 15:03:59,447 - INFO - Epoch 170/500 | train_total: 4.1482 | val_dereverb: 1.2806 | val_rir: 3.1343 | val_ber: 0.0036
+2025-07-11 15:06:04,171 - INFO - Epoch 171/500 | train_total: 4.0980 | dereverb: 1.0553 | rir: 3.0175 | decode: 0.0252
+Epoch 171/500 | train_total: 4.0980 | val --
+2025-07-11 15:06:04,171 - INFO - Epoch 171/500 | train_total: 4.0980 | val --
+2025-07-11 15:08:08,572 - INFO - Epoch 172/500 | train_total: 4.0931 | dereverb: 1.0519 | rir: 3.0176 | decode: 0.0236
+Epoch 172/500 | train_total: 4.0931 | val --
+2025-07-11 15:08:08,572 - INFO - Epoch 172/500 | train_total: 4.0931 | val --
+2025-07-11 15:10:13,183 - INFO - Epoch 173/500 | train_total: 4.0919 | dereverb: 1.0518 | rir: 3.0132 | decode: 0.0269
+Epoch 173/500 | train_total: 4.0919 | val --
+2025-07-11 15:10:13,183 - INFO - Epoch 173/500 | train_total: 4.0919 | val --
+2025-07-11 15:12:17,709 - INFO - Epoch 174/500 | train_total: 4.0826 | dereverb: 1.0464 | rir: 3.0149 | decode: 0.0212
+Epoch 174/500 | train_total: 4.0826 | val --
+2025-07-11 15:12:17,709 - INFO - Epoch 174/500 | train_total: 4.0826 | val --
+2025-07-11 15:14:22,115 - INFO - Epoch 175/500 | train_total: 4.0709 | dereverb: 1.0468 | rir: 2.9992 | decode: 0.0249
+Epoch 175/500 | train_total: 4.0709 | val_dereverb: 1.2733 | val_rir: 3.1194 | val_ber: 0.0067
+2025-07-11 15:14:24,171 - INFO - Epoch 175/500 | train_total: 4.0709 | val_dereverb: 1.2733 | val_rir: 3.1194 | val_ber: 0.0067
+2025-07-11 15:16:28,943 - INFO - Epoch 176/500 | train_total: 4.0577 | dereverb: 1.0438 | rir: 2.9898 | decode: 0.0241
+Epoch 176/500 | train_total: 4.0577 | val --
+2025-07-11 15:16:28,943 - INFO - Epoch 176/500 | train_total: 4.0577 | val --
+2025-07-11 15:18:33,754 - INFO - Epoch 177/500 | train_total: 4.0487 | dereverb: 1.0349 | rir: 2.9899 | decode: 0.0239
+Epoch 177/500 | train_total: 4.0487 | val --
+2025-07-11 15:18:33,754 - INFO - Epoch 177/500 | train_total: 4.0487 | val --
+2025-07-11 15:20:37,480 - INFO - Epoch 178/500 | train_total: 4.0729 | dereverb: 1.0363 | rir: 3.0155 | decode: 0.0211
+Epoch 178/500 | train_total: 4.0729 | val --
+2025-07-11 15:20:37,480 - INFO - Epoch 178/500 | train_total: 4.0729 | val --
+2025-07-11 15:22:41,864 - INFO - Epoch 179/500 | train_total: 4.0701 | dereverb: 1.0443 | rir: 3.0023 | decode: 0.0235
+Epoch 179/500 | train_total: 4.0701 | val --
+2025-07-11 15:22:41,864 - INFO - Epoch 179/500 | train_total: 4.0701 | val --
+2025-07-11 15:24:46,275 - INFO - Epoch 180/500 | train_total: 4.0616 | dereverb: 1.0348 | rir: 3.0000 | decode: 0.0268
+Epoch 180/500 | train_total: 4.0616 | val_dereverb: 1.2726 | val_rir: 3.1258 | val_ber: 0.0067
+2025-07-11 15:24:48,276 - INFO - Epoch 180/500 | train_total: 4.0616 | val_dereverb: 1.2726 | val_rir: 3.1258 | val_ber: 0.0067
+2025-07-11 15:24:49,992 - INFO - Model saved at epoch 180
+2025-07-11 15:26:54,342 - INFO - Epoch 181/500 | train_total: 4.0785 | dereverb: 1.0453 | rir: 3.0144 | decode: 0.0188
+Epoch 181/500 | train_total: 4.0785 | val --
+2025-07-11 15:26:54,342 - INFO - Epoch 181/500 | train_total: 4.0785 | val --
+2025-07-11 15:28:58,877 - INFO - Epoch 182/500 | train_total: 4.0441 | dereverb: 1.0345 | rir: 2.9872 | decode: 0.0224
+Epoch 182/500 | train_total: 4.0441 | val --
+2025-07-11 15:28:58,878 - INFO - Epoch 182/500 | train_total: 4.0441 | val --
+2025-07-11 15:31:03,171 - INFO - Epoch 183/500 | train_total: 4.0448 | dereverb: 1.0353 | rir: 2.9835 | decode: 0.0260
+Epoch 183/500 | train_total: 4.0448 | val --
+2025-07-11 15:31:03,171 - INFO - Epoch 183/500 | train_total: 4.0448 | val --
+2025-07-11 15:33:07,170 - INFO - Epoch 184/500 | train_total: 4.0290 | dereverb: 1.0304 | rir: 2.9772 | decode: 0.0213
+Epoch 184/500 | train_total: 4.0290 | val --
+2025-07-11 15:33:07,170 - INFO - Epoch 184/500 | train_total: 4.0290 | val --
+2025-07-11 15:35:11,720 - INFO - Epoch 185/500 | train_total: 4.0518 | dereverb: 1.0378 | rir: 2.9932 | decode: 0.0207
+Epoch 185/500 | train_total: 4.0518 | val_dereverb: 1.2654 | val_rir: 3.1084 | val_ber: 0.0165
+2025-07-11 15:35:13,745 - INFO - Epoch 185/500 | train_total: 4.0518 | val_dereverb: 1.2654 | val_rir: 3.1084 | val_ber: 0.0165
+2025-07-11 15:37:18,280 - INFO - Epoch 186/500 | train_total: 4.0356 | dereverb: 1.0311 | rir: 2.9813 | decode: 0.0232
+Epoch 186/500 | train_total: 4.0356 | val --
+2025-07-11 15:37:18,280 - INFO - Epoch 186/500 | train_total: 4.0356 | val --
+2025-07-11 15:39:22,805 - INFO - Epoch 187/500 | train_total: 4.0389 | dereverb: 1.0300 | rir: 2.9845 | decode: 0.0243
+Epoch 187/500 | train_total: 4.0389 | val --
+2025-07-11 15:39:22,805 - INFO - Epoch 187/500 | train_total: 4.0389 | val --
+2025-07-11 15:41:27,068 - INFO - Epoch 188/500 | train_total: 4.0333 | dereverb: 1.0335 | rir: 2.9790 | decode: 0.0208
+Epoch 188/500 | train_total: 4.0333 | val --
+2025-07-11 15:41:27,068 - INFO - Epoch 188/500 | train_total: 4.0333 | val --
+2025-07-11 15:43:31,391 - INFO - Epoch 189/500 | train_total: 4.0538 | dereverb: 1.0404 | rir: 2.9883 | decode: 0.0251
+Epoch 189/500 | train_total: 4.0538 | val --
+2025-07-11 15:43:31,391 - INFO - Epoch 189/500 | train_total: 4.0538 | val --
+2025-07-11 15:45:36,000 - INFO - Epoch 190/500 | train_total: 4.0254 | dereverb: 1.0310 | rir: 2.9764 | decode: 0.0180
+Epoch 190/500 | train_total: 4.0254 | val_dereverb: 1.2598 | val_rir: 3.1049 | val_ber: 0.0067
+2025-07-11 15:45:38,037 - INFO - Epoch 190/500 | train_total: 4.0254 | val_dereverb: 1.2598 | val_rir: 3.1049 | val_ber: 0.0067
+2025-07-11 15:47:42,605 - INFO - Epoch 191/500 | train_total: 4.0495 | dereverb: 1.0369 | rir: 2.9908 | decode: 0.0218
+Epoch 191/500 | train_total: 4.0495 | val --
+2025-07-11 15:47:42,605 - INFO - Epoch 191/500 | train_total: 4.0495 | val --
+2025-07-11 15:49:47,521 - INFO - Epoch 192/500 | train_total: 4.0551 | dereverb: 1.0318 | rir: 2.9957 | decode: 0.0276
+Epoch 192/500 | train_total: 4.0551 | val --
+2025-07-11 15:49:47,521 - INFO - Epoch 192/500 | train_total: 4.0551 | val --
+2025-07-11 15:51:52,101 - INFO - Epoch 193/500 | train_total: 4.0454 | dereverb: 1.0305 | rir: 2.9899 | decode: 0.0250
+Epoch 193/500 | train_total: 4.0454 | val --
+2025-07-11 15:51:52,102 - INFO - Epoch 193/500 | train_total: 4.0454 | val --
+2025-07-11 15:53:56,631 - INFO - Epoch 194/500 | train_total: 4.0381 | dereverb: 1.0355 | rir: 2.9779 | decode: 0.0246
+Epoch 194/500 | train_total: 4.0381 | val --
+2025-07-11 15:53:56,631 - INFO - Epoch 194/500 | train_total: 4.0381 | val --
+2025-07-11 15:56:01,310 - INFO - Epoch 195/500 | train_total: 4.0206 | dereverb: 1.0279 | rir: 2.9704 | decode: 0.0224
+Epoch 195/500 | train_total: 4.0206 | val_dereverb: 1.2640 | val_rir: 3.0770 | val_ber: 0.0138
+2025-07-11 15:56:03,353 - INFO - Epoch 195/500 | train_total: 4.0206 | val_dereverb: 1.2640 | val_rir: 3.0770 | val_ber: 0.0138
+2025-07-11 15:58:07,441 - INFO - Epoch 196/500 | train_total: 4.0513 | dereverb: 1.0368 | rir: 2.9909 | decode: 0.0236
+Epoch 196/500 | train_total: 4.0513 | val --
+2025-07-11 15:58:07,441 - INFO - Epoch 196/500 | train_total: 4.0513 | val --
+2025-07-11 16:00:12,101 - INFO - Epoch 197/500 | train_total: 4.0416 | dereverb: 1.0332 | rir: 2.9884 | decode: 0.0200
+Epoch 197/500 | train_total: 4.0416 | val --
+2025-07-11 16:00:12,101 - INFO - Epoch 197/500 | train_total: 4.0416 | val --
+2025-07-11 16:02:17,165 - INFO - Epoch 198/500 | train_total: 4.0900 | dereverb: 1.0499 | rir: 3.0228 | decode: 0.0173
+Epoch 198/500 | train_total: 4.0900 | val --
+2025-07-11 16:02:17,165 - INFO - Epoch 198/500 | train_total: 4.0900 | val --
+2025-07-11 16:04:21,269 - INFO - Epoch 199/500 | train_total: 4.0853 | dereverb: 1.0485 | rir: 3.0186 | decode: 0.0182
+Epoch 199/500 | train_total: 4.0853 | val --
+2025-07-11 16:04:21,269 - INFO - Epoch 199/500 | train_total: 4.0853 | val --
+2025-07-11 16:06:25,385 - INFO - Epoch 200/500 | train_total: 4.0510 | dereverb: 1.0404 | rir: 2.9881 | decode: 0.0226
+Epoch 200/500 | train_total: 4.0510 | val_dereverb: 1.2503 | val_rir: 3.0756 | val_ber: 0.0000
+2025-07-11 16:06:27,421 - INFO - Epoch 200/500 | train_total: 4.0510 | val_dereverb: 1.2503 | val_rir: 3.0756 | val_ber: 0.0000
+2025-07-11 16:06:29,139 - INFO - Model saved at epoch 200
+2025-07-11 16:08:33,068 - INFO - Epoch 201/500 | train_total: 4.0229 | dereverb: 1.0299 | rir: 2.9707 | decode: 0.0223
+Epoch 201/500 | train_total: 4.0229 | val --
+2025-07-11 16:08:33,068 - INFO - Epoch 201/500 | train_total: 4.0229 | val --
+2025-07-11 16:10:37,847 - INFO - Epoch 202/500 | train_total: 4.0052 | dereverb: 1.0287 | rir: 2.9567 | decode: 0.0199
+Epoch 202/500 | train_total: 4.0052 | val --
+2025-07-11 16:10:37,847 - INFO - Epoch 202/500 | train_total: 4.0052 | val --
+2025-07-11 16:12:42,338 - INFO - Epoch 203/500 | train_total: 4.0086 | dereverb: 1.0243 | rir: 2.9636 | decode: 0.0207
+Epoch 203/500 | train_total: 4.0086 | val --
+2025-07-11 16:12:42,338 - INFO - Epoch 203/500 | train_total: 4.0086 | val --
+2025-07-11 16:14:46,493 - INFO - Epoch 204/500 | train_total: 4.0180 | dereverb: 1.0299 | rir: 2.9689 | decode: 0.0192
+Epoch 204/500 | train_total: 4.0180 | val --
+2025-07-11 16:14:46,494 - INFO - Epoch 204/500 | train_total: 4.0180 | val --
+2025-07-11 16:16:51,022 - INFO - Epoch 205/500 | train_total: 3.9940 | dereverb: 1.0196 | rir: 2.9515 | decode: 0.0229
+Epoch 205/500 | train_total: 3.9940 | val_dereverb: 1.2571 | val_rir: 3.0811 | val_ber: 0.0067
+2025-07-11 16:16:53,056 - INFO - Epoch 205/500 | train_total: 3.9940 | val_dereverb: 1.2571 | val_rir: 3.0811 | val_ber: 0.0067
+2025-07-11 16:18:57,718 - INFO - Epoch 206/500 | train_total: 3.9841 | dereverb: 1.0175 | rir: 2.9464 | decode: 0.0202
+Epoch 206/500 | train_total: 3.9841 | val --
+2025-07-11 16:18:57,719 - INFO - Epoch 206/500 | train_total: 3.9841 | val --
+2025-07-11 16:21:02,144 - INFO - Epoch 207/500 | train_total: 3.9982 | dereverb: 1.0187 | rir: 2.9580 | decode: 0.0214
+Epoch 207/500 | train_total: 3.9982 | val --
+2025-07-11 16:21:02,144 - INFO - Epoch 207/500 | train_total: 3.9982 | val --
+2025-07-11 16:23:06,863 - INFO - Epoch 208/500 | train_total: 3.9978 | dereverb: 1.0194 | rir: 2.9544 | decode: 0.0239
+Epoch 208/500 | train_total: 3.9978 | val --
+2025-07-11 16:23:06,864 - INFO - Epoch 208/500 | train_total: 3.9978 | val --
+2025-07-11 16:25:11,458 - INFO - Epoch 209/500 | train_total: 3.9968 | dereverb: 1.0172 | rir: 2.9564 | decode: 0.0232
+Epoch 209/500 | train_total: 3.9968 | val --
+2025-07-11 16:25:11,458 - INFO - Epoch 209/500 | train_total: 3.9968 | val --
+2025-07-11 16:27:16,296 - INFO - Epoch 210/500 | train_total: 4.0121 | dereverb: 1.0254 | rir: 2.9647 | decode: 0.0220
+Epoch 210/500 | train_total: 4.0121 | val_dereverb: 1.2653 | val_rir: 3.0648 | val_ber: 0.0192
+2025-07-11 16:27:18,341 - INFO - Epoch 210/500 | train_total: 4.0121 | val_dereverb: 1.2653 | val_rir: 3.0648 | val_ber: 0.0192
+2025-07-11 16:29:22,347 - INFO - Epoch 211/500 | train_total: 3.9928 | dereverb: 1.0212 | rir: 2.9494 | decode: 0.0221
+Epoch 211/500 | train_total: 3.9928 | val --
+2025-07-11 16:29:22,348 - INFO - Epoch 211/500 | train_total: 3.9928 | val --
+2025-07-11 16:31:26,814 - INFO - Epoch 212/500 | train_total: 3.9981 | dereverb: 1.0237 | rir: 2.9510 | decode: 0.0234
+Epoch 212/500 | train_total: 3.9981 | val --
+2025-07-11 16:31:26,814 - INFO - Epoch 212/500 | train_total: 3.9981 | val --
+2025-07-11 16:33:31,458 - INFO - Epoch 213/500 | train_total: 4.0195 | dereverb: 1.0305 | rir: 2.9704 | decode: 0.0186
+Epoch 213/500 | train_total: 4.0195 | val --
+2025-07-11 16:33:31,459 - INFO - Epoch 213/500 | train_total: 4.0195 | val --
+2025-07-11 16:35:35,748 - INFO - Epoch 214/500 | train_total: 3.9964 | dereverb: 1.0204 | rir: 2.9543 | decode: 0.0217
+Epoch 214/500 | train_total: 3.9964 | val --
+2025-07-11 16:35:35,749 - INFO - Epoch 214/500 | train_total: 3.9964 | val --
+2025-07-11 16:37:39,646 - INFO - Epoch 215/500 | train_total: 3.9840 | dereverb: 1.0213 | rir: 2.9442 | decode: 0.0185
+Epoch 215/500 | train_total: 3.9840 | val_dereverb: 1.2548 | val_rir: 3.0070 | val_ber: 0.0031
+2025-07-11 16:37:41,659 - INFO - Epoch 215/500 | train_total: 3.9840 | val_dereverb: 1.2548 | val_rir: 3.0070 | val_ber: 0.0031
+2025-07-11 16:39:46,684 - INFO - Epoch 216/500 | train_total: 3.9846 | dereverb: 1.0152 | rir: 2.9498 | decode: 0.0195
+Epoch 216/500 | train_total: 3.9846 | val --
+2025-07-11 16:39:46,684 - INFO - Epoch 216/500 | train_total: 3.9846 | val --
+2025-07-11 16:41:51,456 - INFO - Epoch 217/500 | train_total: 4.6186 | dereverb: 1.1416 | rir: 3.4630 | decode: 0.0139
+Epoch 217/500 | train_total: 4.6186 | val --
+2025-07-11 16:41:51,456 - INFO - Epoch 217/500 | train_total: 4.6186 | val --
+2025-07-11 16:43:56,048 - INFO - Epoch 218/500 | train_total: 4.2663 | dereverb: 1.0975 | rir: 3.1509 | decode: 0.0179
+Epoch 218/500 | train_total: 4.2663 | val --
+2025-07-11 16:43:56,048 - INFO - Epoch 218/500 | train_total: 4.2663 | val --
+2025-07-11 16:46:00,974 - INFO - Epoch 219/500 | train_total: 4.0425 | dereverb: 1.0456 | rir: 2.9772 | decode: 0.0197
+Epoch 219/500 | train_total: 4.0425 | val --
+2025-07-11 16:46:00,974 - INFO - Epoch 219/500 | train_total: 4.0425 | val --
+2025-07-11 16:48:05,167 - INFO - Epoch 220/500 | train_total: 4.0786 | dereverb: 1.0460 | rir: 3.0165 | decode: 0.0161
+Epoch 220/500 | train_total: 4.0786 | val_dereverb: 1.2644 | val_rir: 3.3625 | val_ber: 0.0000
+2025-07-11 16:48:07,200 - INFO - Epoch 220/500 | train_total: 4.0786 | val_dereverb: 1.2644 | val_rir: 3.3625 | val_ber: 0.0000
+2025-07-11 16:48:08,912 - INFO - Model saved at epoch 220
+2025-07-11 16:50:12,585 - INFO - Epoch 221/500 | train_total: 4.2027 | dereverb: 1.0710 | rir: 3.1062 | decode: 0.0255
+Epoch 221/500 | train_total: 4.2027 | val --
+2025-07-11 16:50:12,585 - INFO - Epoch 221/500 | train_total: 4.2027 | val --
+2025-07-11 16:52:16,868 - INFO - Epoch 222/500 | train_total: 4.1648 | dereverb: 1.0817 | rir: 3.0612 | decode: 0.0220
+Epoch 222/500 | train_total: 4.1648 | val --
+2025-07-11 16:52:16,868 - INFO - Epoch 222/500 | train_total: 4.1648 | val --
+2025-07-11 16:54:21,227 - INFO - Epoch 223/500 | train_total: 4.0680 | dereverb: 1.0546 | rir: 2.9927 | decode: 0.0207
+Epoch 223/500 | train_total: 4.0680 | val --
+2025-07-11 16:54:21,228 - INFO - Epoch 223/500 | train_total: 4.0680 | val --
+2025-07-11 16:56:25,491 - INFO - Epoch 224/500 | train_total: 4.0539 | dereverb: 1.0581 | rir: 2.9772 | decode: 0.0186
+Epoch 224/500 | train_total: 4.0539 | val --
+2025-07-11 16:56:25,491 - INFO - Epoch 224/500 | train_total: 4.0539 | val --
+2025-07-11 16:58:29,767 - INFO - Epoch 225/500 | train_total: 3.9919 | dereverb: 1.0343 | rir: 2.9397 | decode: 0.0179
+Epoch 225/500 | train_total: 3.9919 | val_dereverb: 1.2453 | val_rir: 3.0345 | val_ber: 0.0000
+2025-07-11 16:58:31,776 - INFO - Epoch 225/500 | train_total: 3.9919 | val_dereverb: 1.2453 | val_rir: 3.0345 | val_ber: 0.0000
+2025-07-11 17:00:36,272 - INFO - Epoch 226/500 | train_total: 3.9704 | dereverb: 1.0254 | rir: 2.9217 | decode: 0.0233
+Epoch 226/500 | train_total: 3.9704 | val --
+2025-07-11 17:00:36,272 - INFO - Epoch 226/500 | train_total: 3.9704 | val --
+2025-07-11 17:02:41,104 - INFO - Epoch 227/500 | train_total: 4.0053 | dereverb: 1.0316 | rir: 2.9483 | decode: 0.0254
+Epoch 227/500 | train_total: 4.0053 | val --
+2025-07-11 17:02:41,104 - INFO - Epoch 227/500 | train_total: 4.0053 | val --
+2025-07-11 17:04:45,578 - INFO - Epoch 228/500 | train_total: 3.9680 | dereverb: 1.0184 | rir: 2.9282 | decode: 0.0214
+Epoch 228/500 | train_total: 3.9680 | val --
+2025-07-11 17:04:45,579 - INFO - Epoch 228/500 | train_total: 3.9680 | val --
+2025-07-11 17:06:50,182 - INFO - Epoch 229/500 | train_total: 3.9676 | dereverb: 1.0208 | rir: 2.9270 | decode: 0.0197
+Epoch 229/500 | train_total: 3.9676 | val --
+2025-07-11 17:06:50,182 - INFO - Epoch 229/500 | train_total: 3.9676 | val --
+2025-07-11 17:08:54,540 - INFO - Epoch 230/500 | train_total: 3.9581 | dereverb: 1.0186 | rir: 2.9215 | decode: 0.0180
+Epoch 230/500 | train_total: 3.9581 | val_dereverb: 1.2511 | val_rir: 3.0295 | val_ber: 0.0036
+2025-07-11 17:08:56,573 - INFO - Epoch 230/500 | train_total: 3.9581 | val_dereverb: 1.2511 | val_rir: 3.0295 | val_ber: 0.0036
+2025-07-11 17:11:00,821 - INFO - Epoch 231/500 | train_total: 3.9706 | dereverb: 1.0231 | rir: 2.9259 | decode: 0.0216
+Epoch 231/500 | train_total: 3.9706 | val --
+2025-07-11 17:11:00,821 - INFO - Epoch 231/500 | train_total: 3.9706 | val --
+2025-07-11 17:13:05,006 - INFO - Epoch 232/500 | train_total: 3.9696 | dereverb: 1.0187 | rir: 2.9293 | decode: 0.0217
+Epoch 232/500 | train_total: 3.9696 | val --
+2025-07-11 17:13:05,006 - INFO - Epoch 232/500 | train_total: 3.9696 | val --
+2025-07-11 17:15:09,102 - INFO - Epoch 233/500 | train_total: 3.9474 | dereverb: 1.0121 | rir: 2.9154 | decode: 0.0199
+Epoch 233/500 | train_total: 3.9474 | val --
+2025-07-11 17:15:09,103 - INFO - Epoch 233/500 | train_total: 3.9474 | val --
+2025-07-11 17:17:12,857 - INFO - Epoch 234/500 | train_total: 3.9405 | dereverb: 1.0051 | rir: 2.9107 | decode: 0.0247
+Epoch 234/500 | train_total: 3.9405 | val --
+2025-07-11 17:17:12,858 - INFO - Epoch 234/500 | train_total: 3.9405 | val --
+2025-07-11 17:19:17,567 - INFO - Epoch 235/500 | train_total: 3.9481 | dereverb: 1.0064 | rir: 2.9210 | decode: 0.0207
+Epoch 235/500 | train_total: 3.9481 | val_dereverb: 1.2408 | val_rir: 2.9987 | val_ber: 0.0036
+2025-07-11 17:19:19,604 - INFO - Epoch 235/500 | train_total: 3.9481 | val_dereverb: 1.2408 | val_rir: 2.9987 | val_ber: 0.0036
+2025-07-11 17:21:24,343 - INFO - Epoch 236/500 | train_total: 3.9617 | dereverb: 1.0143 | rir: 2.9229 | decode: 0.0245
+Epoch 236/500 | train_total: 3.9617 | val --
+2025-07-11 17:21:24,344 - INFO - Epoch 236/500 | train_total: 3.9617 | val --
+2025-07-11 17:23:28,905 - INFO - Epoch 237/500 | train_total: 3.9568 | dereverb: 1.0157 | rir: 2.9237 | decode: 0.0174
+Epoch 237/500 | train_total: 3.9568 | val --
+2025-07-11 17:23:28,905 - INFO - Epoch 237/500 | train_total: 3.9568 | val --
+2025-07-11 17:25:33,158 - INFO - Epoch 238/500 | train_total: 3.9497 | dereverb: 1.0134 | rir: 2.9175 | decode: 0.0188
+Epoch 238/500 | train_total: 3.9497 | val --
+2025-07-11 17:25:33,158 - INFO - Epoch 238/500 | train_total: 3.9497 | val --
+2025-07-11 17:27:37,184 - INFO - Epoch 239/500 | train_total: 3.9538 | dereverb: 1.0129 | rir: 2.9172 | decode: 0.0237
+Epoch 239/500 | train_total: 3.9538 | val --
+2025-07-11 17:27:37,185 - INFO - Epoch 239/500 | train_total: 3.9538 | val --
+2025-07-11 17:29:41,431 - INFO - Epoch 240/500 | train_total: 3.9511 | dereverb: 1.0143 | rir: 2.9180 | decode: 0.0188
+Epoch 240/500 | train_total: 3.9511 | val_dereverb: 1.2426 | val_rir: 3.0230 | val_ber: 0.0067
+2025-07-11 17:29:43,471 - INFO - Epoch 240/500 | train_total: 3.9511 | val_dereverb: 1.2426 | val_rir: 3.0230 | val_ber: 0.0067
+2025-07-11 17:29:44,928 - INFO - Model saved at epoch 240
+2025-07-11 17:31:48,843 - INFO - Epoch 241/500 | train_total: 3.9458 | dereverb: 1.0080 | rir: 2.9188 | decode: 0.0190
+Epoch 241/500 | train_total: 3.9458 | val --
+2025-07-11 17:31:48,844 - INFO - Epoch 241/500 | train_total: 3.9458 | val --
+2025-07-11 17:33:53,647 - INFO - Epoch 242/500 | train_total: 3.9112 | dereverb: 0.9973 | rir: 2.8933 | decode: 0.0206
+Epoch 242/500 | train_total: 3.9112 | val --
+2025-07-11 17:33:53,647 - INFO - Epoch 242/500 | train_total: 3.9112 | val --
+2025-07-11 17:35:57,939 - INFO - Epoch 243/500 | train_total: 3.9532 | dereverb: 1.0105 | rir: 2.9215 | decode: 0.0213
+Epoch 243/500 | train_total: 3.9532 | val --
+2025-07-11 17:35:57,939 - INFO - Epoch 243/500 | train_total: 3.9532 | val --
+2025-07-11 17:38:01,984 - INFO - Epoch 244/500 | train_total: 3.9435 | dereverb: 1.0086 | rir: 2.9114 | decode: 0.0235
+Epoch 244/500 | train_total: 3.9435 | val --
+2025-07-11 17:38:01,984 - INFO - Epoch 244/500 | train_total: 3.9435 | val --
+2025-07-11 17:40:06,765 - INFO - Epoch 245/500 | train_total: 3.9410 | dereverb: 1.0013 | rir: 2.9169 | decode: 0.0228
+Epoch 245/500 | train_total: 3.9410 | val_dereverb: 1.2362 | val_rir: 3.0075 | val_ber: 0.0031
+2025-07-11 17:40:08,823 - INFO - Epoch 245/500 | train_total: 3.9410 | val_dereverb: 1.2362 | val_rir: 3.0075 | val_ber: 0.0031
+2025-07-11 17:42:13,555 - INFO - Epoch 246/500 | train_total: 3.9676 | dereverb: 1.0110 | rir: 2.9280 | decode: 0.0285
+Epoch 246/500 | train_total: 3.9676 | val --
+2025-07-11 17:42:13,555 - INFO - Epoch 246/500 | train_total: 3.9676 | val --
+2025-07-11 17:44:18,114 - INFO - Epoch 247/500 | train_total: 3.9345 | dereverb: 1.0079 | rir: 2.9089 | decode: 0.0178
+Epoch 247/500 | train_total: 3.9345 | val --
+2025-07-11 17:44:18,114 - INFO - Epoch 247/500 | train_total: 3.9345 | val --
+2025-07-11 17:46:21,875 - INFO - Epoch 248/500 | train_total: 3.9279 | dereverb: 1.0025 | rir: 2.9064 | decode: 0.0190
+Epoch 248/500 | train_total: 3.9279 | val --
+2025-07-11 17:46:21,875 - INFO - Epoch 248/500 | train_total: 3.9279 | val --
+2025-07-11 17:48:26,710 - INFO - Epoch 249/500 | train_total: 3.9403 | dereverb: 1.0047 | rir: 2.9131 | decode: 0.0225
+Epoch 249/500 | train_total: 3.9403 | val --
+2025-07-11 17:48:26,710 - INFO - Epoch 249/500 | train_total: 3.9403 | val --
+2025-07-11 17:50:31,073 - INFO - Epoch 250/500 | train_total: 3.9300 | dereverb: 1.0054 | rir: 2.9056 | decode: 0.0190
+Epoch 250/500 | train_total: 3.9300 | val_dereverb: 1.2483 | val_rir: 3.0037 | val_ber: 0.0098
+2025-07-11 17:50:33,084 - INFO - Epoch 250/500 | train_total: 3.9300 | val_dereverb: 1.2483 | val_rir: 3.0037 | val_ber: 0.0098
+2025-07-11 17:52:37,704 - INFO - Epoch 251/500 | train_total: 3.9033 | dereverb: 0.9931 | rir: 2.8924 | decode: 0.0178
+Epoch 251/500 | train_total: 3.9033 | val --
+2025-07-11 17:52:37,705 - INFO - Epoch 251/500 | train_total: 3.9033 | val --
+2025-07-11 17:54:41,643 - INFO - Epoch 252/500 | train_total: 3.9392 | dereverb: 1.0039 | rir: 2.9119 | decode: 0.0235
+Epoch 252/500 | train_total: 3.9392 | val --
+2025-07-11 17:54:41,643 - INFO - Epoch 252/500 | train_total: 3.9392 | val --
+2025-07-11 17:56:45,304 - INFO - Epoch 253/500 | train_total: 3.9417 | dereverb: 1.0038 | rir: 2.9179 | decode: 0.0200
+Epoch 253/500 | train_total: 3.9417 | val --
+2025-07-11 17:56:45,304 - INFO - Epoch 253/500 | train_total: 3.9417 | val --
+2025-07-11 17:58:49,823 - INFO - Epoch 254/500 | train_total: 3.9212 | dereverb: 1.0028 | rir: 2.8992 | decode: 0.0191
+Epoch 254/500 | train_total: 3.9212 | val --
+2025-07-11 17:58:49,824 - INFO - Epoch 254/500 | train_total: 3.9212 | val --
+2025-07-11 18:00:54,336 - INFO - Epoch 255/500 | train_total: 3.9197 | dereverb: 1.0014 | rir: 2.9005 | decode: 0.0178
+Epoch 255/500 | train_total: 3.9197 | val_dereverb: 1.2332 | val_rir: 3.0128 | val_ber: 0.0071
+2025-07-11 18:00:56,355 - INFO - Epoch 255/500 | train_total: 3.9197 | val_dereverb: 1.2332 | val_rir: 3.0128 | val_ber: 0.0071
+2025-07-11 18:03:00,726 - INFO - Epoch 256/500 | train_total: 3.9194 | dereverb: 0.9978 | rir: 2.9024 | decode: 0.0193
+Epoch 256/500 | train_total: 3.9194 | val --
+2025-07-11 18:03:00,726 - INFO - Epoch 256/500 | train_total: 3.9194 | val --
+2025-07-11 18:05:05,021 - INFO - Epoch 257/500 | train_total: 3.9414 | dereverb: 1.0063 | rir: 2.9134 | decode: 0.0217
+Epoch 257/500 | train_total: 3.9414 | val --
+2025-07-11 18:05:05,021 - INFO - Epoch 257/500 | train_total: 3.9414 | val --
+2025-07-11 18:07:09,479 - INFO - Epoch 258/500 | train_total: 4.0322 | dereverb: 1.0268 | rir: 2.9858 | decode: 0.0196
+Epoch 258/500 | train_total: 4.0322 | val --
+2025-07-11 18:07:09,479 - INFO - Epoch 258/500 | train_total: 4.0322 | val --
+2025-07-11 18:09:14,265 - INFO - Epoch 259/500 | train_total: 4.0656 | dereverb: 1.0449 | rir: 3.0015 | decode: 0.0192
+Epoch 259/500 | train_total: 4.0656 | val --
+2025-07-11 18:09:14,265 - INFO - Epoch 259/500 | train_total: 4.0656 | val --
+2025-07-11 18:11:19,312 - INFO - Epoch 260/500 | train_total: 4.0595 | dereverb: 1.0394 | rir: 2.9998 | decode: 0.0202
+Epoch 260/500 | train_total: 4.0595 | val_dereverb: 1.3262 | val_rir: 3.2438 | val_ber: 0.0067
+2025-07-11 18:11:21,398 - INFO - Epoch 260/500 | train_total: 4.0595 | val_dereverb: 1.3262 | val_rir: 3.2438 | val_ber: 0.0067
+2025-07-11 18:11:22,936 - INFO - Model saved at epoch 260
+2025-07-11 18:13:26,636 - INFO - Epoch 261/500 | train_total: 4.2761 | dereverb: 1.0923 | rir: 3.1597 | decode: 0.0241
+Epoch 261/500 | train_total: 4.2761 | val --
+2025-07-11 18:13:26,637 - INFO - Epoch 261/500 | train_total: 4.2761 | val --
+2025-07-11 18:15:31,639 - INFO - Epoch 262/500 | train_total: 4.2050 | dereverb: 1.0844 | rir: 3.1007 | decode: 0.0198
+Epoch 262/500 | train_total: 4.2050 | val --
+2025-07-11 18:15:31,639 - INFO - Epoch 262/500 | train_total: 4.2050 | val --
+2025-07-11 18:17:36,170 - INFO - Epoch 263/500 | train_total: 3.9900 | dereverb: 1.0419 | rir: 2.9292 | decode: 0.0189
+Epoch 263/500 | train_total: 3.9900 | val --
+2025-07-11 18:17:36,170 - INFO - Epoch 263/500 | train_total: 3.9900 | val --
+2025-07-11 18:19:40,690 - INFO - Epoch 264/500 | train_total: 3.9424 | dereverb: 1.0207 | rir: 2.9050 | decode: 0.0166
+Epoch 264/500 | train_total: 3.9424 | val --
+2025-07-11 18:19:40,690 - INFO - Epoch 264/500 | train_total: 3.9424 | val --
