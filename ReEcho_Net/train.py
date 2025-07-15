@@ -1,20 +1,20 @@
-# train_conformer_mask.py
-from sympy.polys.numberfields.minpoly import rs_compose_add
-import sys, logging, torch, torchaudio
-sys.path.append("/home/c3-server1/Documents/Chenpei/re-rir")
+import sys
+import logging
+import torch
+import torchaudio
 import os
 from datetime import datetime
+import warnings
+
+from torch.utils.data import random_split
 
 from model import *
-from wm_scheduler import TauTeacherScheduler
-from data.util        import unpickle_data
-from dataloader       import RIR_Dataset, create_dataloader
-from loss_fn          import MSSTFT_Loss, STFT_Loss, WM_Loss
-from icecream import ic; ic.disable()
-
+from new_dataloader import get_dataloader, MyLibriSpeech, RIRS_Dataset
+from loss_fn import MSSTFT_Loss, STFT_Loss, WM_Loss
+from icecream import ic
 from tqdm import tqdm
 
-import warnings
+ic.disable()
 warnings.filterwarnings("ignore")
 
 # ─────────────────── logger ───────────────────
@@ -25,7 +25,7 @@ for h in (logging.StreamHandler(), logging.FileHandler("training.log")):
     h.setFormatter(fmt); logger.addHandler(h)
 
 # ─────────────────── training loop ───────────────────
-def train_loop(train_dl, val_dl, msg_len=8,
+def train_loop(audio_dl_train, audio_dl_val, rir_dl_train, rir_dl_val, msg_len=8,
                epochs=100, lr=1e-4, device="cuda"):
     experiment_time = datetime.now().strftime('%m%d_%H%M')
     separator = ReEcho_Separator().to(device)
@@ -33,7 +33,6 @@ def train_loop(train_dl, val_dl, msg_len=8,
     watermarker = ReEcho_WM(msg_len=msg_len).to(device)
     spec_transform = SpectrogramTransform().to(device)
 
-    wm_scheduler = TauTeacherScheduler(total_steps=epochs*len(train_dl))
     optimizer = torch.optim.Adam(
         [
             {"params": separator.parameters(), "lr": lr},
@@ -46,23 +45,27 @@ def train_loop(train_dl, val_dl, msg_len=8,
     stft_loss.to(device)
     ms_loss.to(device)
     wm_loss.to(device)
+
+
     for ep in range(1, epochs + 1):
         # ---- train ----
         separator.train()
         generator.train()
         watermarker.train()
 
-        # Use tqdm with minimal output for nohup
-        train_pbar = tqdm(train_dl, desc=f"Epoch {ep}/{epochs} [Train]", 
-                         leave=False, disable=True)  # disable=True reduces output
+        # Training progress bar
         running_loss = 0.0
         running_dereverb_loss = 0.0
         running_rir_loss = 0.0
         running_decode_loss = 0.0
-        for rs, clean, rir in train_pbar:
-            rs, clean, rir = rs.to(device), clean.to(device), rir.to(device)
+        train_pbar = tqdm(zip(audio_dl_train, rir_dl_train), total=len(audio_dl_train), desc=f"Epoch {ep}/{epochs} [Train]")
+        for audio, rir in train_pbar:
+            audio, rir = audio.to(device), rir.to(device)
+            rs = torchaudio.functional.fftconvolve(audio, rir, mode='full')
+            rs = rs[:, :audio.shape[1]]
+
             # generate msg
-            msg = torch.randint(0, 2, (rs.shape[0], watermarker.msg_len), device=device)
+            msg = torch.randint(0, 2, (audio.shape[0], watermarker.msg_len), device=device)
 
             optimizer.zero_grad()
 
@@ -76,8 +79,8 @@ def train_loop(train_dl, val_dl, msg_len=8,
             rir_est = generator(rir_emb_wm)
 
             # resynthesize and re-feature extraction
-            clean_permuted = clean[torch.randperm(clean.shape[0])]
-            rs_resyn = torchaudio.functional.fftconvolve(clean_permuted, rir_est, mode='full')
+            audio_permuted = audio[torch.randperm(audio.shape[0])]
+            rs_resyn = torchaudio.functional.fftconvolve(audio_permuted, rir_est, mode='full')
             rs_resyn = rs_resyn[:, :rs.shape[1]]
 
             # watermark extraction
@@ -85,7 +88,7 @@ def train_loop(train_dl, val_dl, msg_len=8,
             msg_logit = watermarker.extraction(rs_resyn_spec, mode='logit')
 
             # loss
-            dereverb_loss = stft_loss(spec_masked, spec_transform(clean))
+            dereverb_loss = stft_loss(spec_masked, spec_transform(audio))
             rir_loss = ms_loss(rir_est, rir)
             decode_loss = wm_loss(msg_logit, msg)
             total_loss = dereverb_loss + rir_loss + decode_loss
@@ -96,10 +99,18 @@ def train_loop(train_dl, val_dl, msg_len=8,
             running_dereverb_loss += dereverb_loss.item()
             running_rir_loss += rir_loss.item()
             running_decode_loss += decode_loss.item()
-        tr_loss = running_loss / len(train_dl)
-        tr_dereverb_loss = running_dereverb_loss / len(train_dl)
-        tr_rir_loss = running_rir_loss / len(train_dl)
-        tr_decode_loss = running_decode_loss / len(train_dl)
+            
+            # Update progress bar with current loss
+            train_pbar.set_postfix({
+                'total': f'{total_loss.item():.4f}',
+                'dereverb': f'{dereverb_loss.item():.4f}',
+                'rir': f'{rir_loss.item():.4f}',
+                'decode': f'{decode_loss.item():.4f}'
+            })
+        tr_loss = running_loss / len(audio_dl_train)
+        tr_dereverb_loss = running_dereverb_loss / len(audio_dl_train)
+        tr_rir_loss = running_rir_loss / len(audio_dl_train)
+        tr_decode_loss = running_decode_loss / len(audio_dl_train)
         
         print(f"Epoch {ep}/{epochs} | train_total: {tr_loss:.4f} | dereverb: {tr_dereverb_loss:.4f} | rir: {tr_rir_loss:.4f} | decode: {tr_decode_loss:.4f}", flush=True)
         logger.info(f"Epoch {ep}/{epochs} | train_total: {tr_loss:.4f} | dereverb: {tr_dereverb_loss:.4f} | rir: {tr_rir_loss:.4f} | decode: {tr_decode_loss:.4f}")
@@ -113,22 +124,22 @@ def train_loop(train_dl, val_dl, msg_len=8,
             val_dereverb_loss = 0.0
             val_rir_loss = 0.0
             val_ber = 0.0
-            # Use tqdm with minimal output for nohup
-            val_pbar = tqdm(val_dl, desc=f"Epoch {ep}/{epochs} [Val]", 
-                           leave=False, disable=True)  # disable=True reduces output
-            
+            # Validation progress bar
             with torch.no_grad():
-                for rs, clean, rir in val_pbar:
-                    rs, clean, rir = rs.to(device), clean.to(device), rir.to(device)
-                    msg = torch.randint(0, 2, (rs.shape[0], watermarker.msg_len), device=device)
+                val_pbar = tqdm(zip(audio_dl_val, rir_dl_val), total=len(audio_dl_val), desc=f"Epoch {ep}/{epochs} [Val]")
+                for audio, rir in val_pbar:
+                    audio, rir = audio.to(device), rir.to(device)
+                    rs = torchaudio.functional.fftconvolve(audio, rir, mode='full')
+                    rs = rs[:, :audio.shape[1]]
+                    msg = torch.randint(0, 2, (audio.shape[0], watermarker.msg_len), device=device)
 
                     spec_masked, rir_emb = separator(rs)
                     rir_emb_wm = watermarker.embedding(msg, rir_emb)
                     rir_est = generator(rir_emb_wm)
 
                     # resynthesize and re-feature extraction
-                    clean_permuted = clean[torch.randperm(clean.shape[0])]
-                    rs_resyn = torchaudio.functional.fftconvolve(clean_permuted, rir_est, mode='full')
+                    audio_permuted = audio[torch.randperm(audio.shape[0])]
+                    rs_resyn = torchaudio.functional.fftconvolve(audio_permuted, rir_est, mode='full')
                     rs_resyn = rs_resyn[:, :rs.shape[1]]
 
                     # watermark extraction
@@ -136,26 +147,26 @@ def train_loop(train_dl, val_dl, msg_len=8,
                     msg_logit = watermarker.extraction(rs_resyn_spec, mode='logit')
 
                     # loss
-                    dereverb_loss = stft_loss(spec_masked, spec_transform(clean))
+                    dereverb_loss = stft_loss(spec_masked, spec_transform(audio))
                     rir_loss = ms_loss(rir_est, rir)
                     ber = (msg_logit != msg).float().mean()
                     
                     val_dereverb_loss += dereverb_loss.item()
                     val_rir_loss += rir_loss.item()
                     val_ber += ber.item()
-            va_dereverb_loss = val_dereverb_loss / len(val_dl)
-            va_rir_loss = val_rir_loss / len(val_dl)
-            va_ber = val_ber / len(val_dl)
+                    
+                    # Update validation progress bar
+                    val_pbar.set_postfix({
+                        'dereverb': f'{dereverb_loss.item():.4f}',
+                        'rir': f'{rir_loss.item():.4f}',
+                        'ber': f'{ber.item():.4f}'
+                    })
+            va_dereverb_loss = val_dereverb_loss / len(audio_dl_val)
+            va_rir_loss = val_rir_loss / len(audio_dl_val)
+            va_ber = val_ber / len(audio_dl_val)
             
             print(f"Epoch {ep}/{epochs} | train_total: {tr_loss:.4f} | val_dereverb: {va_dereverb_loss:.4f} | val_rir: {va_rir_loss:.4f} | val_ber: {va_ber:.4f}", flush=True)
-            logger.info(f"Epoch {ep}/{epochs} | train_total: {tr_loss:.4f} | val_dereverb: {va_dereverb_loss:.4f} | val_rir: {va_rir_loss:.4f} | val_ber: {va_ber:.4f}")
-        else:
-            print(f"Epoch {ep}/{epochs} | train_total: {tr_loss:.4f} | val --", flush=True)
-            logger.info(f"Epoch {ep}/{epochs} | train_total: {tr_loss:.4f} | val --")
-        
-        # Save model every 20 epochs
-        if ep % 20 == 0:
-            # Create checkpoints directory if it doesn't exist
+            logger.info(f"Epoch {ep}/{epochs} | train_total: {tr_loss:.4f} | val_dereverb: {va_dereverb_loss:.4f} | val_rir: {va_rir_loss:.4f} | val_ber: {va_ber:.4f}")      
             
             checkpoint_dir = f"checkpoints/{experiment_time}"
             os.makedirs(checkpoint_dir, exist_ok=True)
@@ -180,28 +191,23 @@ def train_loop(train_dl, val_dl, msg_len=8,
 
 # ─────────────────── main ───────────────────
 def main():
-    print("Loading training data...")
-    # train_entries = unpickle_data("../data/synthetic/dev-real-rir_real_100.pkl")
-    train_entries = unpickle_data("../data/synthetic/test-real-rir_real_2.pkl")
-    print(f"Loaded {len(train_entries)} training entries")
-    
-    print("Loading validation data...")
-    val_entries   = unpickle_data("../data/synthetic/test-real-rir_real_2.pkl")
-    print(f"Loaded {len(val_entries)} validation entries")
+    audio_dataset_train = MyLibriSpeech(url="train-clean-100",sr=16000, duration=1)
+    audio_dataset_val = MyLibriSpeech(url="dev-clean",sr=16000, duration=1)
+    rir_dataset_full = RIRS_Dataset(sr=16000, duration=2)
 
-    print("Creating datasets...")
-    tr_ds = RIR_Dataset(train_entries)
-    va_ds = RIR_Dataset(val_entries)
-    print(f"Training dataset size: {len(tr_ds)}")
-    print(f"Validation dataset size: {len(va_ds)}")
-    
-    print("Creating dataloaders...")
-    tr_dl, va_dl = create_dataloader(tr_ds, va_ds, batch_size=32, num_workers=16)
-    print(f"Training batches: {len(tr_dl)}")
-    print(f"Validation batches: {len(va_dl)}")
-    
+    # split rir dataset
+    total_len = len(rir_dataset_full)
+    train_size = int(0.8 * total_len)
+    val_size = total_len - train_size
+    rir_dataset_train, rir_dataset_val = random_split(
+        rir_dataset_full, [train_size, val_size],
+        generator=torch.Generator().manual_seed(42)
+    )
+    audio_dl_train, rir_dl_train = get_dataloader(audio_dataset_train, rir_dataset_train, batch_size=48, num_workers=64, persistent_workers=True, pin_memory=True)
+    audio_dl_val, rir_dl_val = get_dataloader(audio_dataset_val, rir_dataset_val, batch_size=48, num_workers=64, persistent_workers=True, pin_memory=True)
     print("Starting training...")
-    train_loop(tr_dl, va_dl, msg_len=16, epochs=100, lr=1e-4)
+    # just for test
+    train_loop(audio_dl_train, audio_dl_val, rir_dl_train, rir_dl_val, msg_len=5, epochs=20, lr=1e-4)
 
 if __name__ == "__main__":
     main()
