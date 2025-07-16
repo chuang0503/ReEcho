@@ -144,7 +144,7 @@ def train_loop(audio_dl_train, audio_dl_val, rir_dl_train, rir_dl_val, msg_len=8
 
                     # watermark extraction
                     rs_resyn_spec = spec_transform(rs_resyn)
-                    msg_logit = watermarker.extraction(rs_resyn_spec, mode='logit')
+                    msg_logit = watermarker.extraction(rs_resyn_spec, mode='msg')
 
                     # loss
                     dereverb_loss = stft_loss(spec_masked, spec_transform(audio))

@@ -39,8 +39,8 @@ class MSSTFT_Loss(nn.Module):
         predicted = predicted[..., :min_len]
         target = target[..., :min_len]
         # normalize
-        predicted = F.normalize(predicted, dim=2, p=2)
-        target = F.normalize(target, dim=2, p=2)
+        predicted = predicted / predicted.abs().max()
+        target = target / target.abs().max()
         # compute loss
         log_mag_loss, spec_conv_loss = 0, 0
         for spec_transform in self.multi_scale:
@@ -61,7 +61,7 @@ class MSSTFT_Loss(nn.Module):
             log_mag_loss += log_mag_diff.abs().mean()
             ic(log_mag_loss, spec_conv_loss)
 
-        loss = log_mag_loss*self.weights[0] + spec_conv_loss*self.weights[1]
+        loss = (log_mag_loss*self.weights[0] + spec_conv_loss*self.weights[1]) / (self.weights[0] + self.weights[1])
 
 
         return loss
