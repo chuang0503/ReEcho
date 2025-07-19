@@ -62,7 +62,7 @@ def train_loop(audio_dl_train, audio_dl_val, rir_dl_train, rir_dl_val, msg_len=8
         for audio, rir in train_pbar:
             audio, rir = audio.to(device), rir.to(device)
             rs = torchaudio.functional.fftconvolve(audio, rir, mode='full')
-            rs = rs[:, :audio.shape[1]]
+            rs = rs[..., :audio.shape[-1]]
 
             # generate msg
             msg = torch.randint(0, 2, (audio.shape[0], watermarker.msg_len), device=device)
@@ -130,7 +130,7 @@ def train_loop(audio_dl_train, audio_dl_val, rir_dl_train, rir_dl_val, msg_len=8
                 for audio, rir in val_pbar:
                     audio, rir = audio.to(device), rir.to(device)
                     rs = torchaudio.functional.fftconvolve(audio, rir, mode='full')
-                    rs = rs[:, :audio.shape[1]]
+                    rs = rs[..., :audio.shape[-1]]
                     msg = torch.randint(0, 2, (audio.shape[0], watermarker.msg_len), device=device)
 
                     spec_masked, rir_emb = separator(rs)

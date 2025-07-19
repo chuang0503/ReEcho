@@ -30,7 +30,7 @@ def test_loop(audio_dl_val, rir_dl_val, msg_len=8, device="cuda"):
     wm_loss.to(device)
     edc_loss.to(device)
 
-    ckpt = torch.load("checkpoints/0718_2141/rir_model_epoch_160.pth", map_location=device) 
+    ckpt = torch.load("checkpoints/0719_0145/rir_model_epoch_200.pth", map_location=device) 
     separator.load_state_dict(ckpt['separator_state_dict'])
     generator.load_state_dict(ckpt['generator_state_dict'])
     watermarker.load_state_dict(ckpt['watermarker_state_dict'])
@@ -49,7 +49,7 @@ def test_loop(audio_dl_val, rir_dl_val, msg_len=8, device="cuda"):
             for audio, rir in val_pbar:
                 audio, rir = audio.to(device), rir.to(device)
                 rs = torchaudio.functional.fftconvolve(audio, rir, mode='full')
-                rs = rs[:, :audio.shape[1]]
+                rs = rs[..., :audio.shape[-1]]
                 msg = torch.randint(0, 2, (audio.shape[0], watermarker.msg_len), device=device)
 
                 spec_masked, rir_emb = separator(rs)
@@ -59,7 +59,7 @@ def test_loop(audio_dl_val, rir_dl_val, msg_len=8, device="cuda"):
                 # resynthesize and re-feature extraction
                 audio_permuted = audio[torch.randperm(audio.shape[0])]
                 rs_resyn = torchaudio.functional.fftconvolve(audio_permuted, rir_est, mode='full')
-                rs_resyn = rs_resyn[:, :rs.shape[1]]
+                rs_resyn = rs_resyn[..., :rs.shape[-1]]
 
                 # watermark extraction
                 rs_resyn_spec = spec_transform(rs_resyn)
@@ -86,7 +86,7 @@ def test_loop(audio_dl_val, rir_dl_val, msg_len=8, device="cuda"):
         
             print(f"val_dereverb: {va_dereverb_loss:.4f} | val_rir: {va_rir_loss:.4f} | val_ber: {va_ber:.4f}", flush=True)
 
-            return audio, rir, rs, rir_est
+            return audio, rir, rs, spec_masked, rir_est
 
 
 
