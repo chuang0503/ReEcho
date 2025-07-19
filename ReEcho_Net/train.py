@@ -10,7 +10,7 @@ from torch.utils.data import random_split
 
 from model import *
 from new_dataloader import get_dataloader, MyLibriSpeech, RIRS_Dataset
-from loss_fn import MSSTFT_Loss, STFT_Loss, WM_Loss
+from loss_fn import MSSTFT_Loss, STFT_Loss, WM_Loss, EDCLoss
 from icecream import ic
 from tqdm import tqdm
 
@@ -41,11 +41,11 @@ def train_loop(audio_dl_train, audio_dl_val, rir_dl_train, rir_dl_val, msg_len=8
         ],
         lr=lr)
     
-    stft_loss, ms_loss, wm_loss = STFT_Loss(), MSSTFT_Loss(), WM_Loss(msg_len=msg_len)
+    stft_loss, ms_loss, wm_loss, edc_loss = STFT_Loss(), MSSTFT_Loss(), WM_Loss(msg_len=msg_len), EDCLoss()
     stft_loss.to(device)
     ms_loss.to(device)
     wm_loss.to(device)
-
+    edc_loss.to(device)
 
     for ep in range(1, epochs + 1):
         # ---- train ----
@@ -89,7 +89,7 @@ def train_loop(audio_dl_train, audio_dl_val, rir_dl_train, rir_dl_val, msg_len=8
 
             # loss
             dereverb_loss = stft_loss(spec_masked, spec_transform(audio))
-            rir_loss = ms_loss(rir_est, rir)
+            rir_loss = ms_loss(rir_est, rir) + edc_loss(rir_est, rir)
             decode_loss = wm_loss(msg_logit, msg)
             total_loss = dereverb_loss + rir_loss + decode_loss
             total_loss.backward()
@@ -116,7 +116,7 @@ def train_loop(audio_dl_train, audio_dl_val, rir_dl_train, rir_dl_val, msg_len=8
         logger.info(f"Epoch {ep}/{epochs} | train_total: {tr_loss:.4f} | dereverb: {tr_dereverb_loss:.4f} | rir: {tr_rir_loss:.4f} | decode: {tr_decode_loss:.4f}")
 
         # ---- val (every 5 epochs) ----
-        if ep % 5 == 0:
+        if ep % 20 == 0:
             separator.eval()
             generator.eval()
             watermarker.eval()
@@ -180,9 +180,7 @@ def train_loop(audio_dl_train, audio_dl_val, rir_dl_train, rir_dl_val, msg_len=8
                 'train_loss': tr_loss,
                 'train_dereverb_loss': tr_dereverb_loss,
                 'train_rir_loss': tr_rir_loss,
-                'val_dereverb_loss': va_dereverb_loss if ep % 5 == 0 else None,
-                'val_rir_loss': va_rir_loss if ep % 5 == 0 else None,
-                'val_ber': va_ber if ep % 5 == 0 else None,
+                'train_decode_loss': tr_decode_loss,
             }, f'{checkpoint_dir}/rir_model_epoch_{ep}.pth')
             print(f"Model saved at epoch {ep}")
             logger.info(f"Model saved at epoch {ep}")
@@ -191,8 +189,8 @@ def train_loop(audio_dl_train, audio_dl_val, rir_dl_train, rir_dl_val, msg_len=8
 
 # ─────────────────── main ───────────────────
 def main():
-    audio_dataset_train = MyLibriSpeech(url="train-clean-100",sr=16000, duration=1)
-    audio_dataset_val = MyLibriSpeech(url="dev-clean",sr=16000, duration=1)
+    audio_dataset_train = MyLibriSpeech(url="dev-clean",sr=16000, duration=2)
+    audio_dataset_val = MyLibriSpeech(url="dev-clean",sr=16000, duration=2)
     rir_dataset_full = RIRS_Dataset(sr=16000, duration=2)
 
     # split rir dataset
@@ -203,11 +201,11 @@ def main():
         rir_dataset_full, [train_size, val_size],
         generator=torch.Generator().manual_seed(42)
     )
-    audio_dl_train, rir_dl_train = get_dataloader(audio_dataset_train, rir_dataset_train, batch_size=48, num_workers=64, persistent_workers=True, pin_memory=True)
-    audio_dl_val, rir_dl_val = get_dataloader(audio_dataset_val, rir_dataset_val, batch_size=48, num_workers=64, persistent_workers=True, pin_memory=True)
+    audio_dl_train, rir_dl_train = get_dataloader(audio_dataset_train, rir_dataset_train, batch_size=40, num_workers=64, persistent_workers=True, pin_memory=True)
+    audio_dl_val, rir_dl_val = get_dataloader(audio_dataset_val, rir_dataset_val, batch_size=40, num_workers=64, persistent_workers=True, pin_memory=True)
     print("Starting training...")
     # just for test
-    train_loop(audio_dl_train, audio_dl_val, rir_dl_train, rir_dl_val, msg_len=5, epochs=20, lr=1e-4)
+    train_loop(audio_dl_train, audio_dl_val, rir_dl_train, rir_dl_val, msg_len=5, epochs=500, lr=1e-4)
 
 if __name__ == "__main__":
     main()

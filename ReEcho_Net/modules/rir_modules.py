@@ -94,7 +94,7 @@ class MaskNet_IRM(nn.Module):
 
         # 3. output projection
         self.output_proj = nn.Linear(hidden_dim, output_dim)
-        self.mask_act = nn.Tanh()
+        self.mask_act = nn.Sigmoid()
 
     def forward(self, x_in): # conformer output (B, T, d_model)
         x_in = self.input_proj(x_in).transpose(1, 2) # (B, hidden_dim, T)
@@ -103,7 +103,7 @@ class MaskNet_IRM(nn.Module):
             x_in = res_block(x_in)
         x_in = x_in.transpose(1, 2) # (B, T, hidden_dim)
         mask = self.output_proj(x_in) # (B, T, F)
-        mask = self.mask_act(mask) # (B, T, F)
+        mask = self.mask_act(mask).transpose(1, 2) # (B, F, T)
         return mask
         
 # ─────────────────── RIR extraction ───────────────────
@@ -120,12 +120,12 @@ class RIREmbedding(nn.Module):
     def forward(self, x_in):
         x_in = self.input_proj(x_in) # conformer output (B, T, hidden)
         emb = self.pool(x_in) # (B, hidden)
-        emb = F.normalize(emb, p=2, dim=1)
+        # emb = F.normalize(emb, p=2, dim=1) # Notice I change here!!!!!
 
         return emb
 
 class RIRDecoder_Decor(nn.Module):
-    def __init__(self, input_dim=128, hidden_dim=32, bp_kernel_size=1023, sr=16000, early_rir_duration=0.08, num_decay=20):
+    def __init__(self, input_dim=128, bp_kernel_size=1023, sr=16000, early_rir_duration=0.02, num_decay=20): # Notice I change here
         super(RIRDecoder_Decor, self).__init__()
         self.sr = sr
         self.early_rir_duration = early_rir_duration
@@ -135,12 +135,12 @@ class RIRDecoder_Decor(nn.Module):
         self.num_decay = num_decay
 
         # pre conv
-        self.conv_pre = ConvTranspose1d(hidden_dim, 100, in_channels=input_dim, stride=1, padding=0, skip_transpose=True) # transposed !! (B, C, T)!!!
+        self.conv_pre = ConvTranspose1d(input_dim, 100, in_channels=input_dim, stride=1, padding=0, skip_transpose=True) # transposed !! (B, C, T)!!!
 
 
         # early reflection
         self.generator = HifiganGenerator(
-            in_channels = hidden_dim,
+            in_channels = input_dim,
             out_channels = self.num_filters + 1,
             resblock_type = "1",
             resblock_dilation_sizes = [[1, 3, 5], [1, 3, 5], [1, 3, 5]],
@@ -167,15 +167,15 @@ class RIRDecoder_Decor(nn.Module):
         self.backbone = nn.Sequential(
             nn.Linear(input_dim, 256),
             Swish(),
-            nn.BatchNorm1d(256),
+            nn.GroupNorm(8, 256),
 
             nn.Linear(256, 256),
             Swish(),
-            nn.BatchNorm1d(256),
+            nn.GroupNorm(8, 256),
 
             nn.Linear(256, 512),
             Swish(),
-            nn.BatchNorm1d(512),
+            nn.GroupNorm(8, 512),
         )
         self.amplitude_head = nn.Sequential(
             nn.Linear(512, 200),
@@ -238,7 +238,75 @@ class RIRDecoder_Decor(nn.Module):
         
         return rir, late_reverb_freq, filtered_noise
 
+class RIRDecoder_Fins(nn.Module):
+    def __init__(self, input_dim=128, bp_kernel_size=1023, sr=16000, early_rir_duration=0.05):
+        super(RIRDecoder_Fins, self).__init__()
+        self.sr = sr
+        self.early_rir_duration = early_rir_duration
+        self.early_rir_length = int(early_rir_duration * sr)
+        self.bp_kernel_size = bp_kernel_size
+        self.bp_filter_weights, self.num_filters = get_bandpass_filters(sr, bp_kernel_size)
+        ic(self.num_filters)
 
+        # pre conv
+        self.conv_pre = ConvTranspose1d(input_dim, 100, in_channels=input_dim, stride=1, padding=0, skip_transpose=True) # transposed !! (B, C, T)!!!
+
+        self.generator = HifiganGenerator(
+            in_channels = input_dim,
+            out_channels = self.num_filters + 1,
+            resblock_type = "1",
+            resblock_dilation_sizes = [[1, 3, 5], [1, 3, 5], [1, 3, 5]],
+            resblock_kernel_sizes = [3, 7, 11],
+            upsample_kernel_sizes = [16, 16, 4, 4],
+            upsample_initial_channel = 512,
+            upsample_factors = [8, 8, 2, 2],
+        )
+
+        self.generator.conv_post = Conv1d(
+            in_channels=32,
+            out_channels= self.num_filters + 1,
+            kernel_size=7,
+            stride=1,
+            padding="same",
+            skip_transpose=True,
+            bias=True,
+            weight_norm=True,
+        )
+
+        self.filter = nn.Conv1d(
+            self.num_filters,
+            self.num_filters,
+            kernel_size=1023,
+            stride=1,
+            padding='same',
+            groups=self.num_filters,
+            bias=False,
+        )
+        self.filter.weight.data = self.bp_filter_weights.unsqueeze(1)
+        self.filter.weight.requires_grad = True
+
+    def forward(self, rir_emb, noise=None): # require B, C, T
+        # pre conv
+        seed = self.conv_pre(rir_emb.unsqueeze(-1)) #(B, hidden, T=100)
+        out = self.generator(seed) # (B, N, T)
+        ic(out.shape)
+        # 1. direct path and early RIR
+        early = torch.zeros_like(out[:, 0, :])
+        early[:, :self.early_rir_length] = out[:, 0, :self.early_rir_length]
+
+        # 2. late RIR
+        if noise is None:
+            noise = torch.randn_like(out[:, 1:, :]).detach()
+        ic(noise.shape)
+        mask = torch.sigmoid(out[:, 1:, :])
+        filtered_noise = self.filter(noise) * mask
+        late = out[:, 1:, :] * filtered_noise
+
+        # superpose
+        rir_ch = torch.cat([early.unsqueeze(1), late], dim=1) # (B, N+1, T)
+        rir = rir_ch.sum(dim=1, keepdim=True) # (B, 1, T)
+        
+        return rir, rir_ch, filtered_noise
         
 # ─────────────────── test ───────────────────
 def test_decor():
@@ -260,7 +328,7 @@ def test_masknet():
         
 if __name__ == "__main__":
     test_masknet()
-    # test_decor()
+    test_decor()
 
 
 

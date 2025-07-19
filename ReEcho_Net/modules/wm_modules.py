@@ -81,7 +81,7 @@ class RIREmbedding(nn.Module):
     def forward(self, x_in):
         x_in = self.input_proj(x_in) # conformer output (B, T, hidden)
         emb = self.pool(x_in) # (B, hidden)
-        emb = F.normalize(emb, p=2, dim=1)
+        # emb = F.normalize(emb, p=2, dim=1)
 
         return emb
 

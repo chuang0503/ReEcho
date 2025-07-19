@@ -9,7 +9,7 @@ from torch.utils.data import DataLoader, Dataset, Sampler
 import torchaudio.functional as F
 from torch.utils.data import DistributedSampler
 
-ROOT_PATH = "/home/exouser/re-rir/ReEcho/data" # root path of the dataset
+ROOT_PATH = "/home/exouser/re-rir/ReEcho_v2/data" # root path of the dataset
 
 # utils
 def pad_truncate_norm(waveform, target_length):

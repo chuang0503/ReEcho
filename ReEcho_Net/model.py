@@ -80,7 +80,7 @@ class ReEcho_Separator(nn.Module):
 
         # 3. masknet
         mask = self.masknet(out) # (B, T, F)
-        spec_masked = mask.transpose(1, 2) * spec # (B, F, T)
+        spec_masked = mask * spec # (B, F, T)
         ic(spec_masked.shape, "B, F, T")
 
         # 4. rir
@@ -91,12 +91,11 @@ class ReEcho_Separator(nn.Module):
 class ReEcho_Generator(nn.Module):
     def __init__(self):
         super(ReEcho_Generator, self).__init__()
-        self.rir_decoder = RIRDecoder_Decor()
+        self.rir_decoder = RIRDecoder_Decor() # TODO: I change here
     
     def forward(self, rir_emb):
         # 1. rir generation
         rir_est,_,_ = self.rir_decoder(rir_emb) # (B, 1, T)
-        rir_est = F.normalize(rir_est, dim=2, p=2)
 
         return rir_est
 

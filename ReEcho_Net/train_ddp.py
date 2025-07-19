@@ -16,7 +16,7 @@ from torch.utils.data import random_split
 
 from model import *
 from new_dataloader import RIRS_Dataset, get_dataloader_ddp, MyLibriSpeech
-from loss_fn import MSSTFT_Loss, STFT_Loss, WM_Loss
+from loss_fn import MSSTFT_Loss, STFT_Loss, WM_Loss, EDCLoss
 from icecream import ic
 
 ic.disable()
@@ -50,17 +50,6 @@ def train_loop(audio_dl_train, rir_dl_train, audio_dl_val, rir_dl_val, local_ran
     watermarker = ReEcho_WM(msg_len=msg_len).to(device)
     spec_transform = SpectrogramTransform().to(device)
 
-    # ------------ load checkpoint ------------
-    # checkpoint = torch.load(f"zoo/Decor_joint_40.pth", map_location=device)
-    # enc.load_state_dict(checkpoint['encoder_state_dict'])
-    # mask_net.load_state_dict(checkpoint['mask_net_state_dict'])
-    # rir_emb_net.load_state_dict(checkpoint['rir_emb_net_state_dict'])
-    # rir_dec_net.load_state_dict(checkpoint['rir_dec_net_state_dict'])
-
-    # ------------ ddp ------------
-    separator = DDP(separator, device_ids=[local_rank])
-    generator = DDP(generator, device_ids=[local_rank])
-    watermarker = DDP(watermarker, device_ids=[local_rank])
     optimizer = torch.optim.Adam(
         [
             {"params": separator.parameters(), "lr": lr},
@@ -68,11 +57,25 @@ def train_loop(audio_dl_train, rir_dl_train, audio_dl_val, rir_dl_val, local_ran
             {"params": watermarker.parameters(), "lr": lr},
         ],
         lr=lr)
+
+    # # ------------ load checkpoint ------------
+    # checkpoint = torch.load(f"checkpoints/0717_0040/rir_model_epoch_60.pth", map_location=device)
+    # separator.load_state_dict(checkpoint['separator_state_dict'])
+    # generator.load_state_dict(checkpoint['generator_state_dict'])
+    # watermarker.load_state_dict(checkpoint['watermarker_state_dict'])
+    # optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
+
+    # ------------ ddp ------------
+    separator = DDP(separator, device_ids=[local_rank])
+    generator = DDP(generator, device_ids=[local_rank])
+    watermarker = DDP(watermarker, device_ids=[local_rank])
     
-    stft_loss, ms_loss, wm_loss = STFT_Loss(), MSSTFT_Loss(), WM_Loss(msg_len=msg_len)
+    
+    stft_loss, ms_loss, wm_loss, edc_loss = STFT_Loss(), MSSTFT_Loss(), WM_Loss(msg_len=msg_len), EDCLoss()
     stft_loss.to(device)
     ms_loss.to(device)
     wm_loss.to(device)
+    edc_loss.to(device)
     for ep in range(1, epochs + 1):
         # ---- train ----
         separator.train()
@@ -99,7 +102,7 @@ def train_loop(audio_dl_train, rir_dl_train, audio_dl_val, rir_dl_val, local_ran
             # feature extraction
             spec_masked, rir_emb = separator(rs)
             rir_emb_wm = watermarker.module.embedding(msg, rir_emb)
-            rir_est = generator(rir_emb_wm)
+            rir_est = generator(rir_emb) # NOTICE！！！！ I change here
             # resynthesize
             audio_permuted = audio[torch.randperm(audio.shape[0])]
             rs_resyn = torchaudio.functional.fftconvolve(audio_permuted, rir_est, mode='full')
@@ -110,7 +113,7 @@ def train_loop(audio_dl_train, rir_dl_train, audio_dl_val, rir_dl_val, local_ran
             # loss
             dereverb_loss = stft_loss(spec_masked, spec_transform(audio))
             rir_loss = ms_loss(rir_est, rir)
-            decode_loss = wm_loss(msg_logit, msg)
+            decode_loss = wm_loss(msg_logit, msg) * 0 # NOTICE！！！！ I change here
             total_loss = dereverb_loss + rir_loss + decode_loss
             total_loss.backward()
             optimizer.step()
@@ -205,20 +208,12 @@ def train_loop(audio_dl_train, rir_dl_train, audio_dl_val, rir_dl_val, local_ran
 # ─────────────────── main ───────────────────
 def main():
     print("Loading training data...")
-    audio_dataset_train = MyLibriSpeech(url="train-clean-100",sr=16000, duration=1)
-    audio_dataset_val = MyLibriSpeech(url="dev-clean",sr=16000, duration=1)
+    audio_dataset_train = MyLibriSpeech(url="train-clean-100",sr=16000, duration=2)
+    audio_dataset_val = MyLibriSpeech(url="dev-clean",sr=16000, duration=2)
     rir_dataset_full = RIRS_Dataset(sr=16000, duration=2)
 
-    # split rir dataset
-    total_len = len(rir_dataset_full)
-    train_size = int(0.8 * total_len)
-    val_size = total_len - train_size
-    rir_dataset_train, rir_dataset_val = random_split(
-        rir_dataset_full, [train_size, val_size],
-        generator=torch.Generator().manual_seed(42)
-    )
-    audio_dl_train, rir_dl_train = get_dataloader_ddp(audio_dataset_train, rir_dataset_train, batch_size=48, num_workers=64, persistent_workers=True, pin_memory=True)
-    audio_dl_val, rir_dl_val = get_dataloader_ddp(audio_dataset_val, rir_dataset_val, batch_size=48, num_workers=64, persistent_workers=True, pin_memory=True)
+    audio_dl_train, rir_dl_train = get_dataloader_ddp(audio_dataset_train, rir_dataset_full, batch_size=40, num_workers=64, persistent_workers=True, pin_memory=True)
+    audio_dl_val, rir_dl_val = get_dataloader_ddp(audio_dataset_val, rir_dataset_full, batch_size=40, num_workers=64, persistent_workers=True, pin_memory=True)
     
     print("Starting training...")
     train_loop(audio_dl_train, rir_dl_train, audio_dl_val, rir_dl_val, local_rank, msg_len=5, epochs=200, lr=1e-4)
