@@ -12,11 +12,11 @@ import torch.distributed as dist
 from torch.nn.parallel import DistributedDataParallel as DDP
 import torch.nn.functional as F
 from tqdm import tqdm
-from torch.utils.data import random_split
+from torch.utils.data import random_split, ConcatDataset
 
 from model import *
 from new_dataloader import RIRS_Dataset, get_dataloader_ddp, MyLibriSpeech, BUT_Dataset
-from loss_fn import MSSTFT_Loss, STFT_Loss, WM_BCE_Loss, WM_Hinge_Loss, EDCLoss
+from loss_fn import MSSTFT_Loss, STFT_Loss, WM_BCE_Loss, EDCLoss
 from icecream import ic
 
 ic.disable()
@@ -210,11 +210,14 @@ def main():
     print("Loading training data...")
     audio_dataset_train = MyLibriSpeech(url="train-clean-100",sr=16000, duration=2)
     audio_dataset_val = MyLibriSpeech(url="dev-clean",sr=16000, duration=2)
-    rir_dataset_train = BUT_Dataset(sr=16000, duration=2)
-    rir_dataset_val = RIRS_Dataset(sr=16000, duration=2)
+    rir_1 = BUT_Dataset(sr=16000, duration=2)
+    rir_2 = RIRS_Dataset(sr=16000, duration=2)
 
-    audio_dl_train, rir_dl_train = get_dataloader_ddp(audio_dataset_train, rir_dataset_train, batch_size=40, num_workers=64, persistent_workers=True, pin_memory=True)
-    audio_dl_val, rir_dl_val = get_dataloader_ddp(audio_dataset_val, rir_dataset_val, batch_size=40, num_workers=64, persistent_workers=True, pin_memory=True)
+    rir_dataset = ConcatDataset([rir_1, rir_2])
+    rir_train, rir_val = random_split(rir_dataset, [0.8, 0.2], generator=torch.Generator().manual_seed(42))
+
+    audio_dl_train, rir_dl_train = get_dataloader_ddp(audio_dataset_train, rir_train, batch_size=40, num_workers=64, persistent_workers=True, pin_memory=True)
+    audio_dl_val, rir_dl_val = get_dataloader_ddp(audio_dataset_val, rir_val, batch_size=40, num_workers=64, persistent_workers=True, pin_memory=True)
     
     print("Starting training...")
     train_loop(audio_dl_train, rir_dl_train, audio_dl_val, rir_dl_val, local_rank, msg_len=5, epochs=200, lr=1e-4)

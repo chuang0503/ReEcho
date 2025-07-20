@@ -6,10 +6,10 @@ import os
 from datetime import datetime
 import warnings
 
-from torch.utils.data import random_split
+from torch.utils.data import random_split, ConcatDataset
 
 from model import *
-from new_dataloader import get_dataloader, MyLibriSpeech, RIRS_Dataset
+from new_dataloader import get_dataloader, MyLibriSpeech, RIRS_Dataset, BUT_Dataset
 from loss_fn import MSSTFT_Loss, STFT_Loss, WM_BCE_Loss, WM_Hinge_Loss, EDCLoss
 from icecream import ic
 from tqdm import tqdm
@@ -41,7 +41,7 @@ def train_loop(audio_dl_train, audio_dl_val, rir_dl_train, rir_dl_val, msg_len=8
         ],
         lr=lr)
     
-    stft_loss, ms_loss, wm_loss, edc_loss = STFT_Loss(), MSSTFT_Loss(), WM_Hinge_Loss(msg_len=msg_len), EDCLoss()
+    stft_loss, ms_loss, wm_loss, edc_loss = STFT_Loss(), MSSTFT_Loss(), WM_BCE_Loss(msg_len=msg_len), EDCLoss()
     stft_loss.to(device)
     ms_loss.to(device)
     wm_loss.to(device)
@@ -191,18 +191,15 @@ def train_loop(audio_dl_train, audio_dl_val, rir_dl_train, rir_dl_val, msg_len=8
 def main():
     audio_dataset_train = MyLibriSpeech(url="dev-clean",sr=16000, duration=2)
     audio_dataset_val = MyLibriSpeech(url="dev-clean",sr=16000, duration=2)
-    rir_dataset_full = RIRS_Dataset(sr=16000, duration=2)
 
-    # split rir dataset
-    total_len = len(rir_dataset_full)
-    train_size = int(0.8 * total_len)
-    val_size = total_len - train_size
-    rir_dataset_train, rir_dataset_val = random_split(
-        rir_dataset_full, [train_size, val_size],
-        generator=torch.Generator().manual_seed(42)
-    )
-    audio_dl_train, rir_dl_train = get_dataloader(audio_dataset_train, rir_dataset_train, batch_size=40, num_workers=64, persistent_workers=True, pin_memory=True)
-    audio_dl_val, rir_dl_val = get_dataloader(audio_dataset_val, rir_dataset_val, batch_size=40, num_workers=64, persistent_workers=True, pin_memory=True)
+    rir_1 = BUT_Dataset(sr=16000, duration=2)
+    rir_2 = RIRS_Dataset(sr=16000, duration=2)
+
+    rir_dataset = ConcatDataset([rir_1, rir_2])
+    rir_train, rir_val = random_split(rir_dataset, [0.8, 0.2], generator=torch.Generator().manual_seed(42))
+
+    audio_dl_train, rir_dl_train = get_dataloader(audio_dataset_train, rir_train, batch_size=40, num_workers=64, persistent_workers=True, pin_memory=True)
+    audio_dl_val, rir_dl_val = get_dataloader(audio_dataset_val, rir_val, batch_size=40, num_workers=64, persistent_workers=True, pin_memory=True)
     print("Starting training...")
     # just for test
     train_loop(audio_dl_train, audio_dl_val, rir_dl_train, rir_dl_val, msg_len=5, epochs=200, lr=1e-4)
