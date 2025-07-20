@@ -76,35 +76,6 @@ class RIRS_Dataset(Dataset):
         rir_out = rir_out.unsqueeze(0)
         return rir_out
 
-# BUT dataset
-class BUT_Dataset(Dataset):
-    def __init__(self, root=ROOT_PATH, list_file="BUT_RIR_list.txt", sr=16000, duration=2):
-        self.but_list = []
-        self.sr = sr
-        self.duration = duration
-        self.dataset_dir = os.path.join(root, "BUT_ReverbDB")
-        list_file = os.path.join(root, list_file)
-        with open(list_file, "r") as f:
-            for line in f:
-                self.but_list.append(line.strip())
-        
-    def __len__(self):
-        return len(self.but_list)
-    
-    def __getitem__(self, index):
-        line = self.but_list[index].strip()
-        rir_path = os.path.join(self.dataset_dir, line)
-        rir, sr = sf.read(rir_path, dtype="float32")
-        assert sr == self.sr, "Sample rate mismatch, expected {} but got {}".format(self.sr, sr)
-        rir = torch.from_numpy(rir).float()
-        n0 = torch.argmax(torch.abs(rir))
-        rir_out = rir[n0:] / rir[n0]
-        # pad or truncate to duration
-        rir_out = pad_truncate_norm(rir_out, self.duration * self.sr)
-        rir_out = rir_out.unsqueeze(0)
-        return rir_out
-
-
 # Audio Sampler
 class AudioSampler(Sampler):
     def __init__(self, data_source, num_samples, replacement=True):
@@ -160,10 +131,8 @@ if __name__ == "__main__":
     print(len(libri_speech))
     rir_dataset = RIRS_Dataset(sr=16000, duration=2)
     print(len(rir_dataset))
-    but_dataset = BUT_Dataset(sr=16000, duration=2)
-    print(len(but_dataset))
     # get dataloader
-    ad, rd = get_dataloader(libri_speech, but_dataset, batch_size=64, num_workers=64)
+    ad, rd = get_dataloader(libri_speech, rir_dataset, batch_size=64, num_workers=64)
     print(len(ad), len(rd))
 
     # get batch data

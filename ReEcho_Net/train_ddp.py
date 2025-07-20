@@ -15,8 +15,8 @@ from tqdm import tqdm
 from torch.utils.data import random_split
 
 from model import *
-from new_dataloader import RIRS_Dataset, get_dataloader_ddp, MyLibriSpeech
-from loss_fn import MSSTFT_Loss, STFT_Loss, WM_Loss, EDCLoss
+from new_dataloader import RIRS_Dataset, get_dataloader_ddp, MyLibriSpeech, BUT_Dataset
+from loss_fn import MSSTFT_Loss, STFT_Loss, WM_BCE_Loss, WM_Hinge_Loss, EDCLoss
 from icecream import ic
 
 ic.disable()
@@ -71,7 +71,7 @@ def train_loop(audio_dl_train, rir_dl_train, audio_dl_val, rir_dl_val, local_ran
     watermarker = DDP(watermarker, device_ids=[local_rank])
     
     
-    stft_loss, ms_loss, wm_loss, edc_loss = STFT_Loss(), MSSTFT_Loss(), WM_Loss(msg_len=msg_len), EDCLoss()
+    stft_loss, ms_loss, wm_loss, edc_loss = STFT_Loss(), MSSTFT_Loss(), WM_BCE_Loss(msg_len=msg_len), EDCLoss()
     stft_loss.to(device)
     ms_loss.to(device)
     wm_loss.to(device)
@@ -93,7 +93,7 @@ def train_loop(audio_dl_train, rir_dl_train, audio_dl_val, rir_dl_val, local_ran
         for audio, rir in train_pbar:
             audio, rir = audio.to(device), rir.to(device)
             rs = torchaudio.functional.fftconvolve(audio, rir, mode='full')
-            rs = rs[:, :audio.shape[1]]
+            rs = rs[..., :audio.shape[-1]]
             # generate msg
             msg = torch.randint(0, 2, (rs.shape[0], msg_len), device=device, dtype=torch.long)
             # update wm_scheduler
@@ -102,18 +102,18 @@ def train_loop(audio_dl_train, rir_dl_train, audio_dl_val, rir_dl_val, local_ran
             # feature extraction
             spec_masked, rir_emb = separator(rs)
             rir_emb_wm = watermarker.module.embedding(msg, rir_emb)
-            rir_est = generator(rir_emb) # NOTICE！！！！ I change here
+            rir_est = generator(rir_emb_wm) 
             # resynthesize
             audio_permuted = audio[torch.randperm(audio.shape[0])]
             rs_resyn = torchaudio.functional.fftconvolve(audio_permuted, rir_est, mode='full')
-            rs_resyn = rs_resyn[:, :rs.shape[1]]
+            rs_resyn = rs_resyn[..., :rs.shape[-1]]
             # re-feature extraction
             rs_resyn_spec = spec_transform(rs_resyn)
             msg_logit = watermarker.module.extraction(rs_resyn_spec, mode='logit')
             # loss
             dereverb_loss = stft_loss(spec_masked, spec_transform(audio))
-            rir_loss = ms_loss(rir_est, rir)
-            decode_loss = wm_loss(msg_logit, msg) * 0 # NOTICE！！！！ I change here
+            rir_loss = ms_loss(rir_est, rir) + edc_loss(rir_est, rir)
+            decode_loss = wm_loss(msg_logit, msg) 
             total_loss = dereverb_loss + rir_loss + decode_loss
             total_loss.backward()
             optimizer.step()
@@ -148,7 +148,7 @@ def train_loop(audio_dl_train, rir_dl_train, audio_dl_val, rir_dl_val, local_ran
                 for audio, rir in val_pbar:
                     audio, rir = audio.to(device), rir.to(device)
                     rs = torchaudio.functional.fftconvolve(audio, rir, mode='full')
-                    rs = rs[:, :audio.shape[1]]
+                    rs = rs[..., :audio.shape[-1]]
                     # generate msg
                     msg = torch.randint(0, 2, (rs.shape[0], msg_len), device=device, dtype=torch.long)
                     # feature extraction
@@ -158,13 +158,13 @@ def train_loop(audio_dl_train, rir_dl_train, audio_dl_val, rir_dl_val, local_ran
                     # resynthesize
                     audio_permuted = audio[torch.randperm(audio.shape[0])]
                     rs_resyn = torchaudio.functional.fftconvolve(audio_permuted, rir_est, mode='full')
-                    rs_resyn = rs_resyn[:, :rs.shape[1]]
+                    rs_resyn = rs_resyn[..., :rs.shape[-1]]
                     # re-feature extraction
                     rs_resyn_spec = spec_transform(rs_resyn)
                     msg_logit = watermarker.module.extraction(rs_resyn_spec, mode='msg')
                     # loss
                     dereverb_loss = stft_loss(spec_masked, spec_transform(audio))
-                    rir_loss = ms_loss(rir_est, rir)
+                    rir_loss = ms_loss(rir_est, rir) + edc_loss(rir_est, rir)
                     ber = (msg_logit != msg).float().mean()
 
                     val_dereverb_loss += dereverb_loss.item()
@@ -210,10 +210,11 @@ def main():
     print("Loading training data...")
     audio_dataset_train = MyLibriSpeech(url="train-clean-100",sr=16000, duration=2)
     audio_dataset_val = MyLibriSpeech(url="dev-clean",sr=16000, duration=2)
-    rir_dataset_full = RIRS_Dataset(sr=16000, duration=2)
+    rir_dataset_train = BUT_Dataset(sr=16000, duration=2)
+    rir_dataset_val = RIRS_Dataset(sr=16000, duration=2)
 
-    audio_dl_train, rir_dl_train = get_dataloader_ddp(audio_dataset_train, rir_dataset_full, batch_size=40, num_workers=64, persistent_workers=True, pin_memory=True)
-    audio_dl_val, rir_dl_val = get_dataloader_ddp(audio_dataset_val, rir_dataset_full, batch_size=40, num_workers=64, persistent_workers=True, pin_memory=True)
+    audio_dl_train, rir_dl_train = get_dataloader_ddp(audio_dataset_train, rir_dataset_train, batch_size=40, num_workers=64, persistent_workers=True, pin_memory=True)
+    audio_dl_val, rir_dl_val = get_dataloader_ddp(audio_dataset_val, rir_dataset_val, batch_size=40, num_workers=64, persistent_workers=True, pin_memory=True)
     
     print("Starting training...")
     train_loop(audio_dl_train, rir_dl_train, audio_dl_val, rir_dl_val, local_rank, msg_len=5, epochs=200, lr=1e-4)

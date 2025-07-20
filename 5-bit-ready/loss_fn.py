@@ -67,9 +67,9 @@ class MSSTFT_Loss(nn.Module):
 
         return loss
 
-class EarlySDR_Loss(nn.Module):
+class EarlySNR_Loss(nn.Module):
     def __init__(self, early_reflection = 0.05, sr=16000, mode="sdsdr"):
-        super(EarlySDR_Loss, self).__init__()
+        super(EarlySNR_Loss, self).__init__()
         self.length = int(early_reflection * sr)
         self.sdr = SingleSrcNegSDR(sdr_type=mode, take_log=True, reduction="mean")
 
@@ -179,23 +179,13 @@ class EDCLoss(nn.Module):
             return loss        # shape [B]
 
 
-class WM_BCE_Loss(nn.Module):
+class WM_Loss(nn.Module):
     def __init__(self, msg_len=16):
-        super(WM_BCE_Loss, self).__init__()
+        super(WM_Loss, self).__init__()
         self.bce_logit = nn.BCEWithLogitsLoss()
     
     def forward(self, msg_logit, msg):
         loss = self.bce_logit(msg_logit, msg.float())
-        return loss
-
-class WM_Hinge_Loss(nn.Module):
-    def __init__(self, msg_len=16):
-        super(WM_Hinge_Loss, self).__init__()
-        self.margin = 1
-    
-    def forward(self, msg_logit, msg):
-        msg = msg.float() * 2 - 1
-        loss = F.relu(1 - msg_logit * msg).mean()
         return loss
 
 if __name__ == "__main__":
@@ -207,7 +197,7 @@ if __name__ == "__main__":
     loss_edc = EDCLoss()
     print(loss_edc(predicted, target).item())
 
-    loss_early_snr = EarlySDR_Loss()
+    loss_early_snr = EarlySNR_Loss()
     print(loss_early_snr(predicted, target).item())
 
     predicted = torch.randn(4, 513, 100)
@@ -217,8 +207,5 @@ if __name__ == "__main__":
 
     msg_logit = torch.randn(4, 16)
     msg = torch.randint(0, 2, (4, 16), dtype=torch.float32)
-    loss_wm = WM_BCE_Loss(msg_len=16)
+    loss_wm = WM_Loss(msg_len=16)
     print(loss_wm(msg_logit, msg).item())
-
-    loss_wm_hinge = WM_Hinge_Loss(msg_len=16)
-    print(loss_wm_hinge(msg_logit, msg).item())

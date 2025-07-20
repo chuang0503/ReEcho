@@ -10,14 +10,14 @@ from torch.utils.data import random_split
 
 from model import *
 from new_dataloader import get_dataloader, MyLibriSpeech, RIRS_Dataset
-from loss_fn import MSSTFT_Loss, STFT_Loss, WM_BCE_Loss, WM_Hinge_Loss, EDCLoss
+from loss_fn import MSSTFT_Loss, STFT_Loss, WM_Loss, EDCLoss
 from icecream import ic
 from tqdm import tqdm
 
 ic.disable()
 warnings.filterwarnings("ignore")
 
-# ─────────────────── logger ───────────────────    
+# ─────────────────── logger ───────────────────
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 fmt = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
@@ -41,7 +41,7 @@ def train_loop(audio_dl_train, audio_dl_val, rir_dl_train, rir_dl_val, msg_len=8
         ],
         lr=lr)
     
-    stft_loss, ms_loss, wm_loss, edc_loss = STFT_Loss(), MSSTFT_Loss(), WM_Hinge_Loss(msg_len=msg_len), EDCLoss()
+    stft_loss, ms_loss, wm_loss, edc_loss = STFT_Loss(), MSSTFT_Loss(), WM_Loss(msg_len=msg_len), EDCLoss()
     stft_loss.to(device)
     ms_loss.to(device)
     wm_loss.to(device)
@@ -81,7 +81,7 @@ def train_loop(audio_dl_train, audio_dl_val, rir_dl_train, rir_dl_val, msg_len=8
             # resynthesize and re-feature extraction
             audio_permuted = audio[torch.randperm(audio.shape[0])]
             rs_resyn = torchaudio.functional.fftconvolve(audio_permuted, rir_est, mode='full')
-            rs_resyn = rs_resyn[..., :rs.shape[-1]]
+            rs_resyn = rs_resyn[:, :rs.shape[1]]
 
             # watermark extraction
             rs_resyn_spec = spec_transform(rs_resyn)
@@ -140,7 +140,7 @@ def train_loop(audio_dl_train, audio_dl_val, rir_dl_train, rir_dl_val, msg_len=8
                     # resynthesize and re-feature extraction
                     audio_permuted = audio[torch.randperm(audio.shape[0])]
                     rs_resyn = torchaudio.functional.fftconvolve(audio_permuted, rir_est, mode='full')
-                    rs_resyn = rs_resyn[..., :rs.shape[-1]]
+                    rs_resyn = rs_resyn[:, :rs.shape[1]]
 
                     # watermark extraction
                     rs_resyn_spec = spec_transform(rs_resyn)
@@ -205,7 +205,7 @@ def main():
     audio_dl_val, rir_dl_val = get_dataloader(audio_dataset_val, rir_dataset_val, batch_size=40, num_workers=64, persistent_workers=True, pin_memory=True)
     print("Starting training...")
     # just for test
-    train_loop(audio_dl_train, audio_dl_val, rir_dl_train, rir_dl_val, msg_len=5, epochs=200, lr=1e-4)
+    train_loop(audio_dl_train, audio_dl_val, rir_dl_train, rir_dl_val, msg_len=5, epochs=500, lr=1e-4)
 
 if __name__ == "__main__":
     main()

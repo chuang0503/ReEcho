@@ -10,27 +10,27 @@ from torch.utils.data import random_split
 
 from model import *
 from new_dataloader import get_dataloader, MyLibriSpeech, RIRS_Dataset
-from loss_fn import MSSTFT_Loss, STFT_Loss, WM_BCE_Loss, WM_Hinge_Loss, EDCLoss
+from loss_fn import MSSTFT_Loss, STFT_Loss, WM_Loss, EDCLoss
 from icecream import ic
 from tqdm import tqdm
 
 ic.disable()
 warnings.filterwarnings("ignore")
 
+
 # ─────────────────── training loop ───────────────────
-def test_loop(audio_dl_val, rir_dl_val, ckpt_path,msg_len=8, device="cuda"):
+def test_loop(audio_dl_val, rir_dl_val, ckpt, msg_len=5, device="cuda"):
     separator = ReEcho_Separator().to(device)
     generator = ReEcho_Generator().to(device)
     watermarker = ReEcho_WM(msg_len=msg_len).to(device)
     spec_transform = SpectrogramTransform().to(device)
     
-    stft_loss, ms_loss, wm_loss, edc_loss = STFT_Loss(), MSSTFT_Loss(), WM_Hinge_Loss(msg_len=msg_len), EDCLoss()
+    stft_loss, ms_loss, wm_loss, edc_loss = STFT_Loss(), MSSTFT_Loss(), WM_Loss(msg_len=msg_len), EDCLoss()
     stft_loss.to(device)
     ms_loss.to(device)
     wm_loss.to(device)
     edc_loss.to(device)
 
-    ckpt = torch.load(ckpt_path, map_location=device) 
     separator.load_state_dict(ckpt['separator_state_dict'])
     generator.load_state_dict(ckpt['generator_state_dict'])
     watermarker.load_state_dict(ckpt['watermarker_state_dict'])
@@ -98,8 +98,9 @@ def main():
     audio_dl_val, rir_dl_val = get_dataloader(audio_dataset_val, rir_dataset_full, batch_size=40, num_workers=64, persistent_workers=True, pin_memory=True)
     print("Starting testing...")
     # just for test
-    ckpt_path = "checkpoints/0719_1551/rir_model_epoch_200.pth"
-    test_loop(audio_dl_val, rir_dl_val, ckpt_path, msg_len=5)
+    ckpt = torch.load("model_5_bit_trained.pth", map_location="cuda") 
+
+    test_loop(audio_dl_val, rir_dl_val, ckpt, msg_len=5)
 
 if __name__ == "__main__":
     main()
