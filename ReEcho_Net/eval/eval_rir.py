@@ -19,11 +19,11 @@ SOUNDSPEED = 343.0
 # Helper utilities
 # -------------------------------------------------------------
 
-# def _to_numpy(x):
-#     """Return *x* as a NumPy array without modifying the original object."""
-#     if isinstance(x, torch.Tensor):
-#         return x.detach().cpu().numpy()
-#     return x
+def _to_numpy(x):
+    """Return *x* as a NumPy array without modifying the original object."""
+    if isinstance(x, torch.Tensor):
+        return x.detach().cpu().numpy()
+    return x
 
 
 def _dispatch_over_batch(func):
@@ -35,7 +35,7 @@ def _dispatch_over_batch(func):
     or PyTorch tensors without changing existing code.
     """
     def wrapper(sig, *args, **kwargs):
-        sig_np = sig
+        sig_np = _to_numpy(sig)
 
         # (T,) – single signal -------------------------------------------------
         if sig_np.ndim == 1:
@@ -59,44 +59,44 @@ def _dispatch_over_batch(func):
 # Core metrics (now tensor‑friendly)
 # -------------------------------------------------------------
 
-# def align_rir(ir, fs, total_s: float = 2):
-#     """Align **ir** on its first sample above the peak envelope.
+def align_rir(ir, fs, total_s: float = 2):
+    """Align **ir** on its first sample above the peak envelope.
 
-#     :param ir: 1‑D RIR (``np.ndarray`` or ``torch.Tensor``) **or** tensor with
-#                shape *(C, T)* or *(B, C, T)*.
-#     :param fs: Sampling rate (Hz).
-#     :param total_s: Target total seconds after alignment (default **4** s).
-#     :returns: ``(aligned_rir, n0)`` where *n0* is the sample index (or array of
-#               indices for batched input) of the detected direct sound.
-#     """
-#     ir_np = _to_numpy(ir)
+    :param ir: 1‑D RIR (``np.ndarray`` or ``torch.Tensor``) **or** tensor with
+               shape *(C, T)* or *(B, C, T)*.
+    :param fs: Sampling rate (Hz).
+    :param total_s: Target total seconds after alignment (default **4** s).
+    :returns: ``(aligned_rir, n0)`` where *n0* is the sample index (or array of
+              indices for batched input) of the detected direct sound.
+    """
+    ir_np = _to_numpy(ir)
 
-#     # ---- single impulse (T,) ----------------------------------------------
-#     if ir_np.ndim == 1:
-#         n0 = int(np.argmax(np.abs(ir_np)))
-#         out = ir_np[n0:] / ir_np[n0]
-#         tgt_len = int(total_s * fs)
-#         if len(out) >= tgt_len:
-#             out = out[:tgt_len]
-#         else:
-#             out = np.pad(out, (0, tgt_len - len(out)))
-#         return out, n0
+    # ---- single impulse (T,) ----------------------------------------------
+    if ir_np.ndim == 1:
+        n0 = int(np.argmax(np.abs(ir_np)))
+        out = ir_np[n0:] / ir_np[n0]
+        tgt_len = int(total_s * fs)
+        if len(out) >= tgt_len:
+            out = out[:tgt_len]
+        else:
+            out = np.pad(out, (0, tgt_len - len(out)))
+        return out, n0
 
-#     # ---- multi‑channel (C, T) ---------------------------------------------
-#     if ir_np.ndim == 2:
-#         aligned, indices = zip(*(align_rir(ch, fs, total_s) for ch in ir_np))
-#         return np.stack(aligned, axis=0), np.array(indices)
+    # ---- multi‑channel (C, T) ---------------------------------------------
+    if ir_np.ndim == 2:
+        aligned, indices = zip(*(align_rir(ch, fs, total_s) for ch in ir_np))
+        return np.stack(aligned, axis=0), np.array(indices)
 
-#     # ---- batch + channel (B, C, T) ----------------------------------------
-#     if ir_np.ndim == 3:
-#         aligned, indices = zip(*(align_rir(ex, fs, total_s) for ex in ir_np))
-#         return np.stack(aligned, axis=0), np.stack(indices, axis=0)
+    # ---- batch + channel (B, C, T) ----------------------------------------
+    if ir_np.ndim == 3:
+        aligned, indices = zip(*(align_rir(ex, fs, total_s) for ex in ir_np))
+        return np.stack(aligned, axis=0), np.stack(indices, axis=0)
 
-#     raise ValueError("Input must be 1D, 2D or 3D array/tensor.")
+    raise ValueError("Input must be 1D, 2D or 3D array/tensor.")
 
 
 @_dispatch_over_batch
-def eval_RT(rir, fs, bands=octave(31.5, 4000), rt: str = "t30"): 
+def eval_RT(rir, fs, bands=octave(31.5, 4000), rt: str = "t30"):  # noqa: N802
     """Reverberation time from impulse response signal.
 
     <Original docstring unchanged>
@@ -188,14 +188,36 @@ def eval_DRR(rir, fs, direct_win_ms: float = 2.0):  # noqa: N802
     return 10.0 * np.log10(np.mean(direct ** 2) / np.mean(rev ** 2))
 
 
-# @_dispatch_over_batch
-# def eval_ITDG(rir, gap: int = 16, hold: int = 4, thr_db: float = -3.0):  # noqa: N802
-#     """Initial Time Delay Gap (ITDG)."""
-#     n0 = int(np.argmax(np.abs(rir)))
-#     thr = np.abs(rir[n0]) * 10 ** (thr_db / 20)
-#     seg = np.abs(rir)[n0 + gap:]
-#     for i in range(len(seg) - hold):
-#         if np.any(seg[i:i + hold] >= thr):
-#             return i + gap  # samples after direct peak
-#     return None
+@_dispatch_over_batch
+def eval_ITDG(rir, gap: int = 16, hold: int = 4, thr_db: float = -3.0):  # noqa: N802
+    """Initial Time Delay Gap (ITDG)."""
+    n0 = int(np.argmax(np.abs(rir)))
+    thr = np.abs(rir[n0]) * 10 ** (thr_db / 20)
+    seg = np.abs(rir)[n0 + gap:]
+    for i in range(len(seg) - hold):
+        if np.any(seg[i:i + hold] >= thr):
+            return i + gap  # samples after direct peak
+    return None
 
+
+# -------------------------------------------------------------
+# Example usage
+# -------------------------------------------------------------
+if __name__ == "__main__":
+    filepath = "/home/c3-server1/Documents/Chenpei/re-rir/data/rirs_noises/RIRS_NOISES/real_rirs_isotropic_noises/RVB2014_type1_rir_largeroom1_far_angla.wav"
+    signal, fs = sf.read(filepath)
+
+    # Convert to (B, C, T) tensor (batch size 1)
+    signal_t = torch.from_numpy(signal.T).unsqueeze(0)  # (1, 2, T)
+
+    aligned, n0 = align_rir(signal_t, fs)
+
+    bands = octave(125, 4000)
+    rt = eval_RT(aligned[:, 0], fs, bands)  # evaluate only first channel
+    print("T30 per octave:", rt)
+
+    clarity = eval_clarity(aligned[:, 0], fs, bands=bands)
+    print("C50 per octave:", clarity)
+
+    itdg = eval_ITDG(aligned[:, 0])
+    print("ITDG:", itdg)

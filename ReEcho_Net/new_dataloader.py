@@ -25,8 +25,8 @@ def pad_truncate_norm(waveform, target_length):
 
 # LibriSpeech dataset
 class MyLibriSpeech(Dataset):
-    def __init__(self, root=ROOT_PATH, url="dev-clean", sr=16000, duration=2):
-        self.libri_speech = LIBRISPEECH(root=root, url=url)
+    def __init__(self, root=ROOT_PATH, url="dev-clean", download=False, sr=16000, duration=2):
+        self.libri_speech = LIBRISPEECH(root=root, url=url, download=download)
         self.sr = sr
         self.duration = duration
     def __len__(self):
@@ -40,7 +40,7 @@ class MyLibriSpeech(Dataset):
         
 # RIRS datset
 class RIRS_Dataset(Dataset):
-    def __init__(self, root=ROOT_PATH, list_file="rir_list_corrected", sr=16000, duration=2):
+    def __init__(self, root=ROOT_PATH, list_file="rir_list_corrected", sr=16000, duration=2, direct_win_ms=2.0):
         self.rir_list = []
         self.parser = ArgumentParser()
         self.parser.add_argument('--rir-id')
@@ -49,6 +49,7 @@ class RIRS_Dataset(Dataset):
         self.root = root
         self.sr = sr
         self.duration = duration
+        self.direct_win = int(direct_win_ms * sr / 1000.0)
         list_file = os.path.join(root, list_file)
         with open(list_file, "r") as f:
             for line in f:
@@ -70,7 +71,8 @@ class RIRS_Dataset(Dataset):
         rir = torch.from_numpy(rir).float()
         rir = rir[:,0] # mono channel
         n0 = torch.argmax(torch.abs(rir))
-        rir_out = rir[n0:] / rir[n0]
+        w0 = max(0, n0 - self.direct_win)
+        rir_out = rir[w0:] / rir[n0]
         # pad or truncate to duration
         rir_out = pad_truncate_norm(rir_out, self.duration * self.sr)
         rir_out = rir_out.unsqueeze(0)
@@ -78,10 +80,11 @@ class RIRS_Dataset(Dataset):
 
 # BUT dataset
 class BUT_Dataset(Dataset):
-    def __init__(self, root=ROOT_PATH, list_file="BUT_RIR_list.txt", sr=16000, duration=2):
+    def __init__(self, root=ROOT_PATH, list_file="BUT_RIR_list.txt", sr=16000, duration=2, direct_win_ms=2.0):
         self.but_list = []
         self.sr = sr
         self.duration = duration
+        self.direct_win = int(direct_win_ms * sr / 1000.0)
         self.dataset_dir = os.path.join(root, "BUT_ReverbDB")
         list_file = os.path.join(root, list_file)
         with open(list_file, "r") as f:
@@ -98,7 +101,8 @@ class BUT_Dataset(Dataset):
         assert sr == self.sr, "Sample rate mismatch, expected {} but got {}".format(self.sr, sr)
         rir = torch.from_numpy(rir).float()
         n0 = torch.argmax(torch.abs(rir))
-        rir_out = rir[n0:] / rir[n0]
+        w0 = max(0, n0 - self.direct_win)
+        rir_out = rir[w0:] / rir[n0]
         # pad or truncate to duration
         rir_out = pad_truncate_norm(rir_out, self.duration * self.sr)
         rir_out = rir_out.unsqueeze(0)
