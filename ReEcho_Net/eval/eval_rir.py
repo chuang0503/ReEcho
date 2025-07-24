@@ -182,9 +182,11 @@ def eval_DRR(rir, fs, direct_win_ms: float = 2.0):  # noqa: N802
     """Direct‑to‑reverberant ratio from impulse response signal."""
     assert rir.ndim == 1, "Input RIR must be single channel"
     signal = rir
-
-    win = int(direct_win_ms * fs / 1000.0)
-    direct, rev = signal[:win], signal[win:]
+    n0 = int(np.argmax(np.abs(signal)))
+    winlen = int(direct_win_ms * fs / 1000.0)
+    left = max(0, n0 - winlen)
+    right = n0 + winlen
+    direct, rev = signal[left:right], signal[right:]
     return 10.0 * np.log10(np.mean(direct ** 2) / np.mean(rev ** 2))
 
 

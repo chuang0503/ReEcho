@@ -184,7 +184,10 @@ def eval_DRR(rir, fs, direct_win_ms: float = 2.0):  # noqa: N802
     signal = rir
 
     win = int(direct_win_ms * fs / 1000.0)
-    direct, rev = signal[:win], signal[win:]
+    n0 = int(np.argmax(np.abs(signal)))
+    left = max(0, n0 - win)
+    right = n0 + win
+    direct, rev = signal[left:right], signal[right:]
     return 10.0 * np.log10(np.mean(direct ** 2) / np.mean(rev ** 2))
 
 

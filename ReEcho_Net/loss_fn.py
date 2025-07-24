@@ -195,6 +195,7 @@ class WM_Hinge_Loss(nn.Module):
     
     def forward(self, msg_logit, msg):
         msg = msg.float() * 2 - 1
+        msg_logit = msg_logit.float() * 2 - 1
         loss = F.relu(1 - msg_logit * msg).mean()
         return loss
 

@@ -16,7 +16,7 @@ from torch.utils.data import random_split, ConcatDataset
 
 from model import *
 from new_dataloader import RIRS_Dataset, get_dataloader_ddp, MyLibriSpeech, BUT_Dataset
-from loss_fn import MSSTFT_Loss, STFT_Loss, WM_BCE_Loss, EDCLoss
+from loss_fn import MSSTFT_Loss, STFT_Loss, WM_Hinge_Loss, EDCLoss
 from icecream import ic
 
 ic.disable()
@@ -50,7 +50,7 @@ def train_loop(audio_dl_train, rir_dl_train, audio_dl_val, rir_dl_val, local_ran
     watermarker = ReEcho_WM(msg_len=msg_len).to(device)
     spec_transform = SpectrogramTransform().to(device)
 
-    optimizer = torch.optim.Adam(
+    optimizer = torch.optim.AdamW(
         [
             {"params": separator.parameters(), "lr": lr},
             {"params": generator.parameters(), "lr": lr},
@@ -58,11 +58,11 @@ def train_loop(audio_dl_train, rir_dl_train, audio_dl_val, rir_dl_val, local_ran
         ],
         lr=lr)
 
-    # # ------------ load checkpoint ------------
-    # checkpoint = torch.load(f"checkpoints/0717_0040/rir_model_epoch_60.pth", map_location=device)
-    # separator.load_state_dict(checkpoint['separator_state_dict'])
-    # generator.load_state_dict(checkpoint['generator_state_dict'])
-    # watermarker.load_state_dict(checkpoint['watermarker_state_dict'])
+    # ------------ load checkpoint ------------
+    checkpoint = torch.load(f"checkpoints/0722_0306/rir_model_epoch_450.pth", map_location=device)
+    separator.load_state_dict(checkpoint['separator_state_dict'])
+    generator.load_state_dict(checkpoint['generator_state_dict'])
+    watermarker.load_state_dict(checkpoint['watermarker_state_dict'])
     # optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
 
     # ------------ ddp ------------
@@ -71,7 +71,7 @@ def train_loop(audio_dl_train, rir_dl_train, audio_dl_val, rir_dl_val, local_ran
     watermarker = DDP(watermarker, device_ids=[local_rank])
     
     
-    stft_loss, ms_loss, wm_loss, edc_loss = STFT_Loss(), MSSTFT_Loss(), WM_BCE_Loss(msg_len=msg_len), EDCLoss()
+    stft_loss, ms_loss, wm_loss, edc_loss = STFT_Loss(), MSSTFT_Loss(), WM_Hinge_Loss(msg_len=msg_len), EDCLoss()
     stft_loss.to(device)
     ms_loss.to(device)
     wm_loss.to(device)
@@ -220,7 +220,7 @@ def main():
     audio_dl_val, rir_dl_val = get_dataloader_ddp(audio_dataset_val, rir_val, batch_size=40, num_workers=64, persistent_workers=True, pin_memory=True)
     
     print("Starting training...")
-    train_loop(audio_dl_train, rir_dl_train, audio_dl_val, rir_dl_val, local_rank, msg_len=5, epochs=200, lr=1e-4)
+    train_loop(audio_dl_train, rir_dl_train, audio_dl_val, rir_dl_val, local_rank, msg_len=5, epochs=500, lr=1e-4)
 
 if __name__ == "__main__":
     main()
